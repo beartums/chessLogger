@@ -34,3 +34,6 @@ bower_components/
 
 # other external modules
 vendors/
+
+# node modules
+node_modules/
