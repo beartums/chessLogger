@@ -242,7 +242,7 @@ angular.module('ChessLoggerApp').
 		
 			
 		$scope.boardCfg = {
-			pieceTheme: '//home.griffithnet.com:8082/GrifNas/chess/pieces/{piece}.png',
+			pieceTheme: 'pieces/{piece}.png',
 			//pieceTheme: 'vendors/chessboardjs/img/chesspieces/wikipedia/{piece}.png',
 			position: 'start',
 			boardDiv: 'board1',
