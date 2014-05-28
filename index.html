@@ -1,0 +1,262 @@
+
+	<html>
+	<head>
+		<!--link rel="stylesheet" src="/css/chess.css"-->
+		<link rel="stylesheet" href="vendors/chessboardjs/css/chessboard-0.3.0.css">
+    <link rel="stylesheet" href="bower_components/bootstrap-css/css/bootstrap.css">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+		<style>
+			@font-face {
+				font-family: "Chess";
+				src: url('vendors/chessFont/casefont.woff') format("woff"),
+						url('vendors/chessFont/casefont.ttf') format("truetype");
+			}
+			.chess-font {
+				font-family: "Chess";
+				font-size: 36pt;
+			}
+			.promo-modal .modal-dialog {
+				width: 200px;
+				height: 200px;
+			}
+			.highlight {
+				color: red;
+				border: 1px solid red;
+			}
+			.inline {
+				display: inline;
+			}
+			.tempo {
+				display: inline-block;
+			}
+			li {
+				display: inline;
+			}
+		</style>
+	</head>
+	<body ng-app="ChessLoggerApp"  ng-controller="ChessLoggerCtrl">
+		<script src="bower_components\jquery\dist\jquery.min.js"></script>
+		<script src="bower_components\json3\lib\json3.min.js"></script>
+		<script src="vendors/chessboardjs/js/chessboard-0.3.0.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <!--script src="bower_components/bootstrap-css/js/bootstrap.js"></script-->
+		<script src="vendors/chess.js/chess.js"></script>
+		<script src="js/chessWrapperObjLib.js"></script>
+		<script src="js/chessWrapper.js"></script>
+		<script src="js/mongoRestFactory.js"></script>
+		<script src="js/chessLogger.js"></script>
+		
+		<!-- Modal template for defining the header information for the game -->
+		<script type="text/ng-template" id="gameInfoModal.html">
+			<div class="modal-header">
+				<h2>Game Information:</h2>
+			</div>
+			<div>
+				<form role="form" class="form-horizontal">
+					<div class="form-group">
+						<label for="event" class="col-sm-3 control-label">Event</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control" ng-model="gameInfo.event" id="event">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="gameDate" class="col-sm-3 control-label">Game Date</label>
+						<div class="col-sm-8">
+							<input type="date" class="form-control col-sm-8" ng-model="gameInfo.date" id="gameDate">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="gameLocation" class="col-sm-3 control-label">Location</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control col-sm-8" ng-model="gameInfo.location" id="location">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="white" class="col-sm-3 control-label">White</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control col-sm-8" ng-model="gameInfo.white" id="white">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="black" class="col-sm-3 control-label">Black</label>
+						<div class="col-sm-8">
+							<input type="text" class="form-control col-sm-8" ng-model="gameInfo.black" id="black">
+						</div>
+					</div>
+					<div class="form-group" >
+						<label for="result" class="col-sm-3 control-label">Result</label>
+						<div class="btn-group col-sm-8" id="result">
+							<button type="button" class="btn btn-default" title="Incomplete" btn-radio="'*'"
+														ng-model="gameInfo.result">*</button>
+							<button type="button" class="btn btn-default" title="White Won" btn-radio="'1-0'"
+														ng-model="gameInfo.result">1-0</button>
+							<button type="button" class="btn btn-default" title="Black Won" btn-radio="'0-1'"
+														ng-model="gameInfo.result">0-1</button>
+							<button type="button" class="btn btn-default" title="Draw" btn-radio="'.5-.5'"
+														ng-model="gameInfo.result">.5-.5</button>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+			</div>
+		</script>
+		
+		<!-- modal template for Settings -->
+		<script type="text/ng-template" id="settings.html">
+			<div class="modal-header">
+				<h4>ChessLogger Settings</h4>
+			</div>
+			<div class="modal-body">
+				<form role="form" class="form-horizontal">
+					<div class="form-group" title="Allow creating multiple lines from previous point.  Good for analysis">
+						<label for="AllowMultipleLines" class="col-sm-4 control-label">Allow Multiple Lines</label>
+						<div class="btn-group col-sm-8">
+							<button type="button" class="btn btn-default" 
+														ng-class="{btnPrimary:settings.AllowMultipleLines==true}" btn-radio=true
+														ng-model="settings.allowMultipleLines">On</button>
+							<button type="button" class="btn btn-default" btn-radio=false
+														ng-class="{btnPrimary:settings.AllowMultipleLines!=true}" 
+														ng-model="settings.allowMultipleLines">Off</button>
+						</div>
+					</div>
+					<div class="form-group" title="Enable storage in this brower's local storage for saving games when the database is not reachable">
+						<label for="EnableLocalStorage" class="col-sm-4 control-label">Enable Local Storage</label>
+						<div class="btn-group col-sm-8">
+							<button type="button" class="btn btn-default" btn-radio=true
+														ng-model="settings.enableLocalStorage">On</button>
+							<button type="button" class="btn btn-default" btn-radio=false
+														ng-model="settings.enableLocalStorage">Off</button>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="email" class="col-sm-4 control-label">email Address</label>
+						<div class="col-sm-8">
+							<input type="email" class="form-control col-sm-8" ng-model="settings.email" id="email">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="dbUrl" class="col-sm-4 control-label">Database</label>
+						<div class="col-sm-8">
+							<input type="url" class="form-control" placeholder="http://Url/to/Mongo/Database/API" ng-model="settings.db.url" id="dbUrl">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-8 col-sm-offset-4">
+							<input type="text" class="form-control" placeholder="Mongo-DB-Name" ng-model="settings.db.name" id="dbName">
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button ng-click="ok()" class="btn btn-primary">Ok</button>
+				<button ng-click="cancel()" class="btn btn-warning">Cancel</button>
+			</div>
+		</script>
+	
+		<!-- Generic modal template for selecting a button -->
+		<script type="text/ng-template" id="dialog.html">
+			<div class="modal-header">
+				<h3>{{config.title}}</h3>
+			</div>
+			<div class="modal-body">
+				{{config.message}}
+			</div>
+			<div class="modal-footer">
+				<button ng-repeat="button in config.buttons" 
+								ng-click="buttonClicked(button.name)" 
+								class="btn">
+					{{button.name}}
+				</button>
+			</div>
+		</script>
+	
+		<!-- modal template for choosing the piece to promote to-->
+		<script type="text/ng-template" id="promoModal.html">
+				<div class="text-center">
+					<div class="chess-font">
+					<span class='btn btn-group chess-font'>
+						<span class='btn btn-default chess-font' ng-click="choose('q')">q</span>
+						<span class='btn btn-default chess-font' ng-click="choose('r')">r</span><br/>
+						<span class='btn btn-default chess-font' ng-click="choose('b')">b</span>
+						<span class='btn btn-default chess-font' ng-click="choose('n')">n</span>
+					</span>
+				</div>
+		</script>
+		
+
+		
+		<!-- MAIN FORM -->
+		<div class="container">
+			<div class="row">
+				<div id="board1" class="col-md-5"></div>
+				<div class="col-md-6">
+					<div class="row">
+						<div id="controls" class="col-md-12 btn-toolbar">
+							<div class="btn-group btn-group-lg">
+								<span type="button" class="btn btn-default fa fa-refresh" ng-click="flipBoard()" title="Flip Board"></span>
+								<span type="button" class="btn btn-default fa fa-fast-backward" ng-click="goToStart()" title="Back to Start"></span>
+								<span type="button" class="btn btn-default fa fa-step-backward" ng-click="goBackOne()" title="Back up one move"></span>
+								<span type="button" class="btn btn-default fa fa-undo" ng-click="undo()" title="Undo the last move in the list"></span>
+								<span type="button" class="btn btn-default fa fa-step-forward" ng-click="goForwardOne()" title="Advance one move"></span>
+								<span type="button" class="btn btn-default fa fa-fast-forward" ng-click="goToEnd()" title="Go To End Position"></span>
+								<span type="button" class="btn btn-default fa fa-trash-o" ng-click="trashClick()" title="New Game"></span>
+							</div>
+							<div class="btn-group btn-group-lg">
+								<span type="button" class="btn btn-default fa fa-save" ng-click="saveGame()" title="Save the game"></span>
+								<a class="btn btn-default fa fa-folder-open-o dropdown-toggle" ng-click="getGames()" title="Load a game"></a>
+								<div class="dropdown-menu">
+									<table class="table table-hover" ng-hide="!savedGames.length" style="width: 300px">
+										<tr ng-repeat="game in savedGames" ng-click="loadGame(game)">
+											<td>{{game.gameInfo.white}} vs. {{game.gameInfo.black}}</td>
+											<td>{{game.gameInfo.date}}</td>
+											<!--td>
+												<span type="button" class="btn btn-default btn-sm fa fa-delete" ng-click="deleteGame(game)" title="Delete this game from the database"></span>
+											</td-->
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="btn-group btn-group-lg">
+								<span type="button" class="btn btn-default fa fa-cog" ng-click="clickCog()" title="Show Modal"></span>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<ul id="moves" class="col-md-12">
+							<li ng-repeat="tempo in game.rootLine.tempos" class="move"  ng-include="'movelist.html'">
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/ng-template" id="movelist.html">
+				<span ng-if="tempo.color=='w'" class="move-num tempo" ng-class="{altline:line.priorTempos>0}">
+						{{(($index+line.priorTempos)/2)+1}}. 
+				</span>
+				<span ng-if="requireWhitePlaceholder(tempo,$index)" 
+							class="move-num tempo" 
+							ng-class="{altline:line.priorTempos>0}">
+						{{(($index+line.priorTempos+1)/2)}}. ...&nbsp;
+				</span>
+				<span class="tempo" 
+						ng-class="{highlight: game.selectedTempo===tempo, 
+											white:tempo.color=='w', 
+											black:tempo.color=='b',
+											altline:line.priorTempos>0}"
+						ng-mouseOver="peekPosition(tempo)" 
+						ng-click="setPosition(tempo)"> 
+						{{tempo.san}}&nbsp;
+				</span>
+				<span ng-if="tempo.color=='b'">&nbsp; &nbsp;</span>
+				<ul ng-if="tempo.lines.length>0" ng-repeat="line in tempo.lines">
+					<li ng-repeat="tempo in line.tempos" class="move" ng-include="'movelist.html'"></li>
+				</ul>	
+		</script>
+	</body>
+	
+		
