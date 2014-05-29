@@ -1,24 +1,38 @@
-//angular.module('chessWrapperApp',[])
-//  .factory('ChessWrapper', function ($http) {
+/**
+ * Object to coordinate Chess.js and chessboard.js and game status and persistence
+ */
+/**
+ * Utility function to bind a function to a particular scope
+ * @param {object} scope the scope to apply
+ * @param {function} fn The function to be bound
+ * @returns {Function} The axecutable function with the specifeid scope
+ */
 	function bind(scope, fn) {
 		return function () {
 				return fn.apply(scope, arguments);
 		};
 	}
-	
+	/**
+	 * Object to coordinate Chess.js and chessboard.js and manage game persistence
+	 * @constructor
+	 * @param {object} boardCfg Configuration variables
+	 * @param {object} gameObj Current active game being managed
+	 * @returns
+	 */
 	function ChessWrapper(boardCfg, gameObj) {
 
 		this.boardCfg = boardCfg;
 
-		this.selectedTempo = this.TEMPO0;
-	
-		//var onDrop = bind(this,this.onDrop);
+		this.selectedTempo = this.TEMPO0; // set start postion
+		
+		// Need to be able to determine when the piece draggin begins, and need to set the context
 		var onDragStart = bind(this, this.onDragStart);
 		boardCfg.onDragStart = onDragStart;
 		
+		// Allow the calling program to spec ify the function to handle promotion selection and 
+		// 	digesting activity out of scope
 		this.digest = boardCfg.digest;
 		this.promotionSelector = boardCfg.promotionSelector; // calling proc returns a promise which waits for the selected piece
-		//boardCfg.onDrop = onDrop;
 		
 		this.board = new ChessBoard(boardCfg.boardDiv,boardCfg);
 		this.game = this.initGame(gameObj)
@@ -26,6 +40,10 @@
 		
 	}
 	
+	/**
+	 * Initialize a game position
+	 * @param {object} gameObj set position and history for this game object
+	 */
 	ChessWrapper.prototype.initGame = function(gameObj) {
 		this.gameInfo = gameObj ? gameObj.gameInfo : new GameInfo();
 		this.gameId = gameObj ? gameObj.id : "";
@@ -38,13 +56,29 @@
 		return game;
 		
 	}	
+	
 
+	/**
+	 * @constant
+	 */
 	ChessWrapper.prototype.TEMPO0 = {tempoNum:0};
+	/**
+	 * @constant
+	 */
 	ChessWrapper.prototype.START_FEN = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
 	
+	/**
+	 * Actions when the user releases a piece
+	 * 
+	 * @param {string} source Algebraic notation for the square from which the move started
+	 * @param {string} target Algebraic notation of the target square
+	 * @param {string} piece 2-byte representation of the piece dropped
+	 * @param {object} newPos Position resulting from the piece drop
+	 * @param {object) oldPos Position resulting form the move
+	 * @param {string} orientation How the board is currently oriented
+	 */
 	ChessWrapper.prototype.onDrop = function(source, target, piece, newPos, oldPos, orientation) {
-		//var thisObj = this;
-		//(function() {
+
 			var promo = '';
 			var move = {from:source, to:target}
 			

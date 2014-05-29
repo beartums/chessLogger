@@ -1,3 +1,6 @@
+/**
+ * Generalized REST Factory.  CRUD objects.  Models need not apply. All methods return a promise
+ */
 'use strict';
 angular.module('mongoRestApp',[])
   .factory('mongoRestFactory', function ($http) {
