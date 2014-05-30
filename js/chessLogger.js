@@ -1,11 +1,14 @@
-
-// TODO: Multiple lines of play
 /**
- * Log and analyze chess games
- *
+ * @ngdoc overview
+ * @name ChessLoggerApp
+ * @module ChessLoggerApp
+ * @description overview Log and analyze chess games
  * @author Eric Griffith
  * @version 0.0.1
+ * @requires ui.bootstrap
+ * @requires mongoRestApp
  */
+
 angular.module('ChessLoggerApp', ['ui.bootstrap','mongoRestApp']);
 
 angular.module('ChessLoggerApp')
@@ -13,12 +16,24 @@ angular.module('ChessLoggerApp')
 	.run(function(mongoRestFactory) { 
 		mongoRestFactory.init("http://home.griffithnet.com:3000","chesslogger","games");
 	});
-	
+/**
+ * @ngdoc object
+ * @module ChessLoggerCtl
+ * @name ChessLoggerCtl
+ * @description ChessLoggerApp controller
+ * @requires $modal
+ * @requires $log
+ * @requires module:mongoRestFactory
+ * 
+ */
 angular.module('ChessLoggerApp').
 	controller('ChessLoggerCtrl', function($scope, $modal, $log, mongoRestFactory) {
 	
 	/**
-	 * Handles a click on the settings button
+	 * @ngdoc function
+	 * @methodOf ChessLoggerApp 
+	 * @name clickCog
+	 * @description Handles a click on the settings button
 	 */
 		$scope.clickCog = function() {
 			var promise = $scope.updateSettings();
@@ -30,7 +45,7 @@ angular.module('ChessLoggerApp').
 	
 	/**
 	 * Calls dialog to update settings
-	 *
+	 * @method
 	 * @return (promise) Function returning the settings object after changes have been made
 	 */
 		$scope.updateSettings = function() {
@@ -134,6 +149,11 @@ angular.module('ChessLoggerApp').
 			return promoModalInstance.result;
 		}
 
+		/**
+		 * Initialize the board
+		 * @method ChessLoggerCtrl.init
+		 * @memberof! ChessLoggerCtrl
+		 */
 		$scope.init = function() {
 			$scope.game = new ChessWrapper(this.boardCfg);
 			$scope.settings = angular.fromJson(localStorage.getItem('settings'));

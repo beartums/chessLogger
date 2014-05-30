@@ -37,3 +37,8 @@ vendors/
 
 # node modules
 node_modules/
+
+#documentation directories -- until I decide which way to go
+ngdocular/
+ngdocs/
+docs/

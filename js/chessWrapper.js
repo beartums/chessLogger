@@ -17,7 +17,6 @@
 	 * @constructor
 	 * @param {object} boardCfg Configuration variables
 	 * @param {object} gameObj Current active game being managed
-	 * @returns
 	 */
 	function ChessWrapper(boardCfg, gameObj) {
 
@@ -43,6 +42,7 @@
 	/**
 	 * Initialize a game position
 	 * @param {object} gameObj set position and history for this game object
+	 * @returns {object} this game as understod by chess.js
 	 */
 	ChessWrapper.prototype.initGame = function(gameObj) {
 		this.gameInfo = gameObj ? gameObj.gameInfo : new GameInfo();
@@ -68,7 +68,7 @@
 	ChessWrapper.prototype.START_FEN = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
 	
 	/**
-	 * Actions when the user releases a piece
+	 * Actions when the user releases a piece, indicating the end of a move
 	 * 
 	 * @param {string} source Algebraic notation for the square from which the move started
 	 * @param {string} target Algebraic notation of the target square
@@ -79,27 +79,31 @@
 	 */
 	ChessWrapper.prototype.onDrop = function(source, target, piece, newPos, oldPos, orientation) {
 
-			var promo = '';
-			var move = {from:source, to:target}
-			
-			if (!this.isValidMove(source,target)) return "snapback";
-			
-			var validMove = {};
-			
-			if (this.isPromotion(target,piece)) {
-				var thisObj = this;
-				this.promotionSelector().then(function(selectedPiece) {
-					validMove = thisObj.game.move({from:source, to:target, promotion: selectedPiece});
-					thisObj.addMove(validMove);
-				});
-			} else {
-				validMove = this.game.move({from:source, to:target});
-				this.addMove(validMove);
-			}
-		//	}
-		//)();
+		var promo = '';
+		var move = {from:source, to:target}
+		
+		if (!this.isValidMove(source,target)) return "snapback";
+		
+		var validMove = {};
+		
+		if (this.isPromotion(target,piece)) {
+			var thisObj = this;
+			this.promotionSelector().then(function(selectedPiece) {
+				validMove = thisObj.game.move({from:source, to:target, promotion: selectedPiece});
+				thisObj.addMove(validMove);
+			});
+		} else {
+			validMove = this.game.move({from:source, to:target});
+			this.addMove(validMove);
+		}
+
 	}
 
+	/**
+	 * Convert this object into a JSON format that the backend can save
+	 * 
+	 * @returns {object} mongo-saveable json representation 
+	 */
 	ChessWrapper.prototype.getSaveableGame = function() {
 			var line = {
 					fen: this.rootLine.fen,
@@ -113,12 +117,16 @@
 			var gameObj = {gameInfo: this.gameInfo,
 							pgn: game.pgn(),
 							line: line
-							};
-							
-		return gameObj;
-							
+							};	
+		return gameObj;					
 	}
 	
+	/**
+	 * Convert a Line object to a chess.js-readable game
+	 * 
+	 * @param {Line} line Line object
+	 * @returns {object} chess.js game object
+	 */
 	ChessWrapper.prototype.gameFromLine = function(line) {
 		var game = new Chess(line.fen);
 		for (var i = 0; i < line.tempos; i++) {
@@ -127,28 +135,43 @@
 		return game;
 	}
 		
-	
+	/**
+	 * Identify if this is a move requiring player to select a piece to promote to
+	 * 
+	 * @param {string} targetSquare Square that the piece is moving into
+	 * @param {string} piece String representation of the piece moving into the target square
+	 * @return {boolean} true if this is a promotion-causing move
+	 */
 	ChessWrapper.prototype.isPromotion = function(targetSquare, piece) {
 		return (piece=='bP' && targetSquare.indexOf('1')>-1) ||
 				(piece=='wP' && targetSquare.indexOf('8')>-1) 
 	}
-	// do not pick up pieces if the game is over
-	// only pick up pieces for the side to move
+
+	/**
+	 * Function to monitor the beginning of a move and not allow it if it is not valid
+	 * @param {string} Sqare the piece is moving from
+	 * @param {string} piece being moved
+	 * @param {object} Current game position (unused)
+	 * @param {string} Current board orientation (unused)
+	 * @returns {boolean} false if the move should not be allowed
+	 */
 	ChessWrapper.prototype.onDragStart = function(source, piece, position, orientation) {
 			var game = this.game;
 			//implementing multiple lines: if not at end of game, you can start a new line by 
 			// moving the appropriate color from a specific tempo if the settings allow it
 			var atEnd = this.atEndOfMoveList();
 			if (!atEnd && this.boardCfg.allowMultipleLines) {
-				var gameLine = new Chess(this.selectedTempo.fen);
+				var gameLine = new Chess(this.selectedTempo.fen); // create a new game line
+				//Disallow movements of the wrong color
 				if ((gameLine.turn() == 'w' && piece.search(/^b/) !== -1) ||
 						(gameLine.turn() == 'b' && piece.search(/^w/) !== -1)) {
 					return false;
 				}
-				this.setNewLine();				
+				this.setNewLine();	// Instantiate the new line			
 				return true;
 			}
 			
+			// Otherwise, if the last move is currently selected, just check to see if the move is valid
 			var side = game.turn();
 			
 			if (game.game_over() === true || 
@@ -161,20 +184,31 @@
 		//})();
 	}
 	
+	/**
+	 * Create a new Line object, starting from the current selected position, and change the active line to the new line
+	 * 
+	 */
 	ChessWrapper.prototype.setNewLine = function() {
 		// set the current state to a new line.  Current line will be the parent
 		var line = new Line();
-		line.fen = this.selectedTempo.fen;
+		line.fen = this.selectedTempo.fen; // Set the base fen to the current tempo's fen
+		// set the number of tempos up to this point
 		line.priorTempos = this.line.tempos.indexOf(this.selectedTempo)+1+this.line.priorTempos;
-		line.parentTempo = this.selectedTempo;
-		//this.lineStack.push(this.line);
+		line.parentTempo = this.selectedTempo; // set the current tempo as the parent tempo
 		this.line = line;
-		this.selectedTempo = this.TEMPO0;
-		this.game = new Chess(line.fen);
+		this.selectedTempo = this.TEMPO0; // TEMPO0 is always the first tempo in every line
+		this.game = new Chess(line.fen); // switch the game over tot he new line
 		
 		if (!this.line.parentTempo.lines) this.line.parentTempo.lines=[];
 		this.line.parentTempo.lines.push(line);
 	}
+	
+	/**
+	 * Tempo number is based on current line.  This method gets the tempo count in the game if there are previous lines
+	 * 
+	 * @param {number} num postion of the selected tempo within the current line
+	 * @returns {number}
+	 */
 
 	ChessWrapper.prototype.getTempoByNumber = function(num) {
 		if (num < 1) return this.TEMPO0;
@@ -182,6 +216,10 @@
 		return this.line.tempos[num-1];
 	}
 
+	/**
+	 * Is the selected move at the end of the move list, or are there more moves
+	 * @returns {boolean}
+	 */
 	ChessWrapper.prototype.atEndOfMoveList = function() {
 		if (this.line.tempos.length==0) return true;
 		
@@ -189,6 +227,13 @@
 		return false;
 	}
 			
+	/**
+	 * Testing for a valid move after drop
+	 * @param {string} start square for the move
+	 * @param {string} target Final square for the move
+	 * @param {object} (optional) game object to assess validity
+	 * @returns {boolean}
+	 */
 	ChessWrapper.prototype.isValidMove = function(source,target,game) {
 		game = game || this.game;
 		var vMoves = game.moves({verbose:true});
@@ -197,6 +242,10 @@
 		return false;
 	}
 
+	/**
+	 * Add a Tempo to the current Line
+	 * @param {object} a Move object
+	 */
 	ChessWrapper.prototype.addMove = function(move) {
 		var tempo = new Tempo();
 		tempo.san = move.san;
@@ -208,17 +257,24 @@
 		this.selectedTempo = tempo;
 		this.line.tempos.push(tempo);
 		if (move.flags.search(/[epkq]/i) > -1)	this.board.position(tempo.fen, false); // update for weird moves
-		//this.digest();
 	}
 
-	ChessWrapper.prototype.toJSON = function() {
+	/**
+	 * JSONify the current game (obsolete)
+	 */
+	/*ChessWrapper.prototype.toJSON = function() {
 		var game = {};
 		game.gameInfo = this.gameInfo;
 		game.pgn = this.game.pgn();
 		game.tempos = [];
 		game.tempos = this.temposToJSON(this.rootline.tempos)
-	}
+	}*/
 	
+	/**
+	 * Create a JSONifiable array of tempos (with recursion)
+	 * @param {Tempo[]} tempos to JSONify
+	 * @returns {array}
+	 */
 	ChessWrapper.prototype.temposToJSON = function(tempos) {
 		var tmps = [];
 		for (var i = 0; i < tempos.length; i++) {
@@ -241,6 +297,12 @@
 		return tmps;
 	}
 	
+	/**
+	 * Rehydrate a Line object from  array of tempos (with recursion)
+	 * @param {array} tempos The JSON-ready array of tempos from JSON
+	 * @param {Tempo} parentTempo The parent tempo of this line
+	 * @returns {Line}
+	 */
 	ChessWrapper.prototype.temposFromJSON = function(tempos,parentTempo) {
 		var line = new Line();
 		var index = parentTempo ? parentTempo.parentLine.tempos.indexOf(parentTempo) + 1 : 0;
@@ -273,6 +335,10 @@
 		return line;
 	}
 	
+	/**
+	 * Set the board position for the selected tempo
+	 * @param {Tempo} Tempo to set to position at
+	 */
 	ChessWrapper.prototype.setPosition = function(tempo) {
 		if (tempo==this.TEMPO0) {
 			this.board.start();
@@ -287,18 +353,26 @@
 		}
 	}
 
-	// multiple lines
+	/**
+	 * Set the board at the start position
+	 */
 	ChessWrapper.prototype.goToStart = function() {
 		this.board.start();
 		this.selectedTempo = this.TEMPO0;
 	}
 
+	/**
+	 * Set the board position and selected tempo to the last tempo in the active line
+	 */
 	ChessWrapper.prototype.goToEnd = function() {
 	
 		if (this.line.tempos.length==0) return
 		this.setPosition(this.line.tempos[this.line.tempos.length-1]);
 	}
 
+	/**
+	 * Move to the next tempo in this line (if any)
+	 */
 	ChessWrapper.prototype.goForwardOne = function() {
 		var idx = this.line.tempos.indexOf(this.selectedTempo);
 		
@@ -311,6 +385,9 @@
 		this.setPosition(this.selectedTempo);
 	}
 
+	/** 
+	 * Move to previous tempo in this line or (if none) to this line's parent tempo (if any)
+	 */
 	ChessWrapper.prototype.goBackOne = function() {
 		var idx = this.line.tempos.indexOf(this.selectedTempo);
 		
@@ -329,12 +406,18 @@
 		this.setPosition(this.selectedTempo);
 	}
 
+	/** 
+	 * Take back the last move
+	 */
 	ChessWrapper.prototype.undo = function() {
 		if (this.game.undo()) { // if undo succeeded
 			this.removeLastTempo()
 		}
 	}
 
+	/**
+	 * Erase the last tempo in this line
+	 */
 	ChessWrapper.prototype.removeLastTempo = function() {
 		var lastTempo = this.line.tempos.pop();
 		var line = this.line;
@@ -359,14 +442,25 @@
 	ChessWrapper.prototype.peekPosition = function(tempo) {
 	}
 
+	/**
+	 * Get the full game PGN object 
+	 * @returns {object} 
+	 */
 	ChessWrapper.prototype.pgn = function() {
 		return this.game.pgn();
 	}
 
+	/**
+	 * Set the game up based on a fen string
+	 * @param {string} fen String depicting the position on the board
+	 */
 	ChessWrapper.prototype.load_pgn = function(fen) {
 		this.game.load_pgn(fen);
 	}
 
+	/** 
+	 * Function to physically flip the board
+	 */
 	ChessWrapper.prototype.flipBoard = function() {
 		this.board.flip();
 	}
