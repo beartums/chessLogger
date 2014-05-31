@@ -1,0 +1,37 @@
+@CHARSET "ISO-8859-1";
+@font-face {
+	font-family: "Chess";
+	src: url('assets/CASEFONT.WOFF') format("woff"),
+			url('assets/CASEFONT.TTF'') format("truetype");
+}
+.chess-font {
+	font-family: "Chess";
+	font-size: 36pt;
+}
+.promo-modal .modal-dialog {
+	width: 200px;
+	height: 200px;
+}
+.highlight {
+	color: red;
+	border: 1px solid red;
+}
+.inline {
+	display: inline;
+}
+.tempo {
+	display: inline-block;
+}
+li {
+	display: inline;
+}
+.activeLine {
+	color: black;
+	font-weight: bold;
+	background-color: lightGreen;
+}
+.inactiveLine {
+	color: grey;
+	background-color: white;
+	font-weight: normal;
+}
