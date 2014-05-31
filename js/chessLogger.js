@@ -51,7 +51,7 @@ angular.module('ChessLoggerApp').
 	 */
 		$scope.updateSettings = function() {
 			var settingsModalInstance = $modal.open({
-				templateUrl: 'settings.html',
+				templateUrl: 'templates/settingsModal.html',
 				controller: $scope.settingsModalCtrl,
 				windowClass: 'settings-dialog',
 				resolve: {
@@ -83,7 +83,7 @@ angular.module('ChessLoggerApp').
 	
 		$scope.showDialog = function(config) {
 			var dialogInstance = $modal.open({
-				templateUrl: 'dialog.html',
+				templateUrl: 'templates/dialogModal.html',
 				controller: $scope.dialogCtrl,
 				windowClass: 'dialog',
 				resolve: {
@@ -104,7 +104,7 @@ angular.module('ChessLoggerApp').
 					
 		$scope.showGameInfoModal = function() {
 			var gameInfoModalInstance = $modal.open({
-				templateUrl: 'gameInfoModal.html',
+				templateUrl: 'templates/gameInfoModal.html',
 				controller: $scope.gameInfoModalCtrl,
 				windowClass: 'game-info-modal',
 				resolve: {
@@ -137,7 +137,7 @@ angular.module('ChessLoggerApp').
 		
 		$scope.showPromoModal = function() {
 			var promoModalInstance = $modal.open({
-				templateUrl: 'promoModal.html',
+				templateUrl: 'templates/promoModal.html',
 				controller: $scope.promoModalCtrl,
 				windowClass: 'promo-modal',
 				resolve: {
@@ -263,7 +263,7 @@ angular.module('ChessLoggerApp').
 		
 			
 		$scope.boardCfg = {
-			pieceTheme: 'pieces/{piece}.png',
+			pieceTheme: 'assets/pieces/{piece}.png',
 			//pieceTheme: 'vendors/chessboardjs/img/chesspieces/wikipedia/{piece}.png',
 			position: 'start',
 			boardDiv: 'board1',

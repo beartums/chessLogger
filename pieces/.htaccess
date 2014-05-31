@@ -1,6 +1,0 @@
-
-Header set Access-Control-Allow-Origin "home.griffithnet.com"
-
-Order allow,deny
-Allow from 192.168.0.*
-Satisfy any
