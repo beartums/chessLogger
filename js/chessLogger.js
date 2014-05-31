@@ -275,6 +275,9 @@ angular.module('ChessLoggerApp').
 			allowMultipleLines: true
 		};
 
+		$scope.isActive = function(tempo) {
+			return $scope.game.isActive(tempo);
+		}
 		$scope.init();
 
 });		

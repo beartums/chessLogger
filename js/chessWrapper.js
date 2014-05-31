@@ -56,7 +56,31 @@
 		return game;
 		
 	}	
-	
+	/**
+	 * Is this tempo in the active line?
+	 * A tempo is in the active line if it is in the current line or before the branch in a previous line
+	 * @param {Tempo} tempo The tempo to test
+	 * @returns {boolean}
+	 */
+	ChessWrapper.prototype.isActive = function(tempo) {
+		var l = this.line;
+		var branchIndex = 9999;
+		while (l) {
+			var tIndex = l.tempos.indexOf(tempo)
+			if (tIndex>-1 && tIndex<=branchIndex) {
+				return true;
+			} else if (tIndex>branchIndex) {
+				return false;
+			}
+			if (l.parentTempo) {
+				branchIndex = l.parentTempo.parentLine.tempos.indexOf(l.parentTempo);
+				l = l.parentTempo.parentLine;
+			} else {
+				l = null;
+			}
+		}
+		return false;
+	}
 
 	/**
 	 * @constant

@@ -24,6 +24,7 @@
 		<div class="container">
 			<div class="row">
 				<div id="board1" class="col-md-5"></div>
+				<div class="col-md-1"></div>
 				<div class="col-md-6">
 					<div class="row">
 						<div id="controls" class="col-md-12 btn-toolbar">
@@ -58,7 +59,10 @@
 					</div>
 					<div class="row">
 						<ul id="moves" class="col-md-12">
-							<li ng-repeat="tempo in game.rootLine.tempos" class="move"  ng-include="'movelist.html'">
+							<li ng-repeat="tempo in game.rootLine.tempos" 
+								class="move" 
+								ng-class="{activeLine:isActive(tempo),inactiveLine:!isActive(tempo)}" 
+								ng-include="'movelist.html'">
 							</li>
 						</ul>
 					</div>
@@ -66,7 +70,8 @@
 			</div>
 		</div>
 		<script type="text/ng-template" id="movelist.html">
-				<span ng-if="tempo.color=='w'" class="move-num tempo" ng-class="{altline:line.priorTempos>0}">
+				<span ng-if="tempo.color=='w'" class="move-num tempo" 
+					ng-class="{altline:line.priorTempos>0}">
 						{{(($index+line.priorTempos)/2)+1}}. 
 				</span>
 				<span ng-if="requireWhitePlaceholder(tempo,$index)" 
@@ -85,7 +90,10 @@
 				</span>
 				<span ng-if="tempo.color=='b'">&nbsp; &nbsp;</span>
 				<ul ng-if="tempo.lines.length>0" ng-repeat="line in tempo.lines">
-					<li ng-repeat="tempo in line.tempos" class="move" ng-include="'movelist.html'"></li>
+					<li ng-repeat="tempo in line.tempos" 
+						class="move"
+						ng-class="{activeLine:isActive(tempo),inactiveLine:!isActive(tempo)}" 
+						ng-include="'movelist.html'"></li>
 				</ul>	
 		</script>
 	</body>
