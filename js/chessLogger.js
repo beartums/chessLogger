@@ -18,8 +18,9 @@ angular.module('ChessLoggerApp')
 	});
 /**
  * @ngdoc object
- * @module ChessLoggerCtl
- * @name ChessLoggerCtl
+ * @module ChessLoggerCtrl
+ * @name ChessLoggerCtrl
+ * @memberOf ChessLoggerApp
  * @description ChessLoggerApp controller
  * @requires $modal
  * @requires $log
@@ -31,7 +32,7 @@ angular.module('ChessLoggerApp').
 	
 	/**
 	 * @ngdoc function
-	 * @methodOf ChessLoggerApp 
+	 * @methodOf ChessLoggerCtrl 
 	 * @name clickCog
 	 * @description Handles a click on the settings button
 	 */
