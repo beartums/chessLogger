@@ -27,12 +27,15 @@ about 30 apps in search of this holy grail.
 * Analysis notation and commenting
 * Set up a position to play from
 * Import PGN files
+* Enable Save to Local DB and upload when connected
 
 
 # Installation
 
 * Clone the repo
+* ```cd``` to the repo directory
 * Run ```npm install``` and ```bower install```
 * Edit ```chessLogger.js``` to add your default mongodb url, db name, and collection name
-in the app.run block (if you want game persistence)
+in the default settings in controller (if you want game persistence)
+* run ```grunt``` if you want the documentation (incomplete)
 * Enjoy

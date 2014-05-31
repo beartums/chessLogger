@@ -56,4 +56,5 @@ function GameInfo() {
 	this.white = "";
 	this.black = "";
 	this.result = "*";
+	
 }

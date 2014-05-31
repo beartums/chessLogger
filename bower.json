@@ -1,0 +1,23 @@
+{
+	"name": "chesslogger.js",
+	"main": ["index.html","js/chessLogger.js"],
+	"description": "Chess game logging and analysis with persistence and multiple lines of play",
+	"authors": [
+		{"name": "Eric Griffith", "email": "eric@griffithnet.com"}
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/beartums/chessLogger.git"
+	},
+	"dependencies": {
+		"chessboard.js": "0.3.1",
+		"chess.js": "latest",
+		"angular": "~1.2.15",
+		"angular-bootstrap": "~0.10.0",
+		"bootstrap": "~3.1.1",
+		"bootstrap-css": "~3.1.1",
+		"jquery": ">= 1.9.0",
+		"json3": "~3.3.0"
+	}
+}
+	

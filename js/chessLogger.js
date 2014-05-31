@@ -11,11 +11,12 @@
 
 angular.module('ChessLoggerApp', ['ui.bootstrap','mongoRestApp']);
 
-angular.module('ChessLoggerApp')
+/*angular.module('ChessLoggerApp')
 	// Initialize the mongo api for the chesslogger app
 	.run(function(mongoRestFactory) { 
 		mongoRestFactory.init("http://home.griffithnet.com:3000","chesslogger","games");
 	});
+*/
 /**
  * @ngdoc object
  * @module ChessLoggerCtrl
@@ -30,6 +31,30 @@ angular.module('ChessLoggerApp')
 angular.module('ChessLoggerApp').
 	controller('ChessLoggerCtrl', function($scope, $modal, $log, mongoRestFactory) {
 	
+
+		$scope.defaultSettings = {
+			allowMultipleLines: true,
+			enableLocalStorage: true,
+			emailAddress: '',
+			db : {
+				url: "http://home.griffithnet.com:3000",
+				name: 'chessLogger',
+				collection: 'games'
+			}
+		};
+		$scope.boardCfg = {
+				pieceTheme: 'assets/pieces/{piece}.png',
+				//pieceTheme: 'vendors/chessboardjs/img/chesspieces/wikipedia/{piece}.png',
+				position: 'start',
+				boardDiv: 'board1',
+				onDrop: $scope.onDrop,
+				digest: $scope.$digest,
+				promotionSelector: $scope.showPromoModal,
+				draggable: true,
+				dropOffBoard: 'snapback',
+				allowMultipleLines: true
+			};
+
 	/**
 	 * @ngdoc function
 	 * @methodOf ChessLoggerCtrl 
@@ -157,7 +182,9 @@ angular.module('ChessLoggerApp').
 		 */
 		$scope.init = function() {
 			$scope.game = new ChessWrapper(this.boardCfg);
-			$scope.settings = angular.fromJson(localStorage.getItem('settings'));
+			$scope.settings = angular.fromJson(localStorage.getItem('settings')) || $scope.defaultSettings;
+			var db = $scope.settings.db;
+			mongoRestFactory.init(db.url, db.name, db.collection);
 		}
 		
 		$scope.deleteGame = function(gameId) {
@@ -260,20 +287,6 @@ angular.module('ChessLoggerApp').
 		}
 
 		$scope.lines = []; // for recursive alternate lines, use this with a single line object as base
-		
-			
-		$scope.boardCfg = {
-			pieceTheme: 'assets/pieces/{piece}.png',
-			//pieceTheme: 'vendors/chessboardjs/img/chesspieces/wikipedia/{piece}.png',
-			position: 'start',
-			boardDiv: 'board1',
-			onDrop: $scope.onDrop,
-			digest: $scope.$digest,
-			promotionSelector: $scope.showPromoModal,
-			draggable: true,
-			dropOffBoard: 'snapback',
-			allowMultipleLines: true
-		};
 
 		$scope.init();
 
