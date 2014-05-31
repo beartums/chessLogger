@@ -61,7 +61,7 @@
 						<ul id="moves" class="col-md-12">
 							<li ng-repeat="tempo in game.rootLine.tempos" 
 								class="move" 
-								ng-class="{activeLine:isActive(tempo),inactiveLine:!isActive(tempo)}" 
+								ng-class="{activeLine:game.isActive(tempo),inactiveLine:!game.isActive(tempo)}" 
 								ng-include="'movelist.html'">
 							</li>
 						</ul>
@@ -92,7 +92,7 @@
 				<ul ng-if="tempo.lines.length>0" ng-repeat="line in tempo.lines">
 					<li ng-repeat="tempo in line.tempos" 
 						class="move"
-						ng-class="{activeLine:isActive(tempo),inactiveLine:!isActive(tempo)}" 
+						ng-class="{activeLine:game.isActive(tempo),inactiveLine:!game.isActive(tempo)}" 
 						ng-include="'movelist.html'"></li>
 				</ul>	
 		</script>

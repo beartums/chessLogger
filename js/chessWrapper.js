@@ -100,26 +100,53 @@
 	 * @param {object} newPos Position resulting from the piece drop
 	 * @param {object) oldPos Position resulting form the move
 	 * @param {string} orientation How the board is currently oriented
+	 * 
+	 * @todo Move newLine instantiation here so we can test if the line already exists
 	 */
 	ChessWrapper.prototype.onDrop = function(source, target, piece, newPos, oldPos, orientation) {
 
-		var promo = '';
-		var move = {from:source, to:target}
+		var moveObj = {from:source, to:target}
+		var game = new Chess(this.selectedTempo.fen)
 		
-		if (!this.isValidMove(source,target)) return "snapback";
+		if (!this.isValidMove(source,target,game)) return "snapback";
 		
-		var validMove = {};
-		
-		if (this.isPromotion(target,piece)) {
-			var thisObj = this;
+		// must do this pass before setting a new line so that we can get the SAN
+		if (this.isPromotion(target,piece)) { // if promoting a pawn, select the piece
+			//var thisObj = this;
 			this.promotionSelector().then(function(selectedPiece) {
-				validMove = thisObj.game.move({from:source, to:target, promotion: selectedPiece});
-				thisObj.addMove(validMove);
+				moveObj.promotion = selectedPiece;
+				var move = game.move(moveObj);
 			});
 		} else {
-			validMove = this.game.move({from:source, to:target});
-			this.addMove(validMove);
+			var move = game.move(moveObj);	
 		}
+		
+		
+		// don't start a new line if the move has already been made
+		if (!this.atEndOfMoveList()) { 					
+			var tempos = []
+			// collect the already-made next-moves
+			if (this.line.tempos.length>this.line.tempos.indexOf(this.selectedTempo)+1) {
+				tempos.push(this.line.tempos[this.line.tempos.indexOf(this.selectedTempo)+1]);
+			}
+			if (this.selectedTempo.lines.length>0) {	// already other lines?
+				for (var i = 0; i < this.selectedTempo.lines.length; i++) {
+					tempos.push(this.selectedTempo.lines[i].tempos[0]);
+				}
+			}
+			// test all the next-moves to see if they are the same.  if so set the position and exit
+			for (var i = 0; i < tempos.length; i++) {
+				if (tempos[i].san==move.san) {
+					this.setPosition(tempos[i]);
+					return;
+				}
+			}
+			// otherwise, this is a new line
+			this.setNewLine();
+		}
+		// now make the actual move
+		move = this.game.move(moveObj);
+		this.addMove(move);
 
 	}
 
@@ -188,10 +215,10 @@
 				var gameLine = new Chess(this.selectedTempo.fen); // create a new game line
 				//Disallow movements of the wrong color
 				if ((gameLine.turn() == 'w' && piece.search(/^b/) !== -1) ||
-						(gameLine.turn() == 'b' && piece.search(/^w/) !== -1)) {
+					(gameLine.turn() == 'b' && piece.search(/^w/) !== -1)) {
 					return false;
 				}
-				this.setNewLine();	// Instantiate the new line			
+				//this.setNewLine();	// Instantiate the new line			
 				return true;
 			}
 			
@@ -201,8 +228,8 @@
 			if (game.game_over() === true || 
 					(game.turn() === 'w' && piece.search(/^b/) !== -1) ||
 					(game.turn() === 'b' && piece.search(/^w/) !== -1)||
-					(!atEnd) //for now, until I implement multiple lines
-					) { 
+					(!atEnd)
+				) { 
 				return false;
 			}
 		//})();
@@ -221,7 +248,7 @@
 		line.parentTempo = this.selectedTempo; // set the current tempo as the parent tempo
 		this.line = line;
 		this.selectedTempo = this.TEMPO0; // TEMPO0 is always the first tempo in every line
-		this.game = new Chess(line.fen); // switch the game over tot he new line
+		this.game = new Chess(line.fen); // switch the game over to the new line
 		
 		if (!this.line.parentTempo.lines) this.line.parentTempo.lines=[];
 		this.line.parentTempo.lines.push(line);
@@ -472,7 +499,7 @@
 	 */
 	ChessWrapper.prototype.pgn = function() {
 		return this.game.pgn();
-	}
+	} 
 
 	/**
 	 * Set the game up based on a fen string
