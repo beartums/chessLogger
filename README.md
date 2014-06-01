@@ -30,6 +30,13 @@ about 30 apps in search of this holy grail.
 * Enable Save to Local DB and upload when connected
 
 
+# Notes
+
+* For persisting games to the database, currently a JSON-capable REST api is expected.  
+//(ServerUrl)/(DBName)/(CollectionName)/(ID) for a HTTP GET command.  I use the basic MongoRest 
+Node.js project [here](https://github.com/beartums/mongoRest), borrowed from [tdegrunt](https://github.com/tdegrunt)
+over [here](https://github.com/tdegrunt/mongodb-rest)
+
 # Installation
 
 * Clone the repo

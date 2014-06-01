@@ -29,7 +29,7 @@ angular.module('ChessLoggerApp', ['ui.bootstrap','mongoRestApp']);
  * 
  */
 angular.module('ChessLoggerApp').
-	controller('ChessLoggerCtrl', function($scope, $modal, $log, mongoRestFactory) {
+	controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeout, mongoRestFactory) {
 	
 
 		$scope.defaultSettings = {
@@ -42,18 +42,14 @@ angular.module('ChessLoggerApp').
 				collection: 'games'
 			}
 		};
-		$scope.boardCfg = {
-				pieceTheme: 'assets/pieces/{piece}.png',
-				//pieceTheme: 'vendors/chessboardjs/img/chesspieces/wikipedia/{piece}.png',
-				position: 'start',
-				boardDiv: 'board1',
-				onDrop: $scope.onDrop,
-				digest: $scope.$digest,
-				promotionSelector: $scope.showPromoModal,
-				draggable: true,
-				dropOffBoard: 'snapback',
-				allowMultipleLines: true
-			};
+		$scope.message={};
+		
+		$scope.$watch('message.text', function() {
+			$timeout(function() {
+				if ($scope.message.text) $scope.message={};
+			},5000);
+			
+		});
 
 	/**
 	 * @ngdoc function
@@ -183,8 +179,10 @@ angular.module('ChessLoggerApp').
 		$scope.init = function() {
 			$scope.game = new ChessWrapper(this.boardCfg);
 			$scope.settings = angular.fromJson(localStorage.getItem('settings')) || $scope.defaultSettings;
-			var db = $scope.settings.db;
+			var db = $scope.defaultSettings.db;
 			mongoRestFactory.init(db.url, db.name, db.collection);
+			$scope.message.success=true
+			$scope.message.text='initialized';
 		}
 		
 		$scope.deleteGame = function(gameId) {
@@ -209,10 +207,11 @@ angular.module('ChessLoggerApp').
 				}
 				promise.then(function(ret) {
 					$scope.gameId = ret.data._id;
+					$scope.message = '';
 				},
 				function(ret) {
 				// TODO: what to do when an update fails as opposed to a save?
-					$scope.gameId = 'Failed to save'
+					$scope.message = 'Failed to save'
 				});
 			},
 			// if cancelled
@@ -287,6 +286,19 @@ angular.module('ChessLoggerApp').
 		}
 
 		$scope.lines = []; // for recursive alternate lines, use this with a single line object as base
+
+		$scope.boardCfg = {
+				pieceTheme: 'assets/pieces/{piece}.png',
+				//pieceTheme: 'vendors/chessboardjs/img/chesspieces/wikipedia/{piece}.png',
+				position: 'start',
+				boardDiv: 'board1',
+				onDrop: $scope.onDrop,
+				digest: $scope.$digest,
+				promotionSelector: $scope.showPromoModal,
+				draggable: true,
+				dropOffBoard: 'snapback',
+				allowMultipleLines: true
+			};
 
 		$scope.init();
 

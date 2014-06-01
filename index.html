@@ -68,6 +68,11 @@
 					</div>
 				</div>
 			</div>
+			<div class="alert" ng-class="{'alert-success':message.success,'alert-danger':!message.success}"
+			 ng-hide="!message.text">
+				{{message.text}}
+			</div>
+
 		</div>
 		<script type="text/ng-template" id="movelist.html">
 				<span ng-if="tempo.color=='w'" class="move-num tempo" 
