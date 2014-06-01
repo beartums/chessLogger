@@ -47,7 +47,7 @@ angular.module('ChessLoggerApp').
 		$scope.$watch('message.text', function() {
 			$timeout(function() {
 				if ($scope.message.text) $scope.message={};
-			},5000);
+			},$scope.message.timeout*1000);
 			
 		});
 
@@ -181,12 +181,17 @@ angular.module('ChessLoggerApp').
 			$scope.settings = angular.fromJson(localStorage.getItem('settings')) || $scope.defaultSettings;
 			var db = $scope.defaultSettings.db;
 			mongoRestFactory.init(db.url, db.name, db.collection);
-			$scope.message.success=true
-			$scope.message.text='initialized';
+			$scope.flashMessage('Initialised',true);
 		}
 		
 		$scope.deleteGame = function(gameId) {
 			var promise = mongoRestFactory.deleteItem({id:gameId});
+			promise.then(function(retData) {
+				$scope.flashMessage('Deletion Successful.  That game won\'t embarrass you any more.',true);
+			}, function(retData) {
+				$scope.flashMessage('That didn\'t go so well. I don\'t think you\'ve purged that puppy.' , false)
+			});
+			
 		}
 		
 		$scope.saveGame = function() {
@@ -207,11 +212,10 @@ angular.module('ChessLoggerApp').
 				}
 				promise.then(function(ret) {
 					$scope.gameId = ret.data._id;
-					$scope.message = '';
+					$scope.flashMessage('Successfully saved game ' + ret.data._id, true);
 				},
 				function(ret) {
-				// TODO: what to do when an update fails as opposed to a save?
-					$scope.message = 'Failed to save'
+					$scope.flashMessage('Keep trying.  Something at the other end isn\'t doing its job',false)
 				});
 			},
 			// if cancelled
@@ -246,6 +250,12 @@ angular.module('ChessLoggerApp').
 					$scope.newGame();
 				}
 			});
+		}
+		
+		$scope.flashMessage = function(message, isSuccess, timeout) {
+			$scope.message.text = message;
+			$scope.message.success = isSuccess;
+			$scope.message.timeout = timeout || 5;
 		}
 		
 		$scope.loadGame = function(savedGame) {
