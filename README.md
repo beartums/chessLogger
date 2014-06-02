@@ -44,5 +44,5 @@ over [here](https://github.com/tdegrunt/mongodb-rest)
 * Run ```npm install``` and ```bower install```
 * Edit ```chessLogger.js``` to add your default mongodb url, db name, and collection name
 in the default settings in controller (if you want game persistence)
-* run ```jsdoc -c jsdoc.json``` if you want the documentation (incomplete, and you must have jsdoc installed)
+* Documentation is in /docs (and incomplete), but you can generate it using ```jsdoc -c jsdoc.json``` or ```grunt``` if you have jsdoc installed.
 * Enjoy

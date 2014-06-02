@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>chessLoggerjs Source: mongorestfactory.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	
+	<link type="text/css" rel="stylesheet" href="styles/site.spacelab.css">
+	
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<a class="brand" href="index.html">chessLoggerjs</a>
+			<ul class="nav">
+				
+				<li class="dropdown">
+					<a href="modules.list.html" class="dropdown-toggle" data-toggle="dropdown">Modules<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="module-ChessLoggerApp.html">ChessLoggerApp</a>
+						</li>
+						
+						<li>
+							<a href="module-mongoRestFactory.html">mongoRestFactory</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="BoardCfg.html">BoardCfg</a>
+						</li>
+						
+						<li>
+							<a href="ChessLoggerCtrl.html">ChessLoggerCtrl</a>
+						</li>
+						
+						<li>
+							<a href="ChessWrapper.html">ChessWrapper</a>
+						</li>
+						
+						<li>
+							<a href="GameInfo.html">GameInfo</a>
+						</li>
+						
+						<li>
+							<a href="Line.html">Line</a>
+						</li>
+						
+						<li>
+							<a href="Tempo.html">Tempo</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+				<li class="dropdown">
+					<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="global.html#bind">bind</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		
+			<div class="span12">
+				
+				<div id="main">
+					
+
+
+		<h1 class="page-title">Source: mongorestfactory.js</h1>
+    
+<section>
+	<article>
+		<pre
+			class="sunlight-highlight-javascript linenums">
+
+
+/**
+ * Generalized REST Factory.  CRUD objects.  Models need not apply. All methods return a promise
+ * @module mongoRestFactory
+ *
+ */
+'use strict';
+angular.module('mongoRestApp',[])
+  .factory('mongoRestFactory', function ($http) {
+	/**
+	 * @property Base Uri to be used for http requests
+	 * @private
+	 */
+    var baseUri = '',
+				db = '',
+				collection = '';
+	/**
+	 * Create the http uri for the request
+	 * @param {reqObj} reqObj request object 
+	 * @param {string} reqObj.baseUri The base Uri for connecting with the Mongo Database
+	 * @param {string} reqObj.db Name of the database
+	 * @param {string} reqObj.collection Name of the collection
+	 * @param {string} reqObj.id _Id defining the object in the specifiedDB and Collection
+	 * @param {object} reqObj.data object to be persisted in DB
+	 * @returns {string} fully qualified uri for the REST call
+	 */
+	function getUri(reqObj) {
+             reqObj = !reqObj ? {} : reqObj;
+            // reqObj can have 4 members for a GET call: baseUri, db, collection, id (document id)
+            // no id passed will default to list all items in the collection
+            
+            // concatenate the request string
+            var uri = reqObj.baseUri ? reqObj.baseUri : baseUri;
+            uri = uri + (uri[uri.length-1] == "\/" ? "" : "\/");
+            uri = uri + (reqObj.db ? reqObj.db : db);
+            uri = uri + (uri[uri.length-1] == "\/" ? "" : "\/");
+            uri = uri + (reqObj.collection ? reqObj.collection : collection);
+            uri = uri + (uri[uri.length-1] == "\/" ? "" : "\/");
+            var id = reqObj.id;
+            
+
+            uri += id ? id : '';
+            
+            return uri;
+		}	
+
+    // Public API here
+    return {
+    	/**
+    	 * Save default connection information
+    	 * @param {string} [newBase=(storedValue)] Uri for the mongo server
+    	 * @param {string} [newDb=(storedValue)] Db Name
+    	 * @param {string} [newCollection=(storedValue)] Collection name
+    	 */
+			init: function(newBase,newDb,newCollection) {
+				db = newDb || db;
+				collection = newCollection || collection;
+				baseUri = newBase || baseUri;
+			},
+		
+		/**
+		 * Get an item from the REST endpoint
+		 * @param {object} reqObj Request Object 
+		 * @param {string} [reqObj.baseUri=(storedValue)] The base Uri for connecting with the Mongo Database
+		 * @param {string} [reqObj.db=(storedValue)] Name of the database
+		 * @param {string} [reqObj.collection=(storedValue)] Name of the collection
+		 * @param {string} reqObj.id _Id defining the object in the specifiedDB and Collection
+		 * @returns {promise}
+		 */
+			getItem: function (reqObj) {
+				var promise;
+				promise = $http({method: 'GET', 
+								url: getUri(reqObj),
+							}); 
+				return promise;		
+			},
+		/**
+		 * Get an array of objects from the REST endpoint, if no id is passed.
+		 * @todo Query options handled on backend, but not tested on frontend
+		 * @param {object} reqObj Request Object
+		 * @param {string} [reqObj.baseUri=(storedValue)] The base Uri for connecting with the Mongo Database
+		 * @param {string} [reqObj.db=(storedValue)] Name of the database
+		 * @param {string} [reqObj.collection=(storedValue)] Name of the collection
+		 * @returns {promise}
+		 */
+			getList: function (reqObj) {
+				if (reqObj) reqObj.id = null; // if there is no id, a list will be returned
+				return this.getItem(reqObj); // still a promise
+			},
+		/**
+		 * Save a new object to the REST endpoint
+		 * @param {object} reqObj Request Object
+		 * @param {string} [reqObj.baseUri=(storedValue)] The base Uri for connecting with the Mongo Database
+		 * @param {string} [reqObj.db=(storedValue)] Name of the database
+		 * @param {string} [reqObj.collection=(storedValue)] Name of the collection
+		 * @param {string} reqObj.id _Id defining the object in the specifiedDB and Collection
+		 * @param {object} reqObj.data Objec to be persisted in DB
+		 * @returns {promise}
+		 */
+			saveItem: function (reqObj) {
+				var promise = $http({method: 'POST',
+										url: getUri(reqObj),
+										data: reqObj.data,
+									});
+				return promise;
+			},
+			
+		/**
+		 * Update an object at the REST endpoint
+		 * @param {object} reqObj Request Object
+		 * @param {string} [reqObj.baseUri=(storedValue)] The base Uri for connecting with the Mongo Database
+		 * @param {string} [reqObj.db=(storedValue)] Name of the database
+		 * @param {string} [reqObj.collection=(storedValue)] Name of the collection
+		 * @param {string} reqObj.id _Id defining the object in the specifiedDB and Collection
+		 * @param {object} reqObj.data Objec to be persisted in DB
+		 * @returns {promise}
+		 */
+			updateItem: function (reqObj) {
+				var promise = $http({method: 'PUT',
+										url: getUri(reqObj),
+										data: reqObj.data,
+									});
+				return promise;
+			},
+		/**
+		 * Delete an object to the REST endpoint
+		 * @param {object} reqObj Request Object
+		 * @param {string} [reqObj.baseUri=(storedValue)] The base Uri for connecting with the Mongo Database
+		 * @param {string} [reqObj.db=(storedValue)] Name of the database
+		 * @param {string} [reqObj.collection=(storedValue)] Name of the collection
+		 * @param {string} reqObj.id _Id defining the object in the specifiedDB and Collection
+		 * @returns {promise}
+		 */
+			deleteItem: function (reqObj) {
+				var promise = $http({method: 'DELETE',
+										url: getUri(reqObj)
+									});
+				return promise;
+				
+			}
+    };
+	
+  });
+</pre>
+	</article>
+</section>
+
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					
+		<span class="copyright">
+		chessLoggerjs Copyright © 2012-2013
+		</span>
+					<br />
+					
+		<span class="jsdoc-message">
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.0-alpha5</a>
+		on Sun Jun 1st 2014 using the <a href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		</span>
+				</footer>
+			</div>
+
+			
+			<br clear="both">
+		</div>
+
+	</div>
+	<script src="scripts/sunlight.js"></script>
+	<script src="scripts/sunlight.xml.js"></script>
+	<script src="scripts/sunlight.javascript.js"></script>
+	<script src="scripts/sunlight-plugin.doclinks.js"></script>
+	<script src="scripts/sunlight-plugin.linenumbers.js"></script>
+	<script src="scripts/sunlight-plugin.menu.js"></script>
+	<script src="scripts/jquery.min.js"></script>
+	<script src="scripts/jquery.scrollTo.js"></script>
+	<script src="scripts/jquery.localScroll.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/toc.js"></script>
+
+	<script>
+		$( function () {
+			$( "#toc" ).toc( {
+			    anchorName  : function(i, heading, prefix) {
+					return $(heading).attr("id") || ( prefix + i );
+				},
+				selectors   : "h1,h2,h3,h4",
+				showAndHide : false,
+				scrollTo    : 60
+			} );
+			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+			$(".tutorial-section pre" ).addClass("sunlight-highlight-javascript" ).addClass("linenums");
+			Sunlight.highlightAll({lineNumbers: true,  showMenu: true, enableDoclinks: true});
+		} );
+	</script>
+
+
+
+	
+	<script>
+		$( function () {
+			$('#main').localScroll({
+				offset: { top: 56 } //offset by the height of your header (give or take a few px, see what works for you)
+			});
+			$( "dt h4.name" ).each( function () {
+				var $this = $( this );
+				var icon = $( "<i/>" ).addClass( "icon-plus-sign" ).addClass( "pull-right" ).addClass( "icon-white" );
+				var dt = $this.parents( "dt" );
+				var children = dt.next( "dd" );
+
+				$this.append( icon ).css( {cursor : "pointer"} );
+				$this.addClass( "member-collapsed" ).addClass( "member" );
+
+				children.hide();
+				$this.toggle( function () {
+					icon.addClass( "icon-minus-sign" ).removeClass( "icon-plus-sign" ).removeClass( "icon-white" );
+					$this.addClass( "member-open" ).removeClass( "member-collapsed" );
+					children.slideDown();
+				}, function () {
+					icon.addClass( "icon-plus-sign" ).removeClass( "icon-minus-sign" ).addClass( "icon-white" );
+					$this.addClass( "member-collapsed" ).removeClass( "member-open" );
+					children.slideUp();
+				} );
+			} );
+		} );
+	</script>
+	
+
+</body>
+</html>

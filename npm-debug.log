@@ -1,0 +1,1675 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '--save',
+1 verbose cli   'jsdoc' ]
+2 info using npm@1.3.24
+3 info using node@v0.10.25
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 warn package.json chesslogger@ No repository field.
+6 verbose readDependencies using package.json deps
+7 verbose cache add [ 'jsdoc', null ]
+8 verbose cache add name=undefined spec="jsdoc" args=["jsdoc",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: 'jsdoc',
+9 verbose parsed url   path: 'jsdoc',
+9 verbose parsed url   href: 'jsdoc' }
+10 silly lockFile 03633e6a-jsdoc jsdoc
+11 verbose lock jsdoc C:\Users\Eric\AppData\Roaming\npm-cache\03633e6a-jsdoc.lock
+12 silly lockFile 03633e6a-jsdoc jsdoc
+13 silly lockFile 03633e6a-jsdoc jsdoc
+14 verbose addNamed [ 'jsdoc', '' ]
+15 verbose addNamed [ null, '*' ]
+16 silly lockFile 5ca36d7c-jsdoc jsdoc@
+17 verbose lock jsdoc@ C:\Users\Eric\AppData\Roaming\npm-cache\5ca36d7c-jsdoc.lock
+18 silly addNameRange { name: 'jsdoc', range: '*', hasData: false }
+19 verbose url raw jsdoc
+20 verbose url resolving [ 'https://registry.npmjs.org/', './jsdoc' ]
+21 verbose url resolved https://registry.npmjs.org/jsdoc
+22 info trying registry request attempt 1 at 20:36:56
+23 verbose etag "4LUWY5O89AF393FKSY63CGAY2"
+24 http GET https://registry.npmjs.org/jsdoc
+25 http 304 https://registry.npmjs.org/jsdoc
+26 silly registry.get cb [ 304,
+26 silly registry.get   { date: 'Mon, 02 Jun 2014 00:37:06 GMT',
+26 silly registry.get     server: 'Apache',
+26 silly registry.get     via: '1.1 varnish',
+26 silly registry.get     'last-modified': 'Mon, 02 Jun 2014 00:37:06 GMT',
+26 silly registry.get     'cache-control': 'max-age=1',
+26 silly registry.get     etag: '"4LUWY5O89AF393FKSY63CGAY2"',
+26 silly registry.get     'x-served-by': 'cache-jfk1030-JFK',
+26 silly registry.get     'x-cache': 'MISS',
+26 silly registry.get     'x-cache-hits': '0',
+26 silly registry.get     'x-timer': 'S1401669426.577753,VS0,VE13',
+26 silly registry.get     vary: 'Accept',
+26 silly registry.get     'content-length': '0',
+26 silly registry.get     'keep-alive': 'timeout=10, max=50',
+26 silly registry.get     connection: 'Keep-Alive' } ]
+27 verbose etag jsdoc from cache
+28 silly addNameRange number 2 { name: 'jsdoc', range: '*', hasData: true }
+29 silly addNameRange versions [ 'jsdoc',
+29 silly addNameRange   [ '0.0.0',
+29 silly addNameRange     '3.2.0-dev',
+29 silly addNameRange     '3.2.0',
+29 silly addNameRange     '3.2.1',
+29 silly addNameRange     '3.2.2',
+29 silly addNameRange     '3.3.0-alpha1',
+29 silly addNameRange     '3.3.0-alpha2',
+29 silly addNameRange     '3.3.0-alpha3',
+29 silly addNameRange     '3.3.0-alpha4',
+29 silly addNameRange     '3.3.0-alpha5' ] ]
+30 verbose addNamed [ 'jsdoc', '3.3.0-alpha5' ]
+31 verbose addNamed [ '3.3.0-alpha5', '3.3.0-alpha5' ]
+32 silly lockFile 3f439e10-jsdoc-3-3-0-alpha5 jsdoc@3.3.0-alpha5
+33 verbose lock jsdoc@3.3.0-alpha5 C:\Users\Eric\AppData\Roaming\npm-cache\3f439e10-jsdoc-3-3-0-alpha5.lock
+34 silly lockFile 3f439e10-jsdoc-3-3-0-alpha5 jsdoc@3.3.0-alpha5
+35 silly lockFile 3f439e10-jsdoc-3-3-0-alpha5 jsdoc@3.3.0-alpha5
+36 silly lockFile 5ca36d7c-jsdoc jsdoc@
+37 silly lockFile 5ca36d7c-jsdoc jsdoc@
+38 silly resolved [ { name: 'jsdoc',
+38 silly resolved     version: '3.3.0-alpha5',
+38 silly resolved     revision: '1395025186103',
+38 silly resolved     description: 'An API documentation generator for JavaScript.',
+38 silly resolved     keywords: [ 'documentation', 'javascript' ],
+38 silly resolved     licenses: [ [Object] ],
+38 silly resolved     repository: { type: 'git', url: 'https://github.com/jsdoc3/jsdoc' },
+38 silly resolved     dependencies:
+38 silly resolved      { async: '~0.1.22',
+38 silly resolved        catharsis: '~0.7.0',
+38 silly resolved        esprima: '~1.0.4',
+38 silly resolved        js2xmlparser: '~0.1.0',
+38 silly resolved        marked: '~0.3.1',
+38 silly resolved        taffydb: 'https://github.com/hegemonic/taffydb/tarball/master',
+38 silly resolved        underscore: '~1.4.2',
+38 silly resolved        wrench: '~1.3.9' },
+38 silly resolved     devDependencies:
+38 silly resolved      { grunt: '~0.4.2',
+38 silly resolved        'grunt-bumpup': '~0.4.2',
+38 silly resolved        'grunt-contrib-jshint': '~0.8.0',
+38 silly resolved        'grunt-shell': '~0.6.1',
+38 silly resolved        istanbul: '~0.2.1',
+38 silly resolved        'load-grunt-tasks': '~0.2.1',
+38 silly resolved        tv4: 'https://github.com/hegemonic/tv4/tarball/own-properties' },
+38 silly resolved     engines: { node: '>=0.10' },
+38 silly resolved     scripts:
+38 silly resolved      { postinstall: 'node ./node/postinstall.js',
+38 silly resolved        test: 'grunt test' },
+38 silly resolved     bin: { jsdoc: './jsdoc.js' },
+38 silly resolved     bugs: { url: 'https://github.com/jsdoc3/jsdoc/issues' },
+38 silly resolved     author: { name: 'Michael Mathews', email: 'micmath@gmail.com' },
+38 silly resolved     contributors: [ [Object] ],
+38 silly resolved     maintainers: { name: 'Jeff Williams', email: 'jeffrey.l.williams@gmail.com' },
+38 silly resolved     readme: 'JSDoc 3\n=======\n[![Build Status](https://secure.travis-ci.org/jsdoc3/jsdoc.png?branch=master)](http://travis-ci.org/jsdoc3/jsdoc)\n\nAn API documentation generator for JavaScript.\n\nWant to contribute to JSDoc? Please read `CONTRIBUTING.md`.\n\nInstallation and Usage\n----------------------\n\nYou can run JSDoc on either Node.js or Mozilla Rhino.\n\n### Node.js\n\nNative support for Node.js is available in JSDoc 3.3.0 and later. JSDoc\nsupports Node.js 0.10 and later.\n\n#### Installing JSDoc for Node.js\n\nYou can install JSDoc in your project\'s `node_modules` folder, or you can\ninstall it globally.\n\nTo install the latest alpha version:\n\n    npm install jsdoc@"<=3.3.0"\n\nTo install the latest development version:\n\n    npm install git+https://github.com/jsdoc3/jsdoc.git\n\n**Note**: If you install JSDoc globally, do not use `sudo npm install`. This may\nprevent you from running JSDoc as a normal user. If you cannot install global\npackages without `sudo`, please\n[fix your npm directory permissions](http://howtonode.org/introduction-to-npm).\n\n#### Running JSDoc with Node.js\n\nIf you installed JSDoc locally, the JSDoc command-line tool is available in\n`./node_modules/.bin`. To generate documentation for the file\n`yourJavaScriptFile.js`:\n\n    ./node_modules/.bin/jsdoc yourJavaScriptFile.js\n\nOr if you installed JSDoc globally, simply run the `jsdoc` command:\n\n    jsdoc yourJavaScriptFile.js\n\nBy default, the generated documentation is saved in a directory named `out`. You\ncan use the `--destination` (`-d`) option to specify another directory.\n\nRun `jsdoc --help` for a complete list of command-line options.\n\n### Mozilla Rhino\n\nAll versions of JSDoc 3 run on a customized version of Mozilla Rhino, which\nrequires Java. You can run JSDoc 3 on Java 1.6 and later.\n\n#### Installing JSDoc for Mozilla Rhino\n\nTo install JSDoc, download a .zip file for the\n[latest development version](https://github.com/jsdoc3/jsdoc/archive/master.zip)\nor a [previous release](https://github.com/jsdoc3/jsdoc/tags).\n\nYou can also use git to clone the\n[JSDoc repository](https://github.com/jsdoc3/jsdoc):\n\n    git clone git+https://github.com/jsdoc3/jsdoc.git\n\nThe JSDoc repository includes a\n[customized version of Mozilla Rhino](https://github.com/jsdoc3/rhino). Make\nsure your Java classpath does not include any other versions of Rhino. (On OS X,\nyou may need to remove the file `~/Library/Java/Extensions/js.jar`.)\n\n**Note**: In JSDoc 3.3.0 and later, if you need to run JSDoc on Mozilla Rhino,\ndo not install JSDoc with npm. Use one of the methods described above.\n\n#### Running JSDoc with Mozilla Rhino\n\nOn OS X, Linux, and other POSIX systems, to generate documentation for the file\n`yourJavaScriptFile.js`:\n\n    ./jsdoc yourJavaScriptFile.js\n\nOr on Windows:\n\n    jsdoc yourJavaScriptFile.js\n\nBy default, the generated documentation is saved in a directory named `out`. You\ncan use the `--destination` (`-d`) option to specify another directory.\n\nRun `jsdoc --help` for a complete list of command-line options.\n\n\nTemplates and Build Tools\n-------------------------\n\nThe JSDoc community has created numerous templates and other tools to help you\ngenerate and customize your documentation. Here are just a few:\n\n### Templates\n\n+ [jaguarjs-jsdoc](https://github.com/davidshimjs/jaguarjs-jsdoc)\n  ([example](http://davidshimjs.github.io/jaguarjs/doc))\n+ [DocStrap](https://github.com/terryweiss/docstrap)\n+ [jsdoc3Template](https://github.com/DBCDK/jsdoc3Template)\n  ([example](https://github.com/danyg/jsdoc3Template/wiki#wiki-screenshots))\n\n### Build Tools\n\n+ [JSDoc Grunt plugin](https://github.com/krampstudio/grunt-jsdoc)\n+ [JSDoc ant task](https://github.com/jannon/jsdoc3-ant-task)\n\n\nFor More Information\n--------------------\n\nProject Documentation: <http://usejsdoc.org/>  \nProject Documentation Source: <https://github.com/jsdoc3/jsdoc3.github.com>  \nJSDoc User\'s Group: <http://groups.google.com/group/jsdoc-users>  \nProject Announcements: <http://twitter.com/jsdoc3>\n\nLicense\n-------\n\nJSDoc 3 is copyright (c) 2011-2014 Michael Mathews <micmath@gmail.com> and the\n[contributors to JSDoc](https://github.com/jsdoc3/jsdoc/graphs/contributors).\n\nJSDoc 3 is free software, licensed under the Apache License, Version 2.0. See\nthe file `LICENSE.md` in this distribution for more details.\n',
+38 silly resolved     readmeFilename: 'README.md',
+38 silly resolved     homepage: 'https://github.com/jsdoc3/jsdoc',
+38 silly resolved     _id: 'jsdoc@3.3.0-alpha5',
+38 silly resolved     _from: 'jsdoc@' } ]
+39 info install jsdoc@3.3.0-alpha5 into N:\Shared\web\public\chess
+40 info installOne jsdoc@3.3.0-alpha5
+41 info N:\Shared\web\public\chess\node_modules\jsdoc unbuild
+42 verbose tar unpack C:\Users\Eric\AppData\Roaming\npm-cache\jsdoc\3.3.0-alpha5\package.tgz
+43 silly lockFile d7bd61c4--public-chess-node-modules-jsdoc tar://N:\Shared\web\public\chess\node_modules\jsdoc
+44 verbose lock tar://N:\Shared\web\public\chess\node_modules\jsdoc C:\Users\Eric\AppData\Roaming\npm-cache\d7bd61c4--public-chess-node-modules-jsdoc.lock
+45 silly lockFile 3bd1fea6-e-jsdoc-3-3-0-alpha5-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\jsdoc\3.3.0-alpha5\package.tgz
+46 verbose lock tar://C:\Users\Eric\AppData\Roaming\npm-cache\jsdoc\3.3.0-alpha5\package.tgz C:\Users\Eric\AppData\Roaming\npm-cache\3bd1fea6-e-jsdoc-3-3-0-alpha5-package-tgz.lock
+47 silly gunzTarPerm modes [ '755', '644' ]
+48 silly gunzTarPerm extractEntry package.json
+49 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+50 silly gunzTarPerm extractEntry .npmignore
+51 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+52 silly gunzTarPerm extractEntry README.md
+53 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+54 silly gunzTarPerm extractEntry cli.js
+55 silly gunzTarPerm modified mode [ 'cli.js', 438, 420 ]
+56 silly gunzTarPerm extractEntry jsdoc.js
+57 silly gunzTarPerm modified mode [ 'jsdoc.js', 438, 420 ]
+58 silly gunzTarPerm extractEntry CONTRIBUTING.md
+59 silly gunzTarPerm modified mode [ 'CONTRIBUTING.md', 438, 420 ]
+60 silly gunzTarPerm extractEntry changes.md
+61 silly gunzTarPerm modified mode [ 'changes.md', 438, 420 ]
+62 silly gunzTarPerm extractEntry Apache_License_2.0.txt
+63 silly gunzTarPerm modified mode [ 'Apache_License_2.0.txt', 438, 420 ]
+64 silly gunzTarPerm extractEntry LICENSE.md
+65 silly gunzTarPerm modified mode [ 'LICENSE.md', 438, 420 ]
+66 silly gunzTarPerm extractEntry node/fs.js
+67 silly gunzTarPerm modified mode [ 'node/fs.js', 438, 420 ]
+68 silly gunzTarPerm extractEntry node/postinstall.js
+69 silly gunzTarPerm modified mode [ 'node/postinstall.js', 438, 420 ]
+70 silly gunzTarPerm extractEntry templates/README.md
+71 silly gunzTarPerm modified mode [ 'templates/README.md', 438, 420 ]
+72 silly gunzTarPerm extractEntry templates/default/README.md
+73 silly gunzTarPerm modified mode [ 'templates/default/README.md', 438, 420 ]
+74 silly gunzTarPerm extractEntry templates/default/publish.js
+75 silly gunzTarPerm modified mode [ 'templates/default/publish.js', 438, 420 ]
+76 silly gunzTarPerm extractEntry templates/default/static/scripts/linenumber.js
+77 silly gunzTarPerm modified mode [ 'templates/default/static/scripts/linenumber.js', 438, 420 ]
+78 silly gunzTarPerm extractEntry templates/default/static/scripts/prettify/lang-css.js
+79 silly gunzTarPerm modified mode [ 'templates/default/static/scripts/prettify/lang-css.js',
+79 silly gunzTarPerm   438,
+79 silly gunzTarPerm   420 ]
+80 silly gunzTarPerm extractEntry templates/default/static/scripts/prettify/prettify.js
+81 silly gunzTarPerm modified mode [ 'templates/default/static/scripts/prettify/prettify.js',
+81 silly gunzTarPerm   438,
+81 silly gunzTarPerm   420 ]
+82 silly gunzTarPerm extractEntry templates/default/static/scripts/prettify/Apache-License-2.0.txt
+83 silly gunzTarPerm modified mode [ 'templates/default/static/scripts/prettify/Apache-License-2.0.txt',
+83 silly gunzTarPerm   438,
+83 silly gunzTarPerm   420 ]
+84 silly gunzTarPerm extractEntry templates/default/static/styles/jsdoc-default.css
+85 silly gunzTarPerm modified mode [ 'templates/default/static/styles/jsdoc-default.css', 438, 420 ]
+86 silly gunzTarPerm extractEntry templates/default/static/styles/prettify-jsdoc.css
+87 silly gunzTarPerm modified mode [ 'templates/default/static/styles/prettify-jsdoc.css',
+87 silly gunzTarPerm   438,
+87 silly gunzTarPerm   420 ]
+88 silly gunzTarPerm extractEntry templates/default/static/styles/prettify-tomorrow.css
+89 silly gunzTarPerm modified mode [ 'templates/default/static/styles/prettify-tomorrow.css',
+89 silly gunzTarPerm   438,
+89 silly gunzTarPerm   420 ]
+90 silly gunzTarPerm extractEntry templates/default/tmpl/members.tmpl
+91 silly gunzTarPerm modified mode [ 'templates/default/tmpl/members.tmpl', 438, 420 ]
+92 silly gunzTarPerm extractEntry templates/default/tmpl/container.tmpl
+93 silly gunzTarPerm modified mode [ 'templates/default/tmpl/container.tmpl', 438, 420 ]
+94 silly gunzTarPerm extractEntry templates/default/tmpl/example.tmpl
+95 silly gunzTarPerm modified mode [ 'templates/default/tmpl/example.tmpl', 438, 420 ]
+96 silly gunzTarPerm extractEntry templates/default/tmpl/examples.tmpl
+97 silly gunzTarPerm modified mode [ 'templates/default/tmpl/examples.tmpl', 438, 420 ]
+98 silly gunzTarPerm extractEntry templates/default/tmpl/exceptions.tmpl
+99 silly gunzTarPerm modified mode [ 'templates/default/tmpl/exceptions.tmpl', 438, 420 ]
+100 silly gunzTarPerm extractEntry templates/default/tmpl/layout.tmpl
+101 silly gunzTarPerm modified mode [ 'templates/default/tmpl/layout.tmpl', 438, 420 ]
+102 silly gunzTarPerm extractEntry templates/default/tmpl/mainpage.tmpl
+103 silly gunzTarPerm modified mode [ 'templates/default/tmpl/mainpage.tmpl', 438, 420 ]
+104 silly gunzTarPerm extractEntry templates/default/tmpl/details.tmpl
+105 silly gunzTarPerm modified mode [ 'templates/default/tmpl/details.tmpl', 438, 420 ]
+106 silly gunzTarPerm extractEntry templates/default/tmpl/method.tmpl
+107 silly gunzTarPerm modified mode [ 'templates/default/tmpl/method.tmpl', 438, 420 ]
+108 silly gunzTarPerm extractEntry templates/default/tmpl/params.tmpl
+109 silly gunzTarPerm modified mode [ 'templates/default/tmpl/params.tmpl', 438, 420 ]
+110 silly gunzTarPerm extractEntry templates/default/tmpl/properties.tmpl
+111 silly gunzTarPerm modified mode [ 'templates/default/tmpl/properties.tmpl', 438, 420 ]
+112 silly gunzTarPerm extractEntry templates/default/tmpl/returns.tmpl
+113 silly gunzTarPerm modified mode [ 'templates/default/tmpl/returns.tmpl', 438, 420 ]
+114 silly gunzTarPerm extractEntry templates/default/tmpl/source.tmpl
+115 silly gunzTarPerm modified mode [ 'templates/default/tmpl/source.tmpl', 438, 420 ]
+116 silly gunzTarPerm extractEntry templates/default/tmpl/tutorial.tmpl
+117 silly gunzTarPerm modified mode [ 'templates/default/tmpl/tutorial.tmpl', 438, 420 ]
+118 silly gunzTarPerm extractEntry templates/default/tmpl/type.tmpl
+119 silly gunzTarPerm modified mode [ 'templates/default/tmpl/type.tmpl', 438, 420 ]
+120 silly gunzTarPerm extractEntry templates/haruki/README.md
+121 silly gunzTarPerm modified mode [ 'templates/haruki/README.md', 438, 420 ]
+122 silly gunzTarPerm extractEntry templates/haruki/publish.js
+123 silly gunzTarPerm modified mode [ 'templates/haruki/publish.js', 438, 420 ]
+124 silly gunzTarPerm extractEntry plugins/commentConvert.js
+125 silly gunzTarPerm modified mode [ 'plugins/commentConvert.js', 438, 420 ]
+126 silly gunzTarPerm extractEntry plugins/escapeHtml.js
+127 silly gunzTarPerm modified mode [ 'plugins/escapeHtml.js', 438, 420 ]
+128 silly gunzTarPerm extractEntry plugins/eventDumper.js
+129 silly gunzTarPerm modified mode [ 'plugins/eventDumper.js', 438, 420 ]
+130 silly gunzTarPerm extractEntry plugins/markdown.js
+131 silly gunzTarPerm modified mode [ 'plugins/markdown.js', 438, 420 ]
+132 silly gunzTarPerm extractEntry plugins/commentsOnly.js
+133 silly gunzTarPerm modified mode [ 'plugins/commentsOnly.js', 438, 420 ]
+134 silly gunzTarPerm extractEntry plugins/partial.js
+135 silly gunzTarPerm modified mode [ 'plugins/partial.js', 438, 420 ]
+136 silly gunzTarPerm extractEntry plugins/railsTemplate.js
+137 silly gunzTarPerm modified mode [ 'plugins/railsTemplate.js', 438, 420 ]
+138 silly gunzTarPerm extractEntry plugins/shout.js
+139 silly gunzTarPerm modified mode [ 'plugins/shout.js', 438, 420 ]
+140 silly gunzTarPerm extractEntry plugins/sourcetag.js
+141 silly gunzTarPerm modified mode [ 'plugins/sourcetag.js', 438, 420 ]
+142 silly gunzTarPerm extractEntry plugins/overloadHelper.js
+143 silly gunzTarPerm modified mode [ 'plugins/overloadHelper.js', 438, 420 ]
+144 silly gunzTarPerm extractEntry plugins/test/fixtures/overloadHelper.js
+145 silly gunzTarPerm modified mode [ 'plugins/test/fixtures/overloadHelper.js', 438, 420 ]
+146 silly gunzTarPerm extractEntry plugins/test/fixtures/seetag-markdown.js
+147 silly gunzTarPerm modified mode [ 'plugins/test/fixtures/seetag-markdown.js', 438, 420 ]
+148 silly gunzTarPerm extractEntry plugins/test/fixtures/railsTemplate.js.erb
+149 silly gunzTarPerm modified mode [ 'plugins/test/fixtures/railsTemplate.js.erb', 438, 420 ]
+150 silly gunzTarPerm extractEntry plugins/test/specs/commentConvert.js
+151 silly gunzTarPerm modified mode [ 'plugins/test/specs/commentConvert.js', 438, 420 ]
+152 silly gunzTarPerm extractEntry plugins/test/specs/escapeHtml.js
+153 silly gunzTarPerm modified mode [ 'plugins/test/specs/escapeHtml.js', 438, 420 ]
+154 silly gunzTarPerm extractEntry plugins/test/specs/markdown.js
+155 silly gunzTarPerm modified mode [ 'plugins/test/specs/markdown.js', 438, 420 ]
+156 silly gunzTarPerm extractEntry plugins/test/specs/overloadHelper.js
+157 silly gunzTarPerm modified mode [ 'plugins/test/specs/overloadHelper.js', 438, 420 ]
+158 silly gunzTarPerm extractEntry plugins/test/specs/railsTemplate.js
+159 silly gunzTarPerm modified mode [ 'plugins/test/specs/railsTemplate.js', 438, 420 ]
+160 silly gunzTarPerm extractEntry plugins/test/specs/shout.js
+161 silly gunzTarPerm modified mode [ 'plugins/test/specs/shout.js', 438, 420 ]
+162 silly gunzTarPerm extractEntry plugins/test/specs/sourcetag.js
+163 silly gunzTarPerm modified mode [ 'plugins/test/specs/sourcetag.js', 438, 420 ]
+164 silly gunzTarPerm extractEntry conf.json.EXAMPLE
+165 silly gunzTarPerm modified mode [ 'conf.json.EXAMPLE', 438, 420 ]
+166 silly gunzTarPerm extractEntry lib/jsdoc/augment.js
+167 silly gunzTarPerm modified mode [ 'lib/jsdoc/augment.js', 438, 420 ]
+168 silly gunzTarPerm extractEntry lib/jsdoc/fs.js
+169 silly gunzTarPerm modified mode [ 'lib/jsdoc/fs.js', 438, 420 ]
+170 silly gunzTarPerm extractEntry lib/jsdoc/name.js
+171 silly gunzTarPerm modified mode [ 'lib/jsdoc/name.js', 438, 420 ]
+172 silly gunzTarPerm extractEntry lib/jsdoc/tutorial.js
+173 silly gunzTarPerm modified mode [ 'lib/jsdoc/tutorial.js', 438, 420 ]
+174 silly gunzTarPerm extractEntry lib/jsdoc/doclet.js
+175 silly gunzTarPerm modified mode [ 'lib/jsdoc/doclet.js', 438, 420 ]
+176 silly gunzTarPerm extractEntry lib/jsdoc/path.js
+177 silly gunzTarPerm modified mode [ 'lib/jsdoc/path.js', 438, 420 ]
+178 silly gunzTarPerm extractEntry lib/jsdoc/borrow.js
+179 silly gunzTarPerm modified mode [ 'lib/jsdoc/borrow.js', 438, 420 ]
+180 silly gunzTarPerm extractEntry lib/jsdoc/readme.js
+181 silly gunzTarPerm modified mode [ 'lib/jsdoc/readme.js', 438, 420 ]
+182 silly gunzTarPerm extractEntry lib/jsdoc/schema.js
+183 silly gunzTarPerm modified mode [ 'lib/jsdoc/schema.js', 438, 420 ]
+184 silly gunzTarPerm extractEntry lib/jsdoc/template.js
+185 silly gunzTarPerm modified mode [ 'lib/jsdoc/template.js', 438, 420 ]
+186 silly gunzTarPerm extractEntry lib/jsdoc/config.js
+187 silly gunzTarPerm modified mode [ 'lib/jsdoc/config.js', 438, 420 ]
+188 silly gunzTarPerm extractEntry lib/jsdoc/tag.js
+189 silly gunzTarPerm modified mode [ 'lib/jsdoc/tag.js', 438, 420 ]
+190 silly gunzTarPerm extractEntry lib/jsdoc/package.js
+191 silly gunzTarPerm modified mode [ 'lib/jsdoc/package.js', 438, 420 ]
+192 silly gunzTarPerm extractEntry lib/jsdoc/plugins.js
+193 silly gunzTarPerm modified mode [ 'lib/jsdoc/plugins.js', 438, 420 ]
+194 silly gunzTarPerm extractEntry lib/jsdoc/tag/dictionary.js
+195 silly gunzTarPerm modified mode [ 'lib/jsdoc/tag/dictionary.js', 438, 420 ]
+196 silly gunzTarPerm extractEntry lib/jsdoc/tag/inline.js
+197 silly gunzTarPerm modified mode [ 'lib/jsdoc/tag/inline.js', 438, 420 ]
+198 silly gunzTarPerm extractEntry lib/jsdoc/tag/type.js
+199 silly gunzTarPerm modified mode [ 'lib/jsdoc/tag/type.js', 438, 420 ]
+200 silly gunzTarPerm extractEntry lib/jsdoc/tag/validator.js
+201 silly gunzTarPerm modified mode [ 'lib/jsdoc/tag/validator.js', 438, 420 ]
+202 silly gunzTarPerm extractEntry lib/jsdoc/tag/dictionary/definitions.js
+203 silly gunzTarPerm modified mode [ 'lib/jsdoc/tag/dictionary/definitions.js', 438, 420 ]
+204 silly gunzTarPerm extractEntry lib/jsdoc/src/astbuilder.js
+205 silly gunzTarPerm modified mode [ 'lib/jsdoc/src/astbuilder.js', 438, 420 ]
+206 silly gunzTarPerm extractEntry lib/jsdoc/src/astnode.js
+207 silly gunzTarPerm modified mode [ 'lib/jsdoc/src/astnode.js', 438, 420 ]
+208 silly gunzTarPerm extractEntry lib/jsdoc/src/filter.js
+209 silly gunzTarPerm modified mode [ 'lib/jsdoc/src/filter.js', 438, 420 ]
+210 silly gunzTarPerm extractEntry lib/jsdoc/src/handlers.js
+211 silly gunzTarPerm modified mode [ 'lib/jsdoc/src/handlers.js', 438, 420 ]
+212 silly gunzTarPerm extractEntry lib/jsdoc/src/parser.js
+213 silly gunzTarPerm modified mode [ 'lib/jsdoc/src/parser.js', 438, 420 ]
+214 silly gunzTarPerm extractEntry lib/jsdoc/src/scanner.js
+215 silly gunzTarPerm modified mode [ 'lib/jsdoc/src/scanner.js', 438, 420 ]
+216 silly gunzTarPerm extractEntry lib/jsdoc/src/syntax.js
+217 silly gunzTarPerm modified mode [ 'lib/jsdoc/src/syntax.js', 438, 420 ]
+218 silly gunzTarPerm extractEntry lib/jsdoc/src/visitor.js
+219 silly gunzTarPerm modified mode [ 'lib/jsdoc/src/visitor.js', 438, 420 ]
+220 silly gunzTarPerm extractEntry lib/jsdoc/src/walker.js
+221 silly gunzTarPerm modified mode [ 'lib/jsdoc/src/walker.js', 438, 420 ]
+222 silly gunzTarPerm extractEntry lib/jsdoc/tutorial/resolver.js
+223 silly gunzTarPerm modified mode [ 'lib/jsdoc/tutorial/resolver.js', 438, 420 ]
+224 silly gunzTarPerm extractEntry lib/jsdoc/opts/argparser.js
+225 silly gunzTarPerm modified mode [ 'lib/jsdoc/opts/argparser.js', 438, 420 ]
+226 silly gunzTarPerm extractEntry lib/jsdoc/opts/args.js
+227 silly gunzTarPerm modified mode [ 'lib/jsdoc/opts/args.js', 438, 420 ]
+228 silly gunzTarPerm extractEntry lib/jsdoc/util/doop.js
+229 silly gunzTarPerm modified mode [ 'lib/jsdoc/util/doop.js', 438, 420 ]
+230 silly gunzTarPerm extractEntry lib/jsdoc/util/dumper.js
+231 silly gunzTarPerm modified mode [ 'lib/jsdoc/util/dumper.js', 438, 420 ]
+232 silly gunzTarPerm extractEntry lib/jsdoc/util/error.js
+233 silly gunzTarPerm modified mode [ 'lib/jsdoc/util/error.js', 438, 420 ]
+234 silly gunzTarPerm extractEntry lib/jsdoc/util/logger.js
+235 silly gunzTarPerm modified mode [ 'lib/jsdoc/util/logger.js', 438, 420 ]
+236 silly gunzTarPerm extractEntry lib/jsdoc/util/markdown.js
+237 silly gunzTarPerm modified mode [ 'lib/jsdoc/util/markdown.js', 438, 420 ]
+238 silly gunzTarPerm extractEntry lib/jsdoc/util/runtime.js
+239 silly gunzTarPerm modified mode [ 'lib/jsdoc/util/runtime.js', 438, 420 ]
+240 silly gunzTarPerm extractEntry lib/jsdoc/util/templateHelper.js
+241 silly gunzTarPerm modified mode [ 'lib/jsdoc/util/templateHelper.js', 438, 420 ]
+242 silly lockFile d7bd61c4--public-chess-node-modules-jsdoc tar://N:\Shared\web\public\chess\node_modules\jsdoc
+243 silly lockFile d7bd61c4--public-chess-node-modules-jsdoc tar://N:\Shared\web\public\chess\node_modules\jsdoc
+244 silly lockFile 3bd1fea6-e-jsdoc-3-3-0-alpha5-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\jsdoc\3.3.0-alpha5\package.tgz
+245 silly lockFile 3bd1fea6-e-jsdoc-3-3-0-alpha5-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\jsdoc\3.3.0-alpha5\package.tgz
+246 info preinstall jsdoc@3.3.0-alpha5
+247 verbose readDependencies using package.json deps
+248 verbose readDependencies using package.json deps
+249 verbose cache add [ 'async@~0.1.22', null ]
+250 verbose cache add name=undefined spec="async@~0.1.22" args=["async@~0.1.22",null]
+251 verbose parsed url { protocol: null,
+251 verbose parsed url   slashes: null,
+251 verbose parsed url   auth: null,
+251 verbose parsed url   host: null,
+251 verbose parsed url   port: null,
+251 verbose parsed url   hostname: null,
+251 verbose parsed url   hash: null,
+251 verbose parsed url   search: null,
+251 verbose parsed url   query: null,
+251 verbose parsed url   pathname: 'async@~0.1.22',
+251 verbose parsed url   path: 'async@~0.1.22',
+251 verbose parsed url   href: 'async@~0.1.22' }
+252 verbose cache add name="async" spec="~0.1.22" args=["async","~0.1.22"]
+253 verbose parsed url { protocol: null,
+253 verbose parsed url   slashes: null,
+253 verbose parsed url   auth: null,
+253 verbose parsed url   host: null,
+253 verbose parsed url   port: null,
+253 verbose parsed url   hostname: null,
+253 verbose parsed url   hash: null,
+253 verbose parsed url   search: null,
+253 verbose parsed url   query: null,
+253 verbose parsed url   pathname: '~0.1.22',
+253 verbose parsed url   path: '~0.1.22',
+253 verbose parsed url   href: '~0.1.22' }
+254 verbose addNamed [ 'async', '~0.1.22' ]
+255 verbose addNamed [ null, '>=0.1.22-0 <0.2.0-0' ]
+256 silly lockFile 3af71045-async-0-1-22 async@~0.1.22
+257 verbose lock async@~0.1.22 C:\Users\Eric\AppData\Roaming\npm-cache\3af71045-async-0-1-22.lock
+258 verbose cache add [ 'catharsis@~0.7.0', null ]
+259 verbose cache add name=undefined spec="catharsis@~0.7.0" args=["catharsis@~0.7.0",null]
+260 verbose parsed url { protocol: null,
+260 verbose parsed url   slashes: null,
+260 verbose parsed url   auth: null,
+260 verbose parsed url   host: null,
+260 verbose parsed url   port: null,
+260 verbose parsed url   hostname: null,
+260 verbose parsed url   hash: null,
+260 verbose parsed url   search: null,
+260 verbose parsed url   query: null,
+260 verbose parsed url   pathname: 'catharsis@~0.7.0',
+260 verbose parsed url   path: 'catharsis@~0.7.0',
+260 verbose parsed url   href: 'catharsis@~0.7.0' }
+261 verbose cache add name="catharsis" spec="~0.7.0" args=["catharsis","~0.7.0"]
+262 verbose parsed url { protocol: null,
+262 verbose parsed url   slashes: null,
+262 verbose parsed url   auth: null,
+262 verbose parsed url   host: null,
+262 verbose parsed url   port: null,
+262 verbose parsed url   hostname: null,
+262 verbose parsed url   hash: null,
+262 verbose parsed url   search: null,
+262 verbose parsed url   query: null,
+262 verbose parsed url   pathname: '~0.7.0',
+262 verbose parsed url   path: '~0.7.0',
+262 verbose parsed url   href: '~0.7.0' }
+263 verbose addNamed [ 'catharsis', '~0.7.0' ]
+264 verbose addNamed [ null, '>=0.7.0-0 <0.8.0-0' ]
+265 silly lockFile 2acb3837-catharsis-0-7-0 catharsis@~0.7.0
+266 verbose lock catharsis@~0.7.0 C:\Users\Eric\AppData\Roaming\npm-cache\2acb3837-catharsis-0-7-0.lock
+267 verbose cache add [ 'esprima@~1.0.4', null ]
+268 verbose cache add name=undefined spec="esprima@~1.0.4" args=["esprima@~1.0.4",null]
+269 verbose parsed url { protocol: null,
+269 verbose parsed url   slashes: null,
+269 verbose parsed url   auth: null,
+269 verbose parsed url   host: null,
+269 verbose parsed url   port: null,
+269 verbose parsed url   hostname: null,
+269 verbose parsed url   hash: null,
+269 verbose parsed url   search: null,
+269 verbose parsed url   query: null,
+269 verbose parsed url   pathname: 'esprima@~1.0.4',
+269 verbose parsed url   path: 'esprima@~1.0.4',
+269 verbose parsed url   href: 'esprima@~1.0.4' }
+270 verbose cache add name="esprima" spec="~1.0.4" args=["esprima","~1.0.4"]
+271 verbose parsed url { protocol: null,
+271 verbose parsed url   slashes: null,
+271 verbose parsed url   auth: null,
+271 verbose parsed url   host: null,
+271 verbose parsed url   port: null,
+271 verbose parsed url   hostname: null,
+271 verbose parsed url   hash: null,
+271 verbose parsed url   search: null,
+271 verbose parsed url   query: null,
+271 verbose parsed url   pathname: '~1.0.4',
+271 verbose parsed url   path: '~1.0.4',
+271 verbose parsed url   href: '~1.0.4' }
+272 verbose addNamed [ 'esprima', '~1.0.4' ]
+273 verbose addNamed [ null, '>=1.0.4-0 <1.1.0-0' ]
+274 silly lockFile 7a587a80-esprima-1-0-4 esprima@~1.0.4
+275 verbose lock esprima@~1.0.4 C:\Users\Eric\AppData\Roaming\npm-cache\7a587a80-esprima-1-0-4.lock
+276 verbose cache add [ 'js2xmlparser@~0.1.0', null ]
+277 verbose cache add name=undefined spec="js2xmlparser@~0.1.0" args=["js2xmlparser@~0.1.0",null]
+278 verbose parsed url { protocol: null,
+278 verbose parsed url   slashes: null,
+278 verbose parsed url   auth: null,
+278 verbose parsed url   host: null,
+278 verbose parsed url   port: null,
+278 verbose parsed url   hostname: null,
+278 verbose parsed url   hash: null,
+278 verbose parsed url   search: null,
+278 verbose parsed url   query: null,
+278 verbose parsed url   pathname: 'js2xmlparser@~0.1.0',
+278 verbose parsed url   path: 'js2xmlparser@~0.1.0',
+278 verbose parsed url   href: 'js2xmlparser@~0.1.0' }
+279 verbose cache add name="js2xmlparser" spec="~0.1.0" args=["js2xmlparser","~0.1.0"]
+280 verbose parsed url { protocol: null,
+280 verbose parsed url   slashes: null,
+280 verbose parsed url   auth: null,
+280 verbose parsed url   host: null,
+280 verbose parsed url   port: null,
+280 verbose parsed url   hostname: null,
+280 verbose parsed url   hash: null,
+280 verbose parsed url   search: null,
+280 verbose parsed url   query: null,
+280 verbose parsed url   pathname: '~0.1.0',
+280 verbose parsed url   path: '~0.1.0',
+280 verbose parsed url   href: '~0.1.0' }
+281 verbose addNamed [ 'js2xmlparser', '~0.1.0' ]
+282 verbose addNamed [ null, '>=0.1.0-0 <0.2.0-0' ]
+283 silly lockFile b91aab89-js2xmlparser-0-1-0 js2xmlparser@~0.1.0
+284 verbose lock js2xmlparser@~0.1.0 C:\Users\Eric\AppData\Roaming\npm-cache\b91aab89-js2xmlparser-0-1-0.lock
+285 verbose cache add [ 'marked@~0.3.1', null ]
+286 verbose cache add name=undefined spec="marked@~0.3.1" args=["marked@~0.3.1",null]
+287 verbose parsed url { protocol: null,
+287 verbose parsed url   slashes: null,
+287 verbose parsed url   auth: null,
+287 verbose parsed url   host: null,
+287 verbose parsed url   port: null,
+287 verbose parsed url   hostname: null,
+287 verbose parsed url   hash: null,
+287 verbose parsed url   search: null,
+287 verbose parsed url   query: null,
+287 verbose parsed url   pathname: 'marked@~0.3.1',
+287 verbose parsed url   path: 'marked@~0.3.1',
+287 verbose parsed url   href: 'marked@~0.3.1' }
+288 verbose cache add name="marked" spec="~0.3.1" args=["marked","~0.3.1"]
+289 verbose parsed url { protocol: null,
+289 verbose parsed url   slashes: null,
+289 verbose parsed url   auth: null,
+289 verbose parsed url   host: null,
+289 verbose parsed url   port: null,
+289 verbose parsed url   hostname: null,
+289 verbose parsed url   hash: null,
+289 verbose parsed url   search: null,
+289 verbose parsed url   query: null,
+289 verbose parsed url   pathname: '~0.3.1',
+289 verbose parsed url   path: '~0.3.1',
+289 verbose parsed url   href: '~0.3.1' }
+290 verbose addNamed [ 'marked', '~0.3.1' ]
+291 verbose addNamed [ null, '>=0.3.1-0 <0.4.0-0' ]
+292 silly lockFile 755cdf4f-marked-0-3-1 marked@~0.3.1
+293 verbose lock marked@~0.3.1 C:\Users\Eric\AppData\Roaming\npm-cache\755cdf4f-marked-0-3-1.lock
+294 verbose cache add [ 'taffydb@https://github.com/hegemonic/taffydb/tarball/master',
+294 verbose cache add   null ]
+295 verbose cache add name=undefined spec="taffydb@https://github.com/hegemonic/taffydb/tarball/master" args=["taffydb@https://github.com/hegemonic/taffydb/tarball/master",null]
+296 verbose parsed url { protocol: null,
+296 verbose parsed url   slashes: null,
+296 verbose parsed url   auth: null,
+296 verbose parsed url   host: null,
+296 verbose parsed url   port: null,
+296 verbose parsed url   hostname: null,
+296 verbose parsed url   hash: null,
+296 verbose parsed url   search: null,
+296 verbose parsed url   query: null,
+296 verbose parsed url   pathname: 'taffydb@https://github.com/hegemonic/taffydb/tarball/master',
+296 verbose parsed url   path: 'taffydb@https://github.com/hegemonic/taffydb/tarball/master',
+296 verbose parsed url   href: 'taffydb@https://github.com/hegemonic/taffydb/tarball/master' }
+297 verbose cache add name="taffydb" spec="https://github.com/hegemonic/taffydb/tarball/master" args=["taffydb","https://github.com/hegemonic/taffydb/tarball/master"]
+298 verbose parsed url { protocol: 'https:',
+298 verbose parsed url   slashes: true,
+298 verbose parsed url   auth: null,
+298 verbose parsed url   host: 'github.com',
+298 verbose parsed url   port: null,
+298 verbose parsed url   hostname: 'github.com',
+298 verbose parsed url   hash: null,
+298 verbose parsed url   search: null,
+298 verbose parsed url   query: null,
+298 verbose parsed url   pathname: '/hegemonic/taffydb/tarball/master',
+298 verbose parsed url   path: '/hegemonic/taffydb/tarball/master',
+298 verbose parsed url   href: 'https://github.com/hegemonic/taffydb/tarball/master' }
+299 silly lockFile b85c942d-hegemonic-taffydb-tarball-master https://github.com/hegemonic/taffydb/tarball/master
+300 verbose lock https://github.com/hegemonic/taffydb/tarball/master C:\Users\Eric\AppData\Roaming\npm-cache\b85c942d-hegemonic-taffydb-tarball-master.lock
+301 verbose cache add [ 'underscore@~1.4.2', null ]
+302 verbose cache add name=undefined spec="underscore@~1.4.2" args=["underscore@~1.4.2",null]
+303 verbose parsed url { protocol: null,
+303 verbose parsed url   slashes: null,
+303 verbose parsed url   auth: null,
+303 verbose parsed url   host: null,
+303 verbose parsed url   port: null,
+303 verbose parsed url   hostname: null,
+303 verbose parsed url   hash: null,
+303 verbose parsed url   search: null,
+303 verbose parsed url   query: null,
+303 verbose parsed url   pathname: 'underscore@~1.4.2',
+303 verbose parsed url   path: 'underscore@~1.4.2',
+303 verbose parsed url   href: 'underscore@~1.4.2' }
+304 verbose cache add name="underscore" spec="~1.4.2" args=["underscore","~1.4.2"]
+305 verbose parsed url { protocol: null,
+305 verbose parsed url   slashes: null,
+305 verbose parsed url   auth: null,
+305 verbose parsed url   host: null,
+305 verbose parsed url   port: null,
+305 verbose parsed url   hostname: null,
+305 verbose parsed url   hash: null,
+305 verbose parsed url   search: null,
+305 verbose parsed url   query: null,
+305 verbose parsed url   pathname: '~1.4.2',
+305 verbose parsed url   path: '~1.4.2',
+305 verbose parsed url   href: '~1.4.2' }
+306 verbose addNamed [ 'underscore', '~1.4.2' ]
+307 verbose addNamed [ null, '>=1.4.2-0 <1.5.0-0' ]
+308 silly lockFile 0234e20e-underscore-1-4-2 underscore@~1.4.2
+309 verbose lock underscore@~1.4.2 C:\Users\Eric\AppData\Roaming\npm-cache\0234e20e-underscore-1-4-2.lock
+310 verbose cache add [ 'wrench@~1.3.9', null ]
+311 verbose cache add name=undefined spec="wrench@~1.3.9" args=["wrench@~1.3.9",null]
+312 verbose parsed url { protocol: null,
+312 verbose parsed url   slashes: null,
+312 verbose parsed url   auth: null,
+312 verbose parsed url   host: null,
+312 verbose parsed url   port: null,
+312 verbose parsed url   hostname: null,
+312 verbose parsed url   hash: null,
+312 verbose parsed url   search: null,
+312 verbose parsed url   query: null,
+312 verbose parsed url   pathname: 'wrench@~1.3.9',
+312 verbose parsed url   path: 'wrench@~1.3.9',
+312 verbose parsed url   href: 'wrench@~1.3.9' }
+313 verbose cache add name="wrench" spec="~1.3.9" args=["wrench","~1.3.9"]
+314 verbose parsed url { protocol: null,
+314 verbose parsed url   slashes: null,
+314 verbose parsed url   auth: null,
+314 verbose parsed url   host: null,
+314 verbose parsed url   port: null,
+314 verbose parsed url   hostname: null,
+314 verbose parsed url   hash: null,
+314 verbose parsed url   search: null,
+314 verbose parsed url   query: null,
+314 verbose parsed url   pathname: '~1.3.9',
+314 verbose parsed url   path: '~1.3.9',
+314 verbose parsed url   href: '~1.3.9' }
+315 verbose addNamed [ 'wrench', '~1.3.9' ]
+316 verbose addNamed [ null, '>=1.3.9-0 <1.4.0-0' ]
+317 silly lockFile 608c1511-wrench-1-3-9 wrench@~1.3.9
+318 verbose lock wrench@~1.3.9 C:\Users\Eric\AppData\Roaming\npm-cache\608c1511-wrench-1-3-9.lock
+319 silly addNameRange { name: 'marked', range: '>=0.3.1-0 <0.4.0-0', hasData: false }
+320 silly addNameRange { name: 'js2xmlparser',
+320 silly addNameRange   range: '>=0.1.0-0 <0.2.0-0',
+320 silly addNameRange   hasData: false }
+321 verbose addRemoteTarball [ 'https://github.com/hegemonic/taffydb/tarball/master', null ]
+322 silly addNameRange { name: 'esprima', range: '>=1.0.4-0 <1.1.0-0', hasData: false }
+323 silly addNameRange { name: 'catharsis',
+323 silly addNameRange   range: '>=0.7.0-0 <0.8.0-0',
+323 silly addNameRange   hasData: false }
+324 silly addNameRange { name: 'async', range: '>=0.1.22-0 <0.2.0-0', hasData: false }
+325 silly addNameRange { name: 'underscore',
+325 silly addNameRange   range: '>=1.4.2-0 <1.5.0-0',
+325 silly addNameRange   hasData: false }
+326 silly addNameRange { name: 'wrench', range: '>=1.3.9-0 <1.4.0-0', hasData: false }
+327 info retry fetch attempt 1 at 20:37:03
+328 verbose fetch to= C:\Users\Eric\AppData\Local\Temp\npm-11708-61Vh48To\1401669423697-0.4492763006128371\tmp.tgz
+329 verbose url raw js2xmlparser
+330 verbose url resolving [ 'https://registry.npmjs.org/', './js2xmlparser' ]
+331 verbose url resolved https://registry.npmjs.org/js2xmlparser
+332 info trying registry request attempt 1 at 20:37:03
+333 verbose etag "7J8H9RGB5K4YX4GB209R1Q68L"
+334 http GET https://registry.npmjs.org/js2xmlparser
+335 verbose url raw async
+336 verbose url resolving [ 'https://registry.npmjs.org/', './async' ]
+337 verbose url resolved https://registry.npmjs.org/async
+338 info trying registry request attempt 1 at 20:37:03
+339 verbose etag "58LPZNFQ5AFNXSHGRPC3JW24B"
+340 http GET https://registry.npmjs.org/async
+341 http GET https://github.com/hegemonic/taffydb/tarball/master
+342 verbose url raw catharsis
+343 verbose url resolving [ 'https://registry.npmjs.org/', './catharsis' ]
+344 verbose url resolved https://registry.npmjs.org/catharsis
+345 info trying registry request attempt 1 at 20:37:03
+346 verbose etag "8CE5DACBSL4H5KFXUK9710RE"
+347 http GET https://registry.npmjs.org/catharsis
+348 verbose url raw wrench
+349 verbose url resolving [ 'https://registry.npmjs.org/', './wrench' ]
+350 verbose url resolved https://registry.npmjs.org/wrench
+351 info trying registry request attempt 1 at 20:37:03
+352 verbose etag "BVW6S5JE9EBUJZHZ9HG6JA82U"
+353 http GET https://registry.npmjs.org/wrench
+354 verbose url raw underscore
+355 verbose url resolving [ 'https://registry.npmjs.org/', './underscore' ]
+356 verbose url resolved https://registry.npmjs.org/underscore
+357 info trying registry request attempt 1 at 20:37:03
+358 verbose etag "5W094I1GK988ZIISD603MZD58"
+359 http GET https://registry.npmjs.org/underscore
+360 verbose url raw marked
+361 verbose url resolving [ 'https://registry.npmjs.org/', './marked' ]
+362 verbose url resolved https://registry.npmjs.org/marked
+363 info trying registry request attempt 1 at 20:37:03
+364 verbose etag "DI4E520GFCRRT563063VPAVIS"
+365 http GET https://registry.npmjs.org/marked
+366 verbose url raw esprima
+367 verbose url resolving [ 'https://registry.npmjs.org/', './esprima' ]
+368 verbose url resolved https://registry.npmjs.org/esprima
+369 info trying registry request attempt 1 at 20:37:03
+370 verbose etag "2HYYFDQ7ALLAY4YWTQ8ZETHWM"
+371 http GET https://registry.npmjs.org/esprima
+372 http 304 https://registry.npmjs.org/async
+373 silly registry.get cb [ 304,
+373 silly registry.get   { date: 'Mon, 02 Jun 2014 00:37:13 GMT',
+373 silly registry.get     server: 'Apache',
+373 silly registry.get     via: '1.1 varnish',
+373 silly registry.get     'last-modified': 'Mon, 02 Jun 2014 00:37:13 GMT',
+373 silly registry.get     'cache-control': 'max-age=1',
+373 silly registry.get     etag: '"58LPZNFQ5AFNXSHGRPC3JW24B"',
+373 silly registry.get     'x-served-by': 'cache-jfk1021-JFK',
+373 silly registry.get     'x-cache': 'HIT',
+373 silly registry.get     'x-cache-hits': '1',
+373 silly registry.get     'x-timer': 'S1401669433.822228,VS0,VE6',
+373 silly registry.get     vary: 'Accept',
+373 silly registry.get     'content-length': '0',
+373 silly registry.get     'keep-alive': 'timeout=10, max=50',
+373 silly registry.get     connection: 'Keep-Alive' } ]
+374 verbose etag async from cache
+375 silly addNameRange number 2 { name: 'async', range: '>=0.1.22-0 <0.2.0-0', hasData: true }
+376 silly addNameRange versions [ 'async',
+376 silly addNameRange   [ '0.1.0',
+376 silly addNameRange     '0.1.1',
+376 silly addNameRange     '0.1.2',
+376 silly addNameRange     '0.1.3',
+376 silly addNameRange     '0.1.4',
+376 silly addNameRange     '0.1.5',
+376 silly addNameRange     '0.1.6',
+376 silly addNameRange     '0.1.7',
+376 silly addNameRange     '0.1.8',
+376 silly addNameRange     '0.1.9',
+376 silly addNameRange     '0.1.10',
+376 silly addNameRange     '0.1.11',
+376 silly addNameRange     '0.1.12',
+376 silly addNameRange     '0.1.13',
+376 silly addNameRange     '0.1.14',
+376 silly addNameRange     '0.1.15',
+376 silly addNameRange     '0.1.16',
+376 silly addNameRange     '0.1.17',
+376 silly addNameRange     '0.1.18',
+376 silly addNameRange     '0.1.19',
+376 silly addNameRange     '0.1.20',
+376 silly addNameRange     '0.1.21',
+376 silly addNameRange     '0.1.22',
+376 silly addNameRange     '0.2.0',
+376 silly addNameRange     '0.2.1',
+376 silly addNameRange     '0.2.2',
+376 silly addNameRange     '0.2.3',
+376 silly addNameRange     '0.2.4',
+376 silly addNameRange     '0.2.5',
+376 silly addNameRange     '0.2.6',
+376 silly addNameRange     '0.2.7',
+376 silly addNameRange     '0.2.8',
+376 silly addNameRange     '0.2.9',
+376 silly addNameRange     '0.2.10',
+376 silly addNameRange     '0.3.0',
+376 silly addNameRange     '0.4.0',
+376 silly addNameRange     '0.4.1',
+376 silly addNameRange     '0.5.0',
+376 silly addNameRange     '0.6.0',
+376 silly addNameRange     '0.6.1',
+376 silly addNameRange     '0.6.2',
+376 silly addNameRange     '0.7.0',
+376 silly addNameRange     '0.8.0',
+376 silly addNameRange     '0.9.0' ] ]
+377 verbose addNamed [ 'async', '0.1.22' ]
+378 verbose addNamed [ '0.1.22', '0.1.22' ]
+379 silly lockFile 09d21715-async-0-1-22 async@0.1.22
+380 verbose lock async@0.1.22 C:\Users\Eric\AppData\Roaming\npm-cache\09d21715-async-0-1-22.lock
+381 http 304 https://registry.npmjs.org/underscore
+382 silly registry.get cb [ 304,
+382 silly registry.get   { date: 'Mon, 02 Jun 2014 00:37:13 GMT',
+382 silly registry.get     server: 'Apache',
+382 silly registry.get     via: '1.1 varnish',
+382 silly registry.get     'last-modified': 'Mon, 02 Jun 2014 00:37:13 GMT',
+382 silly registry.get     'cache-control': 'max-age=1',
+382 silly registry.get     etag: '"5W094I1GK988ZIISD603MZD58"',
+382 silly registry.get     'x-served-by': 'cache-jfk1029-JFK',
+382 silly registry.get     'x-cache': 'HIT',
+382 silly registry.get     'x-cache-hits': '1',
+382 silly registry.get     'x-timer': 'S1401669433.844318,VS0,VE0',
+382 silly registry.get     vary: 'Accept',
+382 silly registry.get     'content-length': '0',
+382 silly registry.get     'keep-alive': 'timeout=10, max=50',
+382 silly registry.get     connection: 'Keep-Alive' } ]
+383 verbose etag underscore from cache
+384 http 304 https://registry.npmjs.org/js2xmlparser
+385 silly registry.get cb [ 304,
+385 silly registry.get   { date: 'Mon, 02 Jun 2014 00:37:13 GMT',
+385 silly registry.get     server: 'Apache',
+385 silly registry.get     via: '1.1 varnish',
+385 silly registry.get     'last-modified': 'Mon, 02 Jun 2014 00:37:13 GMT',
+385 silly registry.get     'cache-control': 'max-age=1',
+385 silly registry.get     etag: '"7J8H9RGB5K4YX4GB209R1Q68L"',
+385 silly registry.get     'x-served-by': 'cache-jfk1020-JFK',
+385 silly registry.get     'x-cache': 'MISS',
+385 silly registry.get     'x-cache-hits': '0',
+385 silly registry.get     'x-timer': 'S1401669433.784469,VS0,VE94',
+385 silly registry.get     vary: 'Accept',
+385 silly registry.get     'content-length': '0',
+385 silly registry.get     'keep-alive': 'timeout=10, max=50',
+385 silly registry.get     connection: 'Keep-Alive' } ]
+386 verbose etag js2xmlparser from cache
+387 silly addNameRange number 2 { name: 'underscore',
+387 silly addNameRange   range: '>=1.4.2-0 <1.5.0-0',
+387 silly addNameRange   hasData: true }
+388 silly addNameRange versions [ 'underscore',
+388 silly addNameRange   [ '1.0.3',
+388 silly addNameRange     '1.0.4',
+388 silly addNameRange     '1.1.0',
+388 silly addNameRange     '1.1.1',
+388 silly addNameRange     '1.1.2',
+388 silly addNameRange     '1.1.3',
+388 silly addNameRange     '1.1.4',
+388 silly addNameRange     '1.1.5',
+388 silly addNameRange     '1.1.6',
+388 silly addNameRange     '1.1.7',
+388 silly addNameRange     '1.2.0',
+388 silly addNameRange     '1.2.1',
+388 silly addNameRange     '1.2.2',
+388 silly addNameRange     '1.2.3',
+388 silly addNameRange     '1.2.4',
+388 silly addNameRange     '1.3.0',
+388 silly addNameRange     '1.3.1',
+388 silly addNameRange     '1.3.2',
+388 silly addNameRange     '1.3.3',
+388 silly addNameRange     '1.4.0',
+388 silly addNameRange     '1.4.1',
+388 silly addNameRange     '1.4.2',
+388 silly addNameRange     '1.4.3',
+388 silly addNameRange     '1.4.4',
+388 silly addNameRange     '1.5.0',
+388 silly addNameRange     '1.5.1',
+388 silly addNameRange     '1.5.2',
+388 silly addNameRange     '1.6.0' ] ]
+389 verbose addNamed [ 'underscore', '1.4.4' ]
+390 verbose addNamed [ '1.4.4', '1.4.4' ]
+391 silly lockFile c6b5e825-underscore-1-4-4 underscore@1.4.4
+392 verbose lock underscore@1.4.4 C:\Users\Eric\AppData\Roaming\npm-cache\c6b5e825-underscore-1-4-4.lock
+393 silly lockFile 09d21715-async-0-1-22 async@0.1.22
+394 silly lockFile 09d21715-async-0-1-22 async@0.1.22
+395 silly addNameRange number 2 { name: 'js2xmlparser',
+395 silly addNameRange   range: '>=0.1.0-0 <0.2.0-0',
+395 silly addNameRange   hasData: true }
+396 silly addNameRange versions [ 'js2xmlparser', [ '0.1.0', '0.1.1', '0.1.2', '0.1.3' ] ]
+397 verbose addNamed [ 'js2xmlparser', '0.1.3' ]
+398 verbose addNamed [ '0.1.3', '0.1.3' ]
+399 silly lockFile be4b0103-js2xmlparser-0-1-3 js2xmlparser@0.1.3
+400 verbose lock js2xmlparser@0.1.3 C:\Users\Eric\AppData\Roaming\npm-cache\be4b0103-js2xmlparser-0-1-3.lock
+401 silly lockFile 3af71045-async-0-1-22 async@~0.1.22
+402 silly lockFile 3af71045-async-0-1-22 async@~0.1.22
+403 silly lockFile be4b0103-js2xmlparser-0-1-3 js2xmlparser@0.1.3
+404 silly lockFile be4b0103-js2xmlparser-0-1-3 js2xmlparser@0.1.3
+405 silly lockFile b91aab89-js2xmlparser-0-1-0 js2xmlparser@~0.1.0
+406 silly lockFile b91aab89-js2xmlparser-0-1-0 js2xmlparser@~0.1.0
+407 http 304 https://registry.npmjs.org/catharsis
+408 silly registry.get cb [ 304,
+408 silly registry.get   { date: 'Mon, 02 Jun 2014 00:37:13 GMT',
+408 silly registry.get     server: 'Apache',
+408 silly registry.get     via: '1.1 varnish',
+408 silly registry.get     'last-modified': 'Mon, 02 Jun 2014 00:37:13 GMT',
+408 silly registry.get     'cache-control': 'max-age=1',
+408 silly registry.get     etag: '"8CE5DACBSL4H5KFXUK9710RE"',
+408 silly registry.get     'x-served-by': 'cache-jfk1022-JFK',
+408 silly registry.get     'x-cache': 'MISS',
+408 silly registry.get     'x-cache-hits': '0',
+408 silly registry.get     'x-timer': 'S1401669433.820697,VS0,VE93',
+408 silly registry.get     vary: 'Accept',
+408 silly registry.get     'content-length': '0',
+408 silly registry.get     'keep-alive': 'timeout=10, max=50',
+408 silly registry.get     connection: 'Keep-Alive' } ]
+409 verbose etag catharsis from cache
+410 silly addNameRange number 2 { name: 'catharsis', range: '>=0.7.0-0 <0.8.0-0', hasData: true }
+411 silly addNameRange versions [ 'catharsis',
+411 silly addNameRange   [ '0.1.0',
+411 silly addNameRange     '0.1.1',
+411 silly addNameRange     '0.2.0',
+411 silly addNameRange     '0.3.0',
+411 silly addNameRange     '0.3.1',
+411 silly addNameRange     '0.4.0',
+411 silly addNameRange     '0.4.1',
+411 silly addNameRange     '0.4.2',
+411 silly addNameRange     '0.4.3',
+411 silly addNameRange     '0.5.0',
+411 silly addNameRange     '0.5.1',
+411 silly addNameRange     '0.5.2',
+411 silly addNameRange     '0.5.3',
+411 silly addNameRange     '0.5.4',
+411 silly addNameRange     '0.5.5',
+411 silly addNameRange     '0.5.6',
+411 silly addNameRange     '0.6.0',
+411 silly addNameRange     '0.7.0',
+411 silly addNameRange     '0.7.1',
+411 silly addNameRange     '0.8.0' ] ]
+412 verbose addNamed [ 'catharsis', '0.7.1' ]
+413 verbose addNamed [ '0.7.1', '0.7.1' ]
+414 silly lockFile d97ae0bf-catharsis-0-7-1 catharsis@0.7.1
+415 verbose lock catharsis@0.7.1 C:\Users\Eric\AppData\Roaming\npm-cache\d97ae0bf-catharsis-0-7-1.lock
+416 silly lockFile d97ae0bf-catharsis-0-7-1 catharsis@0.7.1
+417 silly lockFile d97ae0bf-catharsis-0-7-1 catharsis@0.7.1
+418 silly lockFile 2acb3837-catharsis-0-7-0 catharsis@~0.7.0
+419 silly lockFile 2acb3837-catharsis-0-7-0 catharsis@~0.7.0
+420 http 304 https://registry.npmjs.org/marked
+421 silly registry.get cb [ 304,
+421 silly registry.get   { date: 'Mon, 02 Jun 2014 00:37:13 GMT',
+421 silly registry.get     server: 'Apache',
+421 silly registry.get     via: '1.1 varnish',
+421 silly registry.get     'last-modified': 'Mon, 02 Jun 2014 00:37:13 GMT',
+421 silly registry.get     'cache-control': 'max-age=1',
+421 silly registry.get     etag: '"DI4E520GFCRRT563063VPAVIS"',
+421 silly registry.get     'x-served-by': 'cache-jfk1021-JFK',
+421 silly registry.get     'x-cache': 'HIT',
+421 silly registry.get     'x-cache-hits': '1',
+421 silly registry.get     'x-timer': 'S1401669433.853918,VS0,VE92',
+421 silly registry.get     vary: 'Accept',
+421 silly registry.get     'content-length': '0',
+421 silly registry.get     'keep-alive': 'timeout=10, max=49',
+421 silly registry.get     connection: 'Keep-Alive' } ]
+422 verbose etag marked from cache
+423 silly addNameRange number 2 { name: 'marked', range: '>=0.3.1-0 <0.4.0-0', hasData: true }
+424 silly addNameRange versions [ 'marked',
+424 silly addNameRange   [ '0.0.1',
+424 silly addNameRange     '0.0.2',
+424 silly addNameRange     '0.0.3',
+424 silly addNameRange     '0.0.4',
+424 silly addNameRange     '0.0.5',
+424 silly addNameRange     '0.0.6',
+424 silly addNameRange     '0.0.7',
+424 silly addNameRange     '0.0.8',
+424 silly addNameRange     '0.0.9',
+424 silly addNameRange     '0.1.0',
+424 silly addNameRange     '0.1.1',
+424 silly addNameRange     '0.1.2',
+424 silly addNameRange     '0.1.3',
+424 silly addNameRange     '0.1.4',
+424 silly addNameRange     '0.1.5',
+424 silly addNameRange     '0.1.6',
+424 silly addNameRange     '0.1.7',
+424 silly addNameRange     '0.1.8',
+424 silly addNameRange     '0.1.9',
+424 silly addNameRange     '0.2.0',
+424 silly addNameRange     '0.2.1',
+424 silly addNameRange     '0.2.2',
+424 silly addNameRange     '0.2.2-1',
+424 silly addNameRange     '0.2.3',
+424 silly addNameRange     '0.2.4',
+424 silly addNameRange     '0.2.4-1',
+424 silly addNameRange     '0.2.5',
+424 silly addNameRange     '0.2.6',
+424 silly addNameRange     '0.2.7',
+424 silly addNameRange     '0.2.8',
+424 silly addNameRange     '0.2.9',
+424 silly addNameRange     '0.2.10',
+424 silly addNameRange     '0.3.0',
+424 silly addNameRange     '0.3.1',
+424 silly addNameRange     '0.3.2' ] ]
+425 verbose addNamed [ 'marked', '0.3.2' ]
+426 verbose addNamed [ '0.3.2', '0.3.2' ]
+427 silly lockFile 14c854cd-marked-0-3-2 marked@0.3.2
+428 verbose lock marked@0.3.2 C:\Users\Eric\AppData\Roaming\npm-cache\14c854cd-marked-0-3-2.lock
+429 silly lockFile 14c854cd-marked-0-3-2 marked@0.3.2
+430 silly lockFile 14c854cd-marked-0-3-2 marked@0.3.2
+431 silly lockFile 755cdf4f-marked-0-3-1 marked@~0.3.1
+432 silly lockFile 755cdf4f-marked-0-3-1 marked@~0.3.1
+433 silly lockFile c6b5e825-underscore-1-4-4 underscore@1.4.4
+434 silly lockFile c6b5e825-underscore-1-4-4 underscore@1.4.4
+435 silly lockFile 0234e20e-underscore-1-4-2 underscore@~1.4.2
+436 silly lockFile 0234e20e-underscore-1-4-2 underscore@~1.4.2
+437 http 200 https://github.com/hegemonic/taffydb/tarball/master
+438 http 304 https://registry.npmjs.org/esprima
+439 silly registry.get cb [ 304,
+439 silly registry.get   { date: 'Mon, 02 Jun 2014 00:37:13 GMT',
+439 silly registry.get     server: 'Apache',
+439 silly registry.get     via: '1.1 varnish',
+439 silly registry.get     'last-modified': 'Mon, 02 Jun 2014 00:37:13 GMT',
+439 silly registry.get     'cache-control': 'max-age=1',
+439 silly registry.get     etag: '"2HYYFDQ7ALLAY4YWTQ8ZETHWM"',
+439 silly registry.get     'x-served-by': 'cache-jfk1029-JFK',
+439 silly registry.get     'x-cache': 'HIT',
+439 silly registry.get     'x-cache-hits': '1',
+439 silly registry.get     'x-timer': 'S1401669433.889160,VS0,VE95',
+439 silly registry.get     vary: 'Accept',
+439 silly registry.get     'content-length': '0',
+439 silly registry.get     'keep-alive': 'timeout=10, max=49',
+439 silly registry.get     connection: 'Keep-Alive' } ]
+440 verbose etag esprima from cache
+441 verbose tar unpack C:\Users\Eric\AppData\Local\Temp\npm-11708-61Vh48To\1401669423697-0.4492763006128371\tmp.tgz
+442 silly lockFile 84556ef0-23697-0-4492763006128371-package tar://C:\Users\Eric\AppData\Local\Temp\npm-11708-61Vh48To\1401669423697-0.4492763006128371\package
+443 verbose lock tar://C:\Users\Eric\AppData\Local\Temp\npm-11708-61Vh48To\1401669423697-0.4492763006128371\package C:\Users\Eric\AppData\Roaming\npm-cache\84556ef0-23697-0-4492763006128371-package.lock
+444 silly lockFile ad6fdd54-23697-0-4492763006128371-tmp-tgz tar://C:\Users\Eric\AppData\Local\Temp\npm-11708-61Vh48To\1401669423697-0.4492763006128371\tmp.tgz
+445 verbose lock tar://C:\Users\Eric\AppData\Local\Temp\npm-11708-61Vh48To\1401669423697-0.4492763006128371\tmp.tgz C:\Users\Eric\AppData\Roaming\npm-cache\ad6fdd54-23697-0-4492763006128371-tmp-tgz.lock
+446 silly gunzTarPerm modes [ '755', '644' ]
+447 silly addNameRange number 2 { name: 'esprima', range: '>=1.0.4-0 <1.1.0-0', hasData: true }
+448 silly addNameRange versions [ 'esprima',
+448 silly addNameRange   [ '0.7.0',
+448 silly addNameRange     '0.8.0',
+448 silly addNameRange     '0.8.1',
+448 silly addNameRange     '0.8.2',
+448 silly addNameRange     '0.9.0',
+448 silly addNameRange     '0.9.1',
+448 silly addNameRange     '0.9.2',
+448 silly addNameRange     '0.9.3',
+448 silly addNameRange     '0.9.4',
+448 silly addNameRange     '0.9.5',
+448 silly addNameRange     '0.9.6',
+448 silly addNameRange     '0.9.7',
+448 silly addNameRange     '0.9.8',
+448 silly addNameRange     '0.9.9',
+448 silly addNameRange     '1.0.0',
+448 silly addNameRange     '1.0.1',
+448 silly addNameRange     '1.0.2',
+448 silly addNameRange     '1.0.3',
+448 silly addNameRange     '1.0.4',
+448 silly addNameRange     '1.1.0',
+448 silly addNameRange     '1.1.1',
+448 silly addNameRange     '1.2.0',
+448 silly addNameRange     '1.2.1',
+448 silly addNameRange     '1.2.2' ] ]
+449 verbose addNamed [ 'esprima', '1.0.4' ]
+450 verbose addNamed [ '1.0.4', '1.0.4' ]
+451 silly lockFile 758953aa-esprima-1-0-4 esprima@1.0.4
+452 verbose lock esprima@1.0.4 C:\Users\Eric\AppData\Roaming\npm-cache\758953aa-esprima-1-0-4.lock
+453 silly gunzTarPerm extractEntry
+454 silly gunzTarPerm modified mode [ '', 509, 493 ]
+455 silly gunzTarPerm extractEntry README.md
+456 silly gunzTarPerm modified mode [ 'README.md', 436, 420 ]
+457 silly gunzTarPerm extractEntry package.json
+458 silly gunzTarPerm modified mode [ 'package.json', 436, 420 ]
+459 silly gunzTarPerm extractEntry taffy-test.html
+460 silly gunzTarPerm modified mode [ 'taffy-test.html', 436, 420 ]
+461 silly gunzTarPerm extractEntry taffy.js
+462 silly gunzTarPerm modified mode [ 'taffy.js', 436, 420 ]
+463 silly lockFile 84556ef0-23697-0-4492763006128371-package tar://C:\Users\Eric\AppData\Local\Temp\npm-11708-61Vh48To\1401669423697-0.4492763006128371\package
+464 silly lockFile 84556ef0-23697-0-4492763006128371-package tar://C:\Users\Eric\AppData\Local\Temp\npm-11708-61Vh48To\1401669423697-0.4492763006128371\package
+465 silly lockFile ad6fdd54-23697-0-4492763006128371-tmp-tgz tar://C:\Users\Eric\AppData\Local\Temp\npm-11708-61Vh48To\1401669423697-0.4492763006128371\tmp.tgz
+466 silly lockFile ad6fdd54-23697-0-4492763006128371-tmp-tgz tar://C:\Users\Eric\AppData\Local\Temp\npm-11708-61Vh48To\1401669423697-0.4492763006128371\tmp.tgz
+467 silly lockFile 758953aa-esprima-1-0-4 esprima@1.0.4
+468 silly lockFile 758953aa-esprima-1-0-4 esprima@1.0.4
+469 silly lockFile 7a587a80-esprima-1-0-4 esprima@~1.0.4
+470 silly lockFile 7a587a80-esprima-1-0-4 esprima@~1.0.4
+471 verbose tar pack [ 'C:\\Users\\Eric\\AppData\\Roaming\\npm-cache\\taffydb\\2.6.2\\package.tgz',
+471 verbose tar pack   'C:\\Users\\Eric\\AppData\\Local\\Temp\\npm-11708-61Vh48To\\1401669423697-0.4492763006128371\\package' ]
+472 verbose tarball C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package.tgz
+473 verbose folder C:\Users\Eric\AppData\Local\Temp\npm-11708-61Vh48To\1401669423697-0.4492763006128371\package
+474 silly lockFile 84556ef0-23697-0-4492763006128371-package tar://C:\Users\Eric\AppData\Local\Temp\npm-11708-61Vh48To\1401669423697-0.4492763006128371\package
+475 verbose lock tar://C:\Users\Eric\AppData\Local\Temp\npm-11708-61Vh48To\1401669423697-0.4492763006128371\package C:\Users\Eric\AppData\Roaming\npm-cache\84556ef0-23697-0-4492763006128371-package.lock
+476 silly lockFile 17f0f6e4--cache-taffydb-2-6-2-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package.tgz
+477 verbose lock tar://C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package.tgz C:\Users\Eric\AppData\Roaming\npm-cache\17f0f6e4--cache-taffydb-2-6-2-package-tgz.lock
+478 silly lockFile 84556ef0-23697-0-4492763006128371-package tar://C:\Users\Eric\AppData\Local\Temp\npm-11708-61Vh48To\1401669423697-0.4492763006128371\package
+479 silly lockFile 84556ef0-23697-0-4492763006128371-package tar://C:\Users\Eric\AppData\Local\Temp\npm-11708-61Vh48To\1401669423697-0.4492763006128371\package
+480 silly lockFile 17f0f6e4--cache-taffydb-2-6-2-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package.tgz
+481 silly lockFile 17f0f6e4--cache-taffydb-2-6-2-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package.tgz
+482 silly lockFile d4689e43--npm-cache-taffydb-2-6-2-package C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package
+483 verbose lock C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package C:\Users\Eric\AppData\Roaming\npm-cache\d4689e43--npm-cache-taffydb-2-6-2-package.lock
+484 silly lockFile d4689e43--npm-cache-taffydb-2-6-2-package C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package
+485 silly lockFile d4689e43--npm-cache-taffydb-2-6-2-package C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package
+486 verbose tar unpack C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package.tgz
+487 silly lockFile 51606c29--npm-cache-taffydb-2-6-2-package tar://C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package
+488 verbose lock tar://C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package C:\Users\Eric\AppData\Roaming\npm-cache\51606c29--npm-cache-taffydb-2-6-2-package.lock
+489 silly lockFile 17f0f6e4--cache-taffydb-2-6-2-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package.tgz
+490 verbose lock tar://C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package.tgz C:\Users\Eric\AppData\Roaming\npm-cache\17f0f6e4--cache-taffydb-2-6-2-package-tgz.lock
+491 silly gunzTarPerm modes [ '755', '644' ]
+492 silly gunzTarPerm extractEntry package.json
+493 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+494 silly gunzTarPerm extractEntry README.md
+495 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+496 silly gunzTarPerm extractEntry taffy.js
+497 silly gunzTarPerm modified mode [ 'taffy.js', 438, 420 ]
+498 silly gunzTarPerm extractEntry taffy-test.html
+499 silly gunzTarPerm modified mode [ 'taffy-test.html', 438, 420 ]
+500 silly lockFile 51606c29--npm-cache-taffydb-2-6-2-package tar://C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package
+501 silly lockFile 51606c29--npm-cache-taffydb-2-6-2-package tar://C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package
+502 silly lockFile 17f0f6e4--cache-taffydb-2-6-2-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package.tgz
+503 silly lockFile 17f0f6e4--cache-taffydb-2-6-2-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package.tgz
+504 verbose chmod C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package.tgz 644
+505 silly chown skipping for windows C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package.tgz
+506 silly lockFile b85c942d-hegemonic-taffydb-tarball-master https://github.com/hegemonic/taffydb/tarball/master
+507 silly lockFile b85c942d-hegemonic-taffydb-tarball-master https://github.com/hegemonic/taffydb/tarball/master
+508 http 304 https://registry.npmjs.org/wrench
+509 silly registry.get cb [ 304,
+509 silly registry.get   { date: 'Mon, 02 Jun 2014 00:37:13 GMT',
+509 silly registry.get     server: 'Apache',
+509 silly registry.get     via: '1.1 varnish',
+509 silly registry.get     'last-modified': 'Mon, 02 Jun 2014 00:37:14 GMT',
+509 silly registry.get     'cache-control': 'max-age=1',
+509 silly registry.get     etag: '"BVW6S5JE9EBUJZHZ9HG6JA82U"',
+509 silly registry.get     'x-served-by': 'cache-jfk1029-JFK',
+509 silly registry.get     'x-cache': 'HIT',
+509 silly registry.get     'x-cache-hits': '1',
+509 silly registry.get     'x-timer': 'S1401669433.931220,VS0,VE92',
+509 silly registry.get     vary: 'Accept',
+509 silly registry.get     'content-length': '0',
+509 silly registry.get     'keep-alive': 'timeout=10, max=50',
+509 silly registry.get     connection: 'Keep-Alive' } ]
+510 verbose etag wrench from cache
+511 silly addNameRange number 2 { name: 'wrench', range: '>=1.3.9-0 <1.4.0-0', hasData: true }
+512 silly addNameRange versions [ 'wrench',
+512 silly addNameRange   [ '0.1.0',
+512 silly addNameRange     '1.0.0',
+512 silly addNameRange     '1.1.0',
+512 silly addNameRange     '1.2.0',
+512 silly addNameRange     '1.3.0',
+512 silly addNameRange     '1.3.1',
+512 silly addNameRange     '1.3.2',
+512 silly addNameRange     '1.3.3',
+512 silly addNameRange     '1.3.4',
+512 silly addNameRange     '1.3.5',
+512 silly addNameRange     '1.3.6',
+512 silly addNameRange     '1.3.7',
+512 silly addNameRange     '1.3.8',
+512 silly addNameRange     '1.3.9',
+512 silly addNameRange     '1.4.0',
+512 silly addNameRange     '1.4.1',
+512 silly addNameRange     '1.4.2',
+512 silly addNameRange     '1.4.3',
+512 silly addNameRange     '1.4.4',
+512 silly addNameRange     '1.5.0',
+512 silly addNameRange     '1.5.1',
+512 silly addNameRange     '1.5.3',
+512 silly addNameRange     '1.5.4',
+512 silly addNameRange     '1.5.5',
+512 silly addNameRange     '1.5.6',
+512 silly addNameRange     '1.5.7',
+512 silly addNameRange     '1.5.8' ] ]
+513 verbose addNamed [ 'wrench', '1.3.9' ]
+514 verbose addNamed [ '1.3.9', '1.3.9' ]
+515 silly lockFile de31968e-wrench-1-3-9 wrench@1.3.9
+516 verbose lock wrench@1.3.9 C:\Users\Eric\AppData\Roaming\npm-cache\de31968e-wrench-1-3-9.lock
+517 silly lockFile de31968e-wrench-1-3-9 wrench@1.3.9
+518 silly lockFile de31968e-wrench-1-3-9 wrench@1.3.9
+519 silly lockFile 608c1511-wrench-1-3-9 wrench@~1.3.9
+520 silly lockFile 608c1511-wrench-1-3-9 wrench@~1.3.9
+521 silly resolved [ { name: 'async',
+521 silly resolved     description: 'Higher-order functions and common patterns for asynchronous code',
+521 silly resolved     main: './index',
+521 silly resolved     author: { name: 'Caolan McMahon' },
+521 silly resolved     version: '0.1.22',
+521 silly resolved     repository: { type: 'git', url: 'http://github.com/caolan/async.git' },
+521 silly resolved     bugs: { url: 'http://github.com/caolan/async/issues' },
+521 silly resolved     licenses: [ [Object] ],
+521 silly resolved     devDependencies: { nodeunit: '>0.0.0', 'uglify-js': '1.2.x', nodelint: '>0.0.0' },
+521 silly resolved     readme: '# Async.js\n\nAsync is a utility module which provides straight-forward, powerful functions\nfor working with asynchronous JavaScript. Although originally designed for\nuse with [node.js](http://nodejs.org), it can also be used directly in the\nbrowser.\n\nAsync provides around 20 functions that include the usual \'functional\'\nsuspects (map, reduce, filter, forEach…) as well as some common patterns\nfor asynchronous control flow (parallel, series, waterfall…). All these\nfunctions assume you follow the node.js convention of providing a single\ncallback as the last argument of your async function.\n\n\n## Quick Examples\n\n    async.map([\'file1\',\'file2\',\'file3\'], fs.stat, function(err, results){\n        // results is now an array of stats for each file\n    });\n\n    async.filter([\'file1\',\'file2\',\'file3\'], path.exists, function(results){\n        // results now equals an array of the existing files\n    });\n\n    async.parallel([\n        function(){ ... },\n        function(){ ... }\n    ], callback);\n\n    async.series([\n        function(){ ... },\n        function(){ ... }\n    ]);\n\nThere are many more functions available so take a look at the docs below for a\nfull list. This module aims to be comprehensive, so if you feel anything is\nmissing please create a GitHub issue for it.\n\n\n## Download\n\nReleases are available for download from\n[GitHub](http://github.com/caolan/async/downloads).\nAlternatively, you can install using Node Package Manager (npm):\n\n    npm install async\n\n\n__Development:__ [async.js](https://github.com/caolan/async/raw/master/lib/async.js) - 17.5kb Uncompressed\n\n__Production:__ [async.min.js](https://github.com/caolan/async/raw/master/dist/async.min.js) - 1.7kb Packed and Gzipped\n\n\n## In the Browser\n\nSo far its been tested in IE6, IE7, IE8, FF3.6 and Chrome 5. Usage:\n\n    <script type="text/javascript" src="async.js"></script>\n    <script type="text/javascript">\n\n        async.map(data, asyncProcess, function(err, results){\n            alert(results);\n        });\n\n    </script>\n\n\n## Documentation\n\n### Collections\n\n* [forEach](#forEach)\n* [map](#map)\n* [filter](#filter)\n* [reject](#reject)\n* [reduce](#reduce)\n* [detect](#detect)\n* [sortBy](#sortBy)\n* [some](#some)\n* [every](#every)\n* [concat](#concat)\n\n### Control Flow\n\n* [series](#series)\n* [parallel](#parallel)\n* [whilst](#whilst)\n* [until](#until)\n* [waterfall](#waterfall)\n* [queue](#queue)\n* [auto](#auto)\n* [iterator](#iterator)\n* [apply](#apply)\n* [nextTick](#nextTick)\n\n### Utils\n\n* [memoize](#memoize)\n* [unmemoize](#unmemoize)\n* [log](#log)\n* [dir](#dir)\n* [noConflict](#noConflict)\n\n\n## Collections\n\n<a name="forEach" />\n### forEach(arr, iterator, callback)\n\nApplies an iterator function to each item in an array, in parallel.\nThe iterator is called with an item from the list and a callback for when it\nhas finished. If the iterator passes an error to this callback, the main\ncallback for the forEach function is immediately called with the error.\n\nNote, that since this function applies the iterator to each item in parallel\nthere is no guarantee that the iterator functions will complete in order.\n\n__Arguments__\n\n* arr - An array to iterate over.\n* iterator(item, callback) - A function to apply to each item in the array.\n  The iterator is passed a callback which must be called once it has completed.\n* callback(err) - A callback which is called after all the iterator functions\n  have finished, or an error has occurred.\n\n__Example__\n\n    // assuming openFiles is an array of file names and saveFile is a function\n    // to save the modified contents of that file:\n\n    async.forEach(openFiles, saveFile, function(err){\n        // if any of the saves produced an error, err would equal that error\n    });\n\n---------------------------------------\n\n<a name="forEachSeries" />\n### forEachSeries(arr, iterator, callback)\n\nThe same as forEach only the iterator is applied to each item in the array in\nseries. The next iterator is only called once the current one has completed\nprocessing. This means the iterator functions will complete in order.\n\n\n---------------------------------------\n\n<a name="forEachLimit" />\n### forEachLimit(arr, limit, iterator, callback)\n\nThe same as forEach only the iterator is applied to batches of items in the\narray, in series. The next batch of iterators is only called once the current\none has completed processing.\n\n__Arguments__\n\n* arr - An array to iterate over.\n* limit - How many items should be in each batch.\n* iterator(item, callback) - A function to apply to each item in the array.\n  The iterator is passed a callback which must be called once it has completed.\n* callback(err) - A callback which is called after all the iterator functions\n  have finished, or an error has occurred.\n\n__Example__\n\n    // Assume documents is an array of JSON objects and requestApi is a\n    // function that interacts with a rate-limited REST api.\n\n    async.forEachLimit(documents, 20, requestApi, function(err){\n        // if any of the saves produced an error, err would equal that error\n    });\n---------------------------------------\n\n<a name="map" />\n### map(arr, iterator, callback)\n\nProduces a new array of values by mapping each value in the given array through\nthe iterator function. The iterator is called with an item from the array and a\ncallback for when it has finished processing. The callback takes 2 arguments, \nan error and the transformed item from the array. If the iterator passes an\nerror to this callback, the main callback for the map function is immediately\ncalled with the error.\n\nNote, that since this function applies the iterator to each item in parallel\nthere is no guarantee that the iterator functions will complete in order, however\nthe results array will be in the same order as the original array.\n\n__Arguments__\n\n* arr - An array to iterate over.\n* iterator(item, callback) - A function to apply to each item in the array.\n  The iterator is passed a callback which must be called once it has completed\n  with an error (which can be null) and a transformed item.\n* callback(err, results) - A callback which is called after all the iterator\n  functions have finished, or an error has occurred. Results is an array of the\n  transformed items from the original array.\n\n__Example__\n\n    async.map([\'file1\',\'file2\',\'file3\'], fs.stat, function(err, results){\n        // results is now an array of stats for each file\n    });\n\n---------------------------------------\n\n<a name="mapSeries" />\n### mapSeries(arr, iterator, callback)\n\nThe same as map only the iterator is applied to each item in the array in\nseries. The next iterator is only called once the current one has completed\nprocessing. The results array will be in the same order as the original.\n\n\n---------------------------------------\n\n<a name="filter" />\n### filter(arr, iterator, callback)\n\n__Alias:__ select\n\nReturns a new array of all the values which pass an async truth test.\n_The callback for each iterator call only accepts a single argument of true or\nfalse, it does not accept an error argument first!_ This is in-line with the\nway node libraries work with truth tests like path.exists. This operation is\nperformed in parallel, but the results array will be in the same order as the\noriginal.\n\n__Arguments__\n\n* arr - An array to iterate over.\n* iterator(item, callback) - A truth test to apply to each item in the array.\n  The iterator is passed a callback which must be called once it has completed.\n* callback(results) - A callback which is called after all the iterator\n  functions have finished.\n\n__Example__\n\n    async.filter([\'file1\',\'file2\',\'file3\'], path.exists, function(results){\n        // results now equals an array of the existing files\n    });\n\n---------------------------------------\n\n<a name="filterSeries" />\n### filterSeries(arr, iterator, callback)\n\n__alias:__ selectSeries\n\nThe same as filter only the iterator is applied to each item in the array in\nseries. The next iterator is only called once the current one has completed\nprocessing. The results array will be in the same order as the original.\n\n---------------------------------------\n\n<a name="reject" />\n### reject(arr, iterator, callback)\n\nThe opposite of filter. Removes values that pass an async truth test.\n\n---------------------------------------\n\n<a name="rejectSeries" />\n### rejectSeries(arr, iterator, callback)\n\nThe same as filter, only the iterator is applied to each item in the array\nin series.\n\n\n---------------------------------------\n\n<a name="reduce" />\n### reduce(arr, memo, iterator, callback)\n\n__aliases:__ inject, foldl\n\nReduces a list of values into a single value using an async iterator to return\neach successive step. Memo is the initial state of the reduction. This\nfunction only operates in series. For performance reasons, it may make sense to\nsplit a call to this function into a parallel map, then use the normal\nArray.prototype.reduce on the results. This function is for situations where\neach step in the reduction needs to be async, if you can get the data before\nreducing it then its probably a good idea to do so.\n\n__Arguments__\n\n* arr - An array to iterate over.\n* memo - The initial state of the reduction.\n* iterator(memo, item, callback) - A function applied to each item in the\n  array to produce the next step in the reduction. The iterator is passed a\n  callback which accepts an optional error as its first argument, and the state\n  of the reduction as the second. If an error is passed to the callback, the\n  reduction is stopped and the main callback is immediately called with the\n  error.\n* callback(err, result) - A callback which is called after all the iterator\n  functions have finished. Result is the reduced value.\n\n__Example__\n\n    async.reduce([1,2,3], 0, function(memo, item, callback){\n        // pointless async:\n        process.nextTick(function(){\n            callback(null, memo + item)\n        });\n    }, function(err, result){\n        // result is now equal to the last value of memo, which is 6\n    });\n\n---------------------------------------\n\n<a name="reduceRight" />\n### reduceRight(arr, memo, iterator, callback)\n\n__Alias:__ foldr\n\nSame as reduce, only operates on the items in the array in reverse order.\n\n\n---------------------------------------\n\n<a name="detect" />\n### detect(arr, iterator, callback)\n\nReturns the first value in a list that passes an async truth test. The\niterator is applied in parallel, meaning the first iterator to return true will\nfire the detect callback with that result. That means the result might not be\nthe first item in the original array (in terms of order) that passes the test.\n\nIf order within the original array is important then look at detectSeries.\n\n__Arguments__\n\n* arr - An array to iterate over.\n* iterator(item, callback) - A truth test to apply to each item in the array.\n  The iterator is passed a callback which must be called once it has completed.\n* callback(result) - A callback which is called as soon as any iterator returns\n  true, or after all the iterator functions have finished. Result will be\n  the first item in the array that passes the truth test (iterator) or the\n  value undefined if none passed.\n\n__Example__\n\n    async.detect([\'file1\',\'file2\',\'file3\'], path.exists, function(result){\n        // result now equals the first file in the list that exists\n    });\n\n---------------------------------------\n\n<a name="detectSeries" />\n### detectSeries(arr, iterator, callback)\n\nThe same as detect, only the iterator is applied to each item in the array\nin series. This means the result is always the first in the original array (in\nterms of array order) that passes the truth test.\n\n\n---------------------------------------\n\n<a name="sortBy" />\n### sortBy(arr, iterator, callback)\n\nSorts a list by the results of running each value through an async iterator.\n\n__Arguments__\n\n* arr - An array to iterate over.\n* iterator(item, callback) - A function to apply to each item in the array.\n  The iterator is passed a callback which must be called once it has completed\n  with an error (which can be null) and a value to use as the sort criteria.\n* callback(err, results) - A callback which is called after all the iterator\n  functions have finished, or an error has occurred. Results is the items from\n  the original array sorted by the values returned by the iterator calls.\n\n__Example__\n\n    async.sortBy([\'file1\',\'file2\',\'file3\'], function(file, callback){\n        fs.stat(file, function(err, stats){\n            callback(err, stats.mtime);\n        });\n    }, function(err, results){\n        // results is now the original array of files sorted by\n        // modified date\n    });\n\n\n---------------------------------------\n\n<a name="some" />\n### some(arr, iterator, callback)\n\n__Alias:__ any\n\nReturns true if at least one element in the array satisfies an async test.\n_The callback for each iterator call only accepts a single argument of true or\nfalse, it does not accept an error argument first!_ This is in-line with the\nway node libraries work with truth tests like path.exists. Once any iterator\ncall returns true, the main callback is immediately called.\n\n__Arguments__\n\n* arr - An array to iterate over.\n* iterator(item, callback) - A truth test to apply to each item in the array.\n  The iterator is passed a callback which must be called once it has completed.\n* callback(result) - A callback which is called as soon as any iterator returns\n  true, or after all the iterator functions have finished. Result will be\n  either true or false depending on the values of the async tests.\n\n__Example__\n\n    async.some([\'file1\',\'file2\',\'file3\'], path.exists, function(result){\n        // if result is true then at least one of the files exists\n    });\n\n---------------------------------------\n\n<a name="every" />\n### every(arr, iterator, callback)\n\n__Alias:__ all\n\nReturns true if every element in the array satisfies an async test.\n_The callback for each iterator call only accepts a single argument of true or\nfalse, it does not accept an error argument first!_ This is in-line with the\nway node libraries work with truth tests like path.exists.\n\n__Arguments__\n\n* arr - An array to iterate over.\n* iterator(item, callback) - A truth test to apply to each item in the array.\n  The iterator is passed a callback which must be called once it has completed.\n* callback(result) - A callback which is called after all the iterator\n  functions have finished. Result will be either true or false depending on\n  the values of the async tests.\n\n__Example__\n\n    async.every([\'file1\',\'file2\',\'file3\'], path.exists, function(result){\n        // if result is true then every file exists\n    });\n\n---------------------------------------\n\n<a name="concat" />\n### concat(arr, iterator, callback)\n\nApplies an iterator to each item in a list, concatenating the results. Returns the\nconcatenated list. The iterators are called in parallel, and the results are\nconcatenated as they return. There is no guarantee that the results array will\nbe returned in the original order of the arguments passed to the iterator function.\n\n__Arguments__\n\n* arr - An array to iterate over\n* iterator(item, callback) - A function to apply to each item in the array.\n  The iterator is passed a callback which must be called once it has completed\n  with an error (which can be null) and an array of results.\n* callback(err, results) - A callback which is called after all the iterator\n  functions have finished, or an error has occurred. Results is an array containing\n  the concatenated results of the iterator function.\n\n__Example__\n\n    async.concat([\'dir1\',\'dir2\',\'dir3\'], fs.readdir, function(err, files){\n        // files is now a list of filenames that exist in the 3 directories\n    });\n\n---------------------------------------\n\n<a name="concatSeries" />\n### concatSeries(arr, iterator, callback)\n\nSame as async.concat, but executes in series instead of parallel.\n\n\n## Control Flow\n\n<a name="series" />\n### series(tasks, [callback])\n\nRun an array of functions in series, each one running once the previous\nfunction has completed. If any functions in the series pass an error to its\ncallback, no more functions are run and the callback for the series is\nimmediately called with the value of the error. Once the tasks have completed,\nthe results are passed to the final callback as an array.\n\nIt is also possible to use an object instead of an array. Each property will be\nrun as a function and the results will be passed to the final callback as an object\ninstead of an array. This can be a more readable way of handling results from\nasync.series.\n\n\n__Arguments__\n\n* tasks - An array or object containing functions to run, each function is passed\n  a callback it must call on completion.\n* callback(err, results) - An optional callback to run once all the functions\n  have completed. This function gets an array of all the arguments passed to\n  the callbacks used in the array.\n\n__Example__\n\n    async.series([\n        function(callback){\n            // do some stuff ...\n            callback(null, \'one\');\n        },\n        function(callback){\n            // do some more stuff ...\n            callback(null, \'two\');\n        },\n    ],\n    // optional callback\n    function(err, results){\n        // results is now equal to [\'one\', \'two\']\n    });\n\n\n    // an example using an object instead of an array\n    async.series({\n        one: function(callback){\n            setTimeout(function(){\n                callback(null, 1);\n            }, 200);\n        },\n        two: function(callback){\n            setTimeout(function(){\n                callback(null, 2);\n            }, 100);\n        },\n    },\n    function(err, results) {\n        // results is now equal to: {one: 1, two: 2}\n    });\n\n\n---------------------------------------\n\n<a name="parallel" />\n### parallel(tasks, [callback])\n\nRun an array of functions in parallel, without waiting until the previous\nfunction has completed. If any of the functions pass an error to its\ncallback, the main callback is immediately called with the value of the error.\nOnce the tasks have completed, the results are passed to the final callback as an\narray.\n\nIt is also possible to use an object instead of an array. Each property will be\nrun as a function and the results will be passed to the final callback as an object\ninstead of an array. This can be a more readable way of handling results from\nasync.parallel.\n\n\n__Arguments__\n\n* tasks - An array or object containing functions to run, each function is passed a\n  callback it must call on completion.\n* callback(err, results) - An optional callback to run once all the functions\n  have completed. This function gets an array of all the arguments passed to\n  the callbacks used in the array.\n\n__Example__\n\n    async.parallel([\n        function(callback){\n            setTimeout(function(){\n                callback(null, \'one\');\n            }, 200);\n        },\n        function(callback){\n            setTimeout(function(){\n                callback(null, \'two\');\n            }, 100);\n        },\n    ],\n    // optional callback\n    function(err, results){\n        // the results array will equal [\'one\',\'two\'] even though\n        // the second function had a shorter timeout.\n    });\n\n\n    // an example using an object instead of an array\n    async.parallel({\n        one: function(callback){\n            setTimeout(function(){\n                callback(null, 1);\n            }, 200);\n        },\n        two: function(callback){\n            setTimeout(function(){\n                callback(null, 2);\n            }, 100);\n        },\n    },\n    function(err, results) {\n        // results is now equals to: {one: 1, two: 2}\n    });\n\n\n---------------------------------------\n\n<a name="whilst" />\n### whilst(test, fn, callback)\n\nRepeatedly call fn, while test returns true. Calls the callback when stopped,\nor an error occurs.\n\n__Arguments__\n\n* test() - synchronous truth test to perform before each execution of fn.\n* fn(callback) - A function to call each time the test passes. The function is\n  passed a callback which must be called once it has completed with an optional\n  error as the first argument.\n* callback(err) - A callback which is called after the test fails and repeated\n  execution of fn has stopped.\n\n__Example__\n\n    var count = 0;\n\n    async.whilst(\n        function () { return count < 5; },\n        function (callback) {\n            count++;\n            setTimeout(callback, 1000);\n        },\n        function (err) {\n            // 5 seconds have passed\n        }\n    );\n\n\n---------------------------------------\n\n<a name="until" />\n### until(test, fn, callback)\n\nRepeatedly call fn, until test returns true. Calls the callback when stopped,\nor an error occurs.\n\nThe inverse of async.whilst.\n\n\n---------------------------------------\n\n<a name="waterfall" />\n### waterfall(tasks, [callback])\n\nRuns an array of functions in series, each passing their results to the next in\nthe array. However, if any of the functions pass an error to the callback, the\nnext function is not executed and the main callback is immediately called with\nthe error.\n\n__Arguments__\n\n* tasks - An array of functions to run, each function is passed a callback it\n  must call on completion.\n* callback(err, [results]) - An optional callback to run once all the functions\n  have completed. This will be passed the results of the last task\'s callback.\n\n\n\n__Example__\n\n    async.waterfall([\n        function(callback){\n            callback(null, \'one\', \'two\');\n        },\n        function(arg1, arg2, callback){\n            callback(null, \'three\');\n        },\n        function(arg1, callback){\n            // arg1 now equals \'three\'\n            callback(null, \'done\');\n        }\n    ], function (err, result) {\n       // result now equals \'done\'    \n    });\n\n\n---------------------------------------\n\n<a name="queue" />\n### queue(worker, concurrency)\n\nCreates a queue object with the specified concurrency. Tasks added to the\nqueue will be processed in parallel (up to the concurrency limit). If all\nworkers are in progress, the task is queued until one is available. Once\na worker has completed a task, the task\'s callback is called.\n\n__Arguments__\n\n* worker(task, callback) - An asynchronous function for processing a queued\n  task.\n* concurrency - An integer for determining how many worker functions should be\n  run in parallel.\n\n__Queue objects__\n\nThe queue object returned by this function has the following properties and\nmethods:\n\n* length() - a function returning the number of items waiting to be processed.\n* concurrency - an integer for determining how many worker functions should be\n  run in parallel. This property can be changed after a queue is created to\n  alter the concurrency on-the-fly.\n* push(task, [callback]) - add a new task to the queue, the callback is called\n  once the worker has finished processing the task.\n  instead of a single task, an array of tasks can be submitted. the respective callback is used for every task in the list.\n* saturated - a callback that is called when the queue length hits the concurrency and further tasks will be queued\n* empty - a callback that is called when the last item from the queue is given to a worker\n* drain - a callback that is called when the last item from the queue has returned from the worker\n\n__Example__\n\n    // create a queue object with concurrency 2\n\n    var q = async.queue(function (task, callback) {\n        console.log(\'hello \' + task.name);\n        callback();\n    }, 2);\n\n\n    // assign a callback\n    q.drain = function() {\n        console.log(\'all items have been processed\');\n    }\n\n    // add some items to the queue\n\n    q.push({name: \'foo\'}, function (err) {\n        console.log(\'finished processing foo\');\n    });\n    q.push({name: \'bar\'}, function (err) {\n        console.log(\'finished processing bar\');\n    });\n\n    // add some items to the queue (batch-wise)\n\n    q.push([{name: \'baz\'},{name: \'bay\'},{name: \'bax\'}], function (err) {\n        console.log(\'finished processing bar\');\n    });\n\n\n---------------------------------------\n\n<a name="auto" />\n### auto(tasks, [callback])\n\nDetermines the best order for running functions based on their requirements.\nEach function can optionally depend on other functions being completed first,\nand each function is run as soon as its requirements are satisfied. If any of\nthe functions pass an error to their callback, that function will not complete\n(so any other functions depending on it will not run) and the main callback\nwill be called immediately with the error. Functions also receive an object\ncontaining the results of functions which have completed so far.\n\n__Arguments__\n\n* tasks - An object literal containing named functions or an array of\n  requirements, with the function itself the last item in the array. The key\n  used for each function or array is used when specifying requirements. The\n  syntax is easier to understand by looking at the example.\n* callback(err, results) - An optional callback which is called when all the\n  tasks have been completed. The callback will receive an error as an argument\n  if any tasks pass an error to their callback. If all tasks complete\n  successfully, it will receive an object containing their results.\n\n__Example__\n\n    async.auto({\n        get_data: function(callback){\n            // async code to get some data\n        },\n        make_folder: function(callback){\n            // async code to create a directory to store a file in\n            // this is run at the same time as getting the data\n        },\n        write_file: [\'get_data\', \'make_folder\', function(callback){\n            // once there is some data and the directory exists,\n            // write the data to a file in the directory\n            callback(null, filename);\n        }],\n        email_link: [\'write_file\', function(callback, results){\n            // once the file is written let\'s email a link to it...\n            // results.write_file contains the filename returned by write_file.\n        }]\n    });\n\nThis is a fairly trivial example, but to do this using the basic parallel and\nseries functions would look like this:\n\n    async.parallel([\n        function(callback){\n            // async code to get some data\n        },\n        function(callback){\n            // async code to create a directory to store a file in\n            // this is run at the same time as getting the data\n        }\n    ],\n    function(results){\n        async.series([\n            function(callback){\n                // once there is some data and the directory exists,\n                // write the data to a file in the directory\n            },\n            email_link: function(callback){\n                // once the file is written let\'s email a link to it...\n            }\n        ]);\n    });\n\nFor a complicated series of async tasks using the auto function makes adding\nnew tasks much easier and makes the code more readable.\n\n\n---------------------------------------\n\n<a name="iterator" />\n### iterator(tasks)\n\nCreates an iterator function which calls the next function in the array,\nreturning a continuation to call the next one after that. Its also possible to\n\'peek\' the next iterator by doing iterator.next().\n\nThis function is used internally by the async module but can be useful when\nyou want to manually control the flow of functions in series.\n\n__Arguments__\n\n* tasks - An array of functions to run, each function is passed a callback it\n  must call on completion.\n\n__Example__\n\n    var iterator = async.iterator([\n        function(){ sys.p(\'one\'); },\n        function(){ sys.p(\'two\'); },\n        function(){ sys.p(\'three\'); }\n    ]);\n\n    node> var iterator2 = iterator();\n    \'one\'\n    node> var iterator3 = iterator2();\n    \'two\'\n    node> iterator3();\n    \'three\'\n    node> var nextfn = iterator2.next();\n    node> nextfn();\n    \'three\'\n\n\n---------------------------------------\n\n<a name="apply" />\n### apply(function, arguments..)\n\nCreates a continuation function with some arguments already applied, a useful\nshorthand when combined with other control flow functions. Any arguments\npassed to the returned function are added to the arguments originally passed\nto apply.\n\n__Arguments__\n\n* function - The function you want to eventually apply all arguments to.\n* arguments... - Any number of arguments to automatically apply when the\n  continuation is called.\n\n__Example__\n\n    // using apply\n\n    async.parallel([\n        async.apply(fs.writeFile, \'testfile1\', \'test1\'),\n        async.apply(fs.writeFile, \'testfile2\', \'test2\'),\n    ]);\n\n\n    // the same process without using apply\n\n    async.parallel([\n        function(callback){\n            fs.writeFile(\'testfile1\', \'test1\', callback);\n        },\n        function(callback){\n            fs.writeFile(\'testfile2\', \'test2\', callback);\n        },\n    ]);\n\nIt\'s possible to pass any number of additional arguments when calling the\ncontinuation:\n\n    node> var fn = async.apply(sys.puts, \'one\');\n    node> fn(\'two\', \'three\');\n    one\n    two\n    three\n\n---------------------------------------\n\n<a name="nextTick" />\n### nextTick(callback)\n\nCalls the callback on a later loop around the event loop. In node.js this just\ncalls process.nextTick, in the browser it falls back to setTimeout(callback, 0),\nwhich means other higher priority events may precede the execution of the callback.\n\nThis is used internally for browser-compatibility purposes.\n\n__Arguments__\n\n* callback - The function to call on a later loop around the event loop.\n\n__Example__\n\n    var call_order = [];\n    async.nextTick(function(){\n        call_order.push(\'two\');\n        // call_order now equals [\'one\',\'two]\n    });\n    call_order.push(\'one\')\n\n\n## Utils\n\n<a name="memoize" />\n### memoize(fn, [hasher])\n\nCaches the results of an async function. When creating a hash to store function\nresults against, the callback is omitted from the hash and an optional hash\nfunction can be used.\n\n__Arguments__\n\n* fn - the function you to proxy and cache results from.\n* hasher - an optional function for generating a custom hash for storing\n  results, it has all the arguments applied to it apart from the callback, and\n  must be synchronous.\n\n__Example__\n\n    var slow_fn = function (name, callback) {\n        // do something\n        callback(null, result);\n    };\n    var fn = async.memoize(slow_fn);\n\n    // fn can now be used as if it were slow_fn\n    fn(\'some name\', function () {\n        // callback\n    });\n\n<a name="unmemoize" />\n### unmemoize(fn)\n\nUndoes a memoized function, reverting it to the original, unmemoized\nform. Comes handy in tests.\n\n__Arguments__\n\n* fn - the memoized function\n\n<a name="log" />\n### log(function, arguments)\n\nLogs the result of an async function to the console. Only works in node.js or\nin browsers that support console.log and console.error (such as FF and Chrome).\nIf multiple arguments are returned from the async function, console.log is\ncalled on each argument in order.\n\n__Arguments__\n\n* function - The function you want to eventually apply all arguments to.\n* arguments... - Any number of arguments to apply to the function.\n\n__Example__\n\n    var hello = function(name, callback){\n        setTimeout(function(){\n            callback(null, \'hello \' + name);\n        }, 1000);\n    };\n\n    node> async.log(hello, \'world\');\n    \'hello world\'\n\n\n---------------------------------------\n\n<a name="dir" />\n### dir(function, arguments)\n\nLogs the result of an async function to the console using console.dir to\ndisplay the properties of the resulting object. Only works in node.js or\nin browsers that support console.dir and console.error (such as FF and Chrome).\nIf multiple arguments are returned from the async function, console.dir is\ncalled on each argument in order.\n\n__Arguments__\n\n* function - The function you want to eventually apply all arguments to.\n* arguments... - Any number of arguments to apply to the function.\n\n__Example__\n\n    var hello = function(name, callback){\n        setTimeout(function(){\n            callback(null, {hello: name});\n        }, 1000);\n    };\n\n    node> async.dir(hello, \'world\');\n    {hello: \'world\'}\n\n\n---------------------------------------\n\n<a name="noConflict" />\n### noConflict()\n\nChanges the value of async back to its original value, returning a reference to the\nasync object.\n',
+521 silly resolved     readmeFilename: 'README.md',
+521 silly resolved     homepage: 'https://github.com/caolan/async',
+521 silly resolved     _id: 'async@0.1.22',
+521 silly resolved     _from: 'async@~0.1.22' },
+521 silly resolved   { name: 'js2xmlparser',
+521 silly resolved     description: 'Parses JavaScript objects into XML',
+521 silly resolved     keywords:
+521 silly resolved      [ 'convert',
+521 silly resolved        'converter',
+521 silly resolved        'js',
+521 silly resolved        'json',
+521 silly resolved        'object',
+521 silly resolved        'objects',
+521 silly resolved        'parse',
+521 silly resolved        'parser',
+521 silly resolved        'xml' ],
+521 silly resolved     homepage: 'http://www.kourlas.net',
+521 silly resolved     version: '0.1.3',
+521 silly resolved     author: { name: 'Michael Kourlas', email: 'michaelkourlas@gmail.com' },
+521 silly resolved     main: './lib/js2xmlparser.js',
+521 silly resolved     repository:
+521 silly resolved      { type: 'git',
+521 silly resolved        url: 'git://github.com/michaelkourlas/node-js2xmlparser.git' },
+521 silly resolved     license: 'MIT',
+521 silly resolved     readme: '# node-js2xmlparser #\r\n\r\n## Overview ##\r\n\r\njs2xmlparser is a Node.js module that parses JavaScript objects into XML.\r\n\r\n## Features ##\r\n\r\nSince XML is a data-interchange format, js2xmlparser is designed primarily for JSON-type objects, arrays and primitive\r\ndata types, like many of the other JavaScript to XML parsers currently available for Node.js.\r\n\r\nHowever, js2xmlparser is capable of parsing any object, including native JavaScript objects such as Date and RegExp, by\r\ntaking advantage of each object\'s toString function. Functions are a special case where the return value of the function\r\nitself is used instead of the toString function, if available.\r\n\r\njs2xmlparser also supports a number of constructs unique to XML:\r\n\r\n* attributes (through a unique attribute property in objects)\r\n* mixed content (through a unique value property in objects)\r\n* multiple elements with the same name (through arrays)\r\n\r\njs2xmlparser can also pretty-print the XML it outputs with the option of customizing the indent string.\r\n\r\n## Installation ##\r\n\r\nThe easiest way to install js2xmlparser is to use npm: `npm install js2xmlparser`.\r\n\r\nAlternatively, you may download the source from GitHub and copy it to a folder named "js2xmlparser" within your\r\n"node_modules" directory.\r\n\r\n## Usage ##\r\n\r\nThe js2xmlparser module contains one function which takes the following arguments:\r\n\r\n* `root` - string representing the XML root element\'s name\r\n* `data` - object or JSON string to be converted to XML\r\n* `options` - options object (optional)\r\n    * `callFunctions` - if true, calls member functions (with no arguments) and includes their return value in the XML;\r\n      if false, returns the text of the function (optional, default is true)\r\n    * `wrapArray` - array wrapping options object (optional)\r\n        * `enabled` - if true, all elements in an array will be added to a single XML element as child elements; if\r\n          false, array elements will be placed in their own XML elements (optional, default is false)\r\n        * `elementName` - name of XML child elements when array wrapping is enabled (optional, default is "item")\r\n    * `useCDATA` - if true, all strings are enclosed in CDATA tags instead of escaping illegal XML characters (optional,\r\n      default is false)\r\n    * `convertMap` - object mapping certain types of objects (as given by `Object.prototype.toString.call(<object>)`) to\r\n      functions to convert those types of objects to a particular string representation; "*" can be used as a wildcard\r\n      for all types of objects (optional, default is an empty object)\r\n    * `declaration` - XML declaration options object (optional)\r\n        * `include` - if true, includes an XML declaration (optional, default is true)\r\n        * `encoding` - string representing the XML encoding for the corresponding attribute in the declaration; a value\r\n          of null represents no encoding attribute (optional, default is "UTF-8")\r\n    * `attributeString` - string representing attribute property (optional, default is "@")\r\n    * `valueString` - string representing the value property (optional, default is "#")\r\n    * `prettyPrinting` - pretty-printing options object (optional)\r\n        * `enabled` - if true, pretty-printing is enabled (optional, default is true)\r\n        * `indentString` - string representing the indent (optional, default is "\\t")\r\n\r\n## Example ##\r\n\r\nThe following example illustrates the basic usage of js2xmlparser:\r\n\r\n    var js2xmlparser = require("js2xmlparser");\r\n\r\n    var data = {\r\n        "firstName": "John",\r\n        "lastName": "Smith"\r\n    };\r\n\r\n    console.log(js2xmlparser("person", data));\r\n\r\n    > <?xml version="1.0" encoding="UTF-8"?>\r\n    > <person>\r\n    >     <firstName>John</firstName>\r\n    >     <lastName>Smith</lastName>\r\n    > </person>\r\n\r\nHere\'s a more complex example that builds on the first:\r\n\r\n    var js2xmlparser = require("js2xmlparser");\r\n\r\n    var data = {\r\n        "firstName": "John",\r\n        "lastName": "Smith",\r\n        "dateOfBirth": new Date(1964, 07, 26),\r\n        "address": {\r\n            "@": {\r\n                "type": "home"\r\n            },\r\n            "streetAddress": "3212 22nd St",\r\n            "city": "Chicago",\r\n            "state": "Illinois",\r\n            "zip": 10000\r\n        },\r\n        "phone": [\r\n            {\r\n                "@": {\r\n                    "type": "home"\r\n                },\r\n                "#": "123-555-4567"\r\n            },\r\n            {\r\n                "@": {\r\n                    "type": "cell"\r\n                },\r\n                "#": "456-555-7890"\r\n            }\r\n        ],\r\n        "email": function() {return "john@smith.com";},\r\n        "notes": "John\'s profile is not complete."\r\n    };\r\n\r\n    console.log(js2xmlparser("person", data));\r\n\r\n    > <?xml version="1.0" encoding="UTF-8"?>\r\n    > <person>\r\n    >     <firstName>John</firstName>\r\n    >     <lastName>Smith</lastName>\r\n    >     <dateOfBirth>Wed Aug 26 1964 00:00:00 GMT-0400 (Eastern Daylight Time)</dateOfBirth>\r\n    >     <address type="home">\r\n    >         <streetAddress>3212 22nd St</streetAddress>\r\n    >         <city>Chicago</city>\r\n    >         <state>Illinois</state>\r\n    >         <zip>10000</zip>\r\n    >     </address>\r\n    >     <phone type="home">123-555-4567</phone>\r\n    >     <phone type="cell">456-555-7890</phone>\r\n    >     <email>john@smith.com</email>\r\n    >     <notes>John&apos;s profile is not complete.</notes>\r\n    > </person>\r\n\r\nHere\'s an example that makes use of array wrapping:\r\n\r\n    var js2xmlparser = require("js2xmlparser");\r\n\r\n    var data  = {\r\n        "phone": [\r\n            {\r\n                "@": {\r\n                    "type": "home"\r\n                },\r\n                "#": "123-555-4567"\r\n            },\r\n            {\r\n                "@": {\r\n                    "type": "cell"\r\n                },\r\n                "#": "456-555-7890"\r\n            }\r\n        ]\r\n    };\r\n\r\n    var options = {\r\n        wrapArray: {\r\n            enabled: true\r\n        }\r\n    };\r\n\r\n    console.log(js2xmlparser("person", data, options));\r\n\r\n    > <?xml version="1.0" encoding="UTF-8"?>\r\n    > <person>\r\n    >     <phone>\r\n    > \t      <item type="home">123-555-4567</item>\r\n    > \t      <item type="cell">456-555-7890</item>\r\n    >     </phone>\r\n    > </person>\r\n\r\nHere\'s an example that wraps strings in CDATA tags instead of escaping invalid characters.\r\n\r\n    var js2xmlparser = require("js2xmlparser");\r\n\r\n    var data = {\r\n        "notes": "John\'s profile is not complete."\r\n    };\r\n\r\n    var options = {\r\n        useCDATA: true\r\n    };\r\n\r\n    console.log(js2xmlparser("person", data, options));\r\n\r\n    > <?xml version="1.0" encoding="UTF-8"?>\r\n    > <person>\r\n    >     <notes><![CDATA[John\'s profile is not complete.]]></notes>\r\n    > </person>\r\n\r\nHere\'s an example that uses the convert map feature:\r\n\r\n    var js2xmlparser = require("js2xmlparser");\r\n\r\n    var data = {\r\n        "dateOfBirth": new Date(1964, 7, 26)\r\n    };\r\n\r\n    var options = {\r\n        convertMap: {\r\n            "[object Date]": function(date) {\r\n                return date.toISOString();\r\n            }\r\n        }\r\n    };\r\n\r\n    console.log(js2xmlparser("person", data, options));\r\n\r\n    > <?xml version="1.0" encoding="UTF-8"?>\r\n    > <person>\r\n    >     <dateOfBirth>1964-08-26T04:00:00.000Z</dateOfBirth>\r\n    > </person>\r\n',
+521 silly resolved     readmeFilename: 'README.md',
+521 silly resolved     bugs: { url: 'https://github.com/michaelkourlas/node-js2xmlparser/issues' },
+521 silly resolved     _id: 'js2xmlparser@0.1.3',
+521 silly resolved     _from: 'js2xmlparser@~0.1.0' },
+521 silly resolved   { version: '0.7.1',
+521 silly resolved     name: 'catharsis',
+521 silly resolved     description: 'A JavaScript parser for Google Closure Compiler and JSDoc type expressions.',
+521 silly resolved     author: { name: 'Jeff Williams', email: 'jeffrey.l.williams@gmail.com' },
+521 silly resolved     repository: { type: 'git', url: 'https://github.com/hegemonic/catharsis' },
+521 silly resolved     bugs: { url: 'https://github.com/hegemonic/catharsis/issues' },
+521 silly resolved     main: 'catharsis.js',
+521 silly resolved     devDependencies:
+521 silly resolved      { mocha: '1.13.0',
+521 silly resolved        pegjs: 'git+ssh://git@github.com:dmajda/pegjs.git#76cc5d55',
+521 silly resolved        should: '1.3.0',
+521 silly resolved        'uglify-js': '2.4.0',
+521 silly resolved        underscore: '1.5.2' },
+521 silly resolved     engines: { node: '>= 0.6' },
+521 silly resolved     scripts:
+521 silly resolved      { build: 'pegjs ./lib/parser.pegjs',
+521 silly resolved        prepublish: 'pegjs ./lib/parser.pegjs; ./node_modules/.bin/uglifyjs ./lib/parser.js -o ./lib/parser.js',
+521 silly resolved        test: 'mocha' },
+521 silly resolved     licenses: [ [Object] ],
+521 silly resolved     readme: '# Catharsis #\n\nA JavaScript parser for\n[Google Closure Compiler](https://developers.google.com/closure/compiler/docs/js-for-compiler#types)\nand [JSDoc](https://github.com/jsdoc3/jsdoc) type expressions.\n\nCatharsis is designed to be:\n\n+ **Accurate**. Catharsis is based on a [PEG.js](http://pegjs.majda.cz/) grammar that\'s designed to\nhandle any valid type expression. It uses a [Mocha](http://visionmedia.github.com/mocha/) test suite\nto verify the parser\'s accuracy.\n+ **Fast**. Parse results are cached, so the parser is invoked only when necessary.\n+ **Flexible**. Catharsis can convert parse results back into type expressions. In addition, it can\nparse [JSDoc](https://github.com/jsdoc3/jsdoc)-style type expressions.\n\n\n## Example ##\n\n```js\nvar catharsis = require(\'catharsis\');\n\n// Google Closure Compiler parsing\nvar type = \'!Object\';\nvar parsedType;\ntry {\n    parsedType = catharsis.parse(type); // {"type":"NameExpression,"name":"Object","nullable":false}\n} catch(e) {\n    console.error(\'unable to parse %s: %s\', type, e);\n}\n\n// JSDoc-style type expressions enabled\nvar jsdocType = \'string[]\';  // Closure Compiler expects Array.<string>\nvar parsedJsdocType;\ntry {\n    parsedJsdocType = catharsis.parse(jsdocType, {jsdoc: true});\n} catch (e) {\n    console.error(\'unable to parse %s: %s\', jsdocType, e);\n}\n\ncatharsis.stringify(parsedType);                              // !Object\ncatharsis.stringify(parsedJsdocType);                         // string[]\ncatharsis.stringify(parsedJsdocType, {restringify: true});    // Array.<string>\n```\n\nSee the `test/specs/` directory for more examples of Catharsis\' parse results.\n\n\n## Methods ##\n\n### parse(typeExpression, options) ###\nParse `typeExpression`, and return the parse results. Throws an error if the type expression cannot\nbe parsed.\n\nWhen called without options, Catharsis attempts to parse type expressions in the same way as\nClosure Compiler. When the `jsdoc` option is enabled, Catharsis can also parse several kinds of\ntype expressions that are permitted in [JSDoc](https://github.com/jsdoc3/jsdoc):\n\n+ The string `function` is treated as a function type with no parameters.\n+ In a function type with repeatable parameters, the names of repeatable parameters are not required\nto be enclosed in square brackets (for example, `function(...foo)` is allowed).\n+ The period may be omitted from type applications. For example, `Array.<string>` and\n`Array<string>` will be parsed in the same way.\n+ You may append `[]` to a name expression (for example, `string[]`) to interpret it as a type\napplication with the expression `Array` (for example, `Array.<string>`).\n+ Name expressions may contain the characters `#`, `~`, `:`, and `/`.\n+ Name expressions may contain a suffix that is similar to a function signature (for example,\n`MyClass(foo, bar)`).\n+ Name expressions may contain a reserved word.\n+ Record types may use types other than name expressions for keys.\n\n#### Parameters ####\n+ `type`: A string containing a Closure Compiler type expression.\n+ `options`: Options for parsing the type expression.\n    + `options.jsdoc`: Specifies whether to enable parsing of JSDoc-style type expressions. Defaults\n    to `false`.\n    + `options.useCache`: Specifies whether to use the cache of parsed types. Defaults to `true`.\n\n#### Returns ####\nAn object containing the parse results. See the `test/specs/` directory for examples of the parse\nresults for different type expressions.\n\nThe object also includes two non-enumerable properties:\n\n+ `jsdoc`: A boolean indicating whether the type expression was parsed with JSDoc support enabled.\n+ `typeExpression`: A string containing the type expression that was parsed.\n\n### stringify(parsedType, options) ###\nStringify `parsedType`, and return the type expression. If validation is enabled, throws an error if\nthe stringified type expression cannot be parsed.\n\n#### Parameters ####\n+ `parsedType`: An object containing a parsed Closure Compiler type expression.\n+ `options`: Options for stringifying the parse results.\n    + `options.cssClass`: A CSS class to add to HTML links. Used only if `options.links` is\n    provided. By default, no CSS class is added.\n    + `options.htmlSafe`: Specifies whether to return an HTML-safe string that replaces left angle\n    brackets (`<`) with the corresponding entity (`&lt;`). **Note**: Characters in name expressions\n    are not escaped.\n    + `options.links`: An object whose keys are name expressions and whose values are URIs. If a\n    name expression matches a key in `options.links`, the name expression will be wrapped in an\n    HTML `<a>` tag that links to the URI. If `options.cssClass` is specified, the `<a>` tag will\n    include a `class` attribute. **Note**: When using this option, parsed types are always\n    restringified, and the resulting string is not cached.\n    + `options.restringify`: Forces Catharsis to restringify the parsed type. If this option is not\n    specified, and the parsed type object includes a `typeExpression` property, Catharsis will\n    return the `typeExpression` property without modification when possible. Defaults to `false`.\n    + `options.useCache`: Specifies whether to use the cache of stringified parse results. Defaults\n    to `true`.\n    + `options.validate`: Specifies whether to validate the stringified parse results by attempting\n    to parse them as a type expression. If the stringified results are not parsable by default, you\n    must also provide the appropriate options to pass to the `parse()` method. Defaults to `false`.\n\n#### Returns ####\nA string containing the type expression.\n\n\n## Installation ##\n\nWith [npm](http://npmjs.org):\n\n    npm install catharsis\n\nOr without:\n\n    git clone git://github.com/hegemonic/catharsis.git\n\n\n## Roadmap and known issues ##\n\nTake a look at the [issue tracker](https://github.com/hegemonic/catharsis/issues) to see what\'s in\nstore for Catharsis.\n\nBug reports, feature requests, and pull requests are always welcome! If you\'re working on a large\npull request, please contact me in advance so I can help things go smoothly.\n\n**Note**: The parse tree\'s format should not be considered final until Catharsis reaches version\n1.0. I\'ll do my best to provide release notes for any changes.\n\n\n## Changelog ##\n\n+ 0.7.1 (April 2014): In record types, property names that begin with a keyword (for example,\n`undefinedHTML`) are now parsed correctly when JSDoc-style type expressions are enabled.\n+ 0.7.0 (October 2013):\n    + Repeatable type expressions other than name expressions (for example, `...function()`) are now\n    parsed and stringified correctly.\n    + Type expressions that are both repeatable and either nullable or non-nullable (for example,\n    `...!number`) are now parsed and stringified correctly.\n    + Name expressions are now parsed correctly when they match a property name in an object\n    instance (for example, `constructor`).\n+ 0.6.0 (September 2013): Added support for the type expression `function[]` when JSDoc-style type\nexpressions are enabled.\n+ 0.5.6 (April 2013):\n    + For consistency with Google Closure Library, parentheses are no longer required around type\n    unions. (In previous versions, the parentheses could be omitted when JSDoc support was enabled.)\n    + For consistency with Google Closure Library, you can now use postfix notation for the `?`\n    (nullable) and `!` (non-nullable) modifiers. For example, `?string` and `string?` are now\n    treated as equivalent.\n    + String literals and numeric literals are now allowed as property names within name\n    expressions. For example, the name expression `Foo."bar"` is now parsed correctly.\n+ 0.5.5 (April 2013): Corrected a parsing issue with name expressions that end with a value enclosed\nin parentheses.\n+ 0.5.4 (April 2013):\n    + Repeatable literals (for example, `...*`) are now parsed correctly.\n    + When JSDoc-style type expressions are enabled, a name expression can now contain a value\n    enclosed in parentheses at the end of the name expression (for example, `MyClass(2)`).\n+ 0.5.3 (March 2013): The `parse()` method now correctly parses name expressions that contain\nhyphens.\n+ 0.5.2 (March 2013): The `parse()` method now correctly parses function types when JSDoc-style type\nexpressions are enabled.\n+ 0.5.1 (March 2013): Newlines and extra spaces are now removed from type expressions before they\nare parsed.\n+ 0.5.0 (March 2013):\n    + The `parse()` method\'s `lenient` option has been renamed to `jsdoc`. **Note**: This change is\n    not backwards-compatible with previous versions.\n    + The `stringify()` method now accepts `cssClass` and `links` options, which you can use to\n    add HTML links to a type expression.\n+ 0.4.3 (March 2013):\n    + The `stringify()` method no longer caches HTML-safe type expressions as if they were normal\n    type expressions.\n    + The `stringify()` method\'s options parameter may now include an `options.restringify`\n    property, and the behavior of the `options.useCache` property has changed.\n+ 0.4.2 (March 2013):\n    + When lenient parsing is enabled, name expressions can now contain the characters `:` and `/`.\n    + When lenient parsing is enabled, a name expression followed by `[]` (for example, `string[]`)\n    will be interpreted as a type application with the expression `Array` (for example,\n    `Array.<string>`).\n+ 0.4.1 (March 2013):\n    + The `parse()` and `stringify()` methods now honor all of the specified options.\n    + When lenient parsing is enabled, name expressions can now contain a reserved word.\n+ 0.4.0 (March 2013):\n    + Catharsis now supports a lenient parsing option that can parse several kinds of malformed type\n    expressions. See the documentation for details.\n    + The objects containing parse results are now frozen.\n    + The objects containing parse results now have two non-enumerable properties:\n        + `lenient`: A boolean indicating whether the type expression was parsed in lenient mode.\n        + `typeExpression`: A string containing the original type expression.\n    + The `stringify()` method now honors the `useCache` option. If a parsed type includes a\n    `typeExpression` property, and `useCache` is not set to `false`, the stringified type will be\n    identical to the original type expression.\n+ 0.3.1 (March 2013): Type expressions that begin with a reserved word, such as `integer`, are now\nparsed correctly.\n+ 0.3.0 (March 2013):\n    + The `parse()` and `stringify()` methods are now synchronous, and the `parseSync()` and\n    `stringifySync()` methods have been removed. **Note**: This change is not backwards-compatible\n    with previous versions.\n    + The parse results now use a significantly different format from previous versions. The new\n    format is more expressive and is similar, but not identical, to the format used by the\n    [doctrine](https://github.com/Constellation/doctrine) parser. **Note**: This change is not\n    backwards-compatible with previous versions.\n    + Name expressions that contain a reserved word now include a `reservedWord: true` property.\n    + Union types that are optional or nullable, or that can be passed a variable number of times,\n    are now parsed and stringified correctly.\n    + Optional function types and record types are now parsed and stringified correctly.\n    + Function types now longer include `new` or `this` properties unless the properties are defined\n    in the type expression. In addition, the `new` and `this` properties can now use any type\n    expression.\n    + In record types, the key for a field type can now use any type expression.\n    + Standalone single-character literals, such as ALL (`*`), are now parsed and stringified\n    correctly.\n    + `null` and `undefined` literals with additional properties, such as `repeatable`, are now\n    stringified correctly.\n+ 0.2.0 (November 2012):\n    + Added `stringify()` and `stringifySync()` methods, which convert a parsed type to a type\n    expression.\n    + Simplified the parse results for function signatures. **Note**: This change is not\n    backwards-compatible with previous versions.\n    + Corrected minor errors in README.md.\n+ 0.1.1 (November 2012): Added `opts` argument to `parse()` and `parseSync()` methods. **Note**: The\nchange to `parse()` is not backwards-compatible with previous versions.\n+ 0.1.0 (November 2012): Initial release.\n\n## License ##\n\n[MIT license](https://github.com/hegemonic/catharsis/blob/master/LICENSE).\n',
+521 silly resolved     readmeFilename: 'README.md',
+521 silly resolved     homepage: 'https://github.com/hegemonic/catharsis',
+521 silly resolved     _id: 'catharsis@0.7.1',
+521 silly resolved     _from: 'catharsis@~0.7.0' },
+521 silly resolved   { name: 'marked',
+521 silly resolved     description: 'A markdown parser built for speed',
+521 silly resolved     author: { name: 'Christopher Jeffrey' },
+521 silly resolved     version: '0.3.2',
+521 silly resolved     main: './lib/marked.js',
+521 silly resolved     bin: { marked: './bin/marked' },
+521 silly resolved     man: [ './man/marked.1' ],
+521 silly resolved     preferGlobal: true,
+521 silly resolved     repository: { type: 'git', url: 'git://github.com/chjj/marked.git' },
+521 silly resolved     homepage: 'https://github.com/chjj/marked',
+521 silly resolved     bugs: { url: 'http://github.com/chjj/marked/issues' },
+521 silly resolved     license: 'MIT',
+521 silly resolved     keywords: [ 'markdown', 'markup', 'html' ],
+521 silly resolved     tags: [ 'markdown', 'markup', 'html' ],
+521 silly resolved     devDependencies: { markdown: '*', showdown: '*', robotskirt: '*' },
+521 silly resolved     scripts: { test: 'node test', bench: 'node test --bench' },
+521 silly resolved     readme: '# marked\n\n> A full-featured markdown parser and compiler, written in JavaScript. Built\n> for speed.\n\n[![NPM version](https://badge.fury.io/js/marked.png)][badge]\n\n## Install\n\n``` bash\nnpm install marked --save\n```\n\n## Usage\n\nMinimal usage:\n\n```js\nvar marked = require(\'marked\');\nconsole.log(marked(\'I am using __markdown__.\'));\n// Outputs: <p>I am using <strong>markdown</strong>.</p>\n```\n\nExample setting options with default values:\n\n```js\nvar marked = require(\'marked\');\nmarked.setOptions({\n  renderer: new marked.Renderer(),\n  gfm: true,\n  tables: true,\n  breaks: false,\n  pedantic: false,\n  sanitize: true,\n  smartLists: true,\n  smartypants: false\n});\n\nconsole.log(marked(\'I am using __markdown__.\'));\n```\n\n## marked(markdownString [,options] [,callback])\n\n### markdownString\n\nType: `string`\n\nString of markdown source to be compiled.\n\n### options\n\nType: `object`\n\nHash of options. Can also be set using the `marked.setOptions` method as seen\nabove.\n\n### callback\n\nType: `function`\n\nFunction called when the `markdownString` has been fully parsed when using\nasync highlighting. If the `options` argument is omitted, this can be used as\nthe second argument.\n\n## Options\n\n### highlight\n\nType: `function`\n\nA function to highlight code blocks. The first example below uses async highlighting with\n[node-pygmentize-bundled][pygmentize], and the second is a synchronous example using\n[highlight.js][highlight]:\n\n```js\nvar marked = require(\'marked\');\n\nvar markdownString = \'```js\\n console.log("hello"); \\n```\';\n\n// Async highlighting with pygmentize-bundled\nmarked.setOptions({\n  highlight: function (code, lang, callback) {\n    require(\'pygmentize-bundled\')({ lang: lang, format: \'html\' }, code, function (err, result) {\n      callback(err, result.toString());\n    });\n  }\n});\n\n// Using async version of marked\nmarked(markdownString, function (err, content) {\n  if (err) throw err;\n  console.log(content);\n});\n\n// Synchronous highlighting with highlight.js\nmarked.setOptions({\n  highlight: function (code) {\n    return require(\'highlight.js\').highlightAuto(code).value;\n  }\n});\n\nconsole.log(marked(markdownString));\n```\n\n#### highlight arguments\n\n`code`\n\nType: `string`\n\nThe section of code to pass to the highlighter.\n\n`lang`\n\nType: `string`\n\nThe programming language specified in the code block.\n\n`callback`\n\nType: `function`\n\nThe callback function to call when using an async highlighter.\n\n### renderer\n\nType: `object`\nDefault: `new Renderer()`\n\nAn object containing functions to render tokens to HTML.\n\n#### Overriding renderer methods\n\nThe renderer option allows you to render tokens in a custom manor. Here is an\nexample of overriding the default heading token rendering by adding an embedded anchor tag like on GitHub:\n\n```javascript\nvar marked = require(\'marked\');\nvar renderer = new marked.Renderer();\n\nrenderer.heading = function (text, level) {\n  var escapedText = text.toLowerCase().replace(/[^\\w]+/g, \'-\');\n\n  return \'<h\' + level + \'><a name="\' +\n                escapedText +\n                 \'" class="anchor" href="#\' +\n                 escapedText +\n                 \'"><span class="header-link"></span></a>\' +\n                  text + \'</h\' + level + \'>\';\n},\n\nconsole.log(marked(\'# heading+\', { renderer: renderer }));\n```\nThis code will output the following HTML:\n```html\n<h1>\n  <a name="heading-" class="anchor" href="#heading-">\n    <span class="header-link"></span>\n  </a>\n  heading+\n</h1>\n```\n\n#### Block level renderer methods\n\n- code(*string* code, *string* language)\n- blockquote(*string* quote)\n- html(*string* html)\n- heading(*string* text, *number*  level)\n- hr()\n- list(*string* body, *boolean* ordered)\n- listitem(*string*  text)\n- paragraph(*string* text)\n- table(*string* header, *string* body)\n- tablerow(*string* content)\n- tablecell(*string* content, *object* flags)\n\n`flags` has the following properties:\n\n```js\n{\n    header: true || false,\n    align: \'center\' || \'left\' || \'right\'\n}\n```\n\n#### Inline level renderer methods\n\n- strong(*string* text)\n- em(*string* text)\n- codespan(*string* code)\n- br()\n- del(*string* text)\n- link(*string* href, *string* title, *string* text)\n- image(*string* href, *string* title, *string* text)\n\n### gfm\n\nType: `boolean`\nDefault: `true`\n\nEnable [GitHub flavored markdown][gfm].\n\n### tables\n\nType: `boolean`\nDefault: `true`\n\nEnable GFM [tables][tables].\nThis option requires the `gfm` option to be true.\n\n### breaks\n\nType: `boolean`\nDefault: `false`\n\nEnable GFM [line breaks][breaks].\nThis option requires the `gfm` option to be true.\n\n### pedantic\n\nType: `boolean`\nDefault: `false`\n\nConform to obscure parts of `markdown.pl` as much as possible. Don\'t fix any of\nthe original markdown bugs or poor behavior.\n\n### sanitize\n\nType: `boolean`\nDefault: `false`\n\nSanitize the output. Ignore any HTML that has been input.\n\n### smartLists\n\nType: `boolean`\nDefault: `true`\n\nUse smarter list behavior than the original markdown. May eventually be\ndefault with the old behavior moved into `pedantic`.\n\n### smartypants\n\nType: `boolean`\nDefault: `false`\n\nUse "smart" typograhic punctuation for things like quotes and dashes.\n\n## Access to lexer and parser\n\nYou also have direct access to the lexer and parser if you so desire.\n\n``` js\nvar tokens = marked.lexer(text, options);\nconsole.log(marked.parser(tokens));\n```\n\n``` js\nvar lexer = new marked.Lexer(options);\nvar tokens = lexer.lex(text);\nconsole.log(tokens);\nconsole.log(lexer.rules);\n```\n\n## CLI\n\n``` bash\n$ marked -o hello.html\nhello world\n^D\n$ cat hello.html\n<p>hello world</p>\n```\n\n## Philosophy behind marked\n\nThe point of marked was to create a markdown compiler where it was possible to\nfrequently parse huge chunks of markdown without having to worry about\ncaching the compiled output somehow...or blocking for an unnecesarily long time.\n\nmarked is very concise and still implements all markdown features. It is also\nnow fully compatible with the client-side.\n\nmarked more or less passes the official markdown test suite in its\nentirety. This is important because a surprising number of markdown compilers\ncannot pass more than a few tests. It was very difficult to get marked as\ncompliant as it is. It could have cut corners in several areas for the sake\nof performance, but did not in order to be exactly what you expect in terms\nof a markdown rendering. In fact, this is why marked could be considered at a\ndisadvantage in the benchmarks above.\n\nAlong with implementing every markdown feature, marked also implements [GFM\nfeatures][gfmf].\n\n## Benchmarks\n\nnode v0.8.x\n\n``` bash\n$ node test --bench\nmarked completed in 3411ms.\nmarked (gfm) completed in 3727ms.\nmarked (pedantic) completed in 3201ms.\nrobotskirt completed in 808ms.\nshowdown (reuse converter) completed in 11954ms.\nshowdown (new converter) completed in 17774ms.\nmarkdown-js completed in 17191ms.\n```\n\n__Marked is now faster than Discount, which is written in C.__\n\nFor those feeling skeptical: These benchmarks run the entire markdown test suite 1000 times. The test suite tests every feature. It doesn\'t cater to specific aspects.\n\n### Pro level\n\nYou also have direct access to the lexer and parser if you so desire.\n\n``` js\nvar tokens = marked.lexer(text, options);\nconsole.log(marked.parser(tokens));\n```\n\n``` js\nvar lexer = new marked.Lexer(options);\nvar tokens = lexer.lex(text);\nconsole.log(tokens);\nconsole.log(lexer.rules);\n```\n\n``` bash\n$ node\n> require(\'marked\').lexer(\'> i am using marked.\')\n[ { type: \'blockquote_start\' },\n  { type: \'paragraph\',\n    text: \'i am using marked.\' },\n  { type: \'blockquote_end\' },\n  links: {} ]\n```\n\n## Running Tests & Contributing\n\nIf you want to submit a pull request, make sure your changes pass the test\nsuite. If you\'re adding a new feature, be sure to add your own test.\n\nThe marked test suite is set up slightly strangely: `test/new` is for all tests\nthat are not part of the original markdown.pl test suite (this is where your\ntest should go if you make one). `test/original` is only for the original\nmarkdown.pl tests. `test/tests` houses both types of tests after they have been\ncombined and moved/generated by running `node test --fix` or `marked --test\n--fix`.\n\nIn other words, if you have a test to add, add it to `test/new/` and then\nregenerate the tests with `node test --fix`. Commit the result. If your test\nuses a certain feature, for example, maybe it assumes GFM is *not* enabled, you\ncan add `.nogfm` to the filename. So, `my-test.text` becomes\n`my-test.nogfm.text`. You can do this with any marked option. Say you want\nline breaks and smartypants enabled, your filename should be:\n`my-test.breaks.smartypants.text`.\n\nTo run the tests:\n\n``` bash\ncd marked/\nnode test\n```\n\n### Contribution and License Agreement\n\nIf you contribute code to this project, you are implicitly allowing your code\nto be distributed under the MIT license. You are also implicitly verifying that\nall code is your original work. `</legalese>`\n\n## License\n\nCopyright (c) 2011-2014, Christopher Jeffrey. (MIT License)\n\nSee LICENSE for more info.\n\n[gfm]: https://help.github.com/articles/github-flavored-markdown\n[gfmf]: http://github.github.com/github-flavored-markdown/\n[pygmentize]: https://github.com/rvagg/node-pygmentize-bundled\n[highlight]: https://github.com/isagalaev/highlight.js\n[badge]: http://badge.fury.io/js/marked\n[tables]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#wiki-tables\n[breaks]: https://help.github.com/articles/github-flavored-markdown#newlines\n',
+521 silly resolved     readmeFilename: 'README.md',
+521 silly resolved     _id: 'marked@0.3.2',
+521 silly resolved     _from: 'marked@~0.3.1' },
+521 silly resolved   { name: 'underscore',
+521 silly resolved     description: 'JavaScript\'s functional programming helper library.',
+521 silly resolved     homepage: 'http://underscorejs.org',
+521 silly resolved     keywords: [ 'util', 'functional', 'server', 'client', 'browser' ],
+521 silly resolved     author: { name: 'Jeremy Ashkenas', email: 'jeremy@documentcloud.org' },
+521 silly resolved     repository:
+521 silly resolved      { type: 'git',
+521 silly resolved        url: 'git://github.com/documentcloud/underscore.git' },
+521 silly resolved     main: 'underscore.js',
+521 silly resolved     version: '1.4.4',
+521 silly resolved     devDependencies: { phantomjs: '0.2.2' },
+521 silly resolved     scripts: { test: 'phantomjs test/vendor/runner.js test/index.html?noglobals=true' },
+521 silly resolved     readme: '                       __\n                      /\\ \\                                                         __\n     __  __    ___    \\_\\ \\     __   _ __   ____    ___    ___   _ __    __       /\\_\\    ____\n    /\\ \\/\\ \\ /\' _ `\\  /\'_  \\  /\'__`\\/\\  __\\/ ,__\\  / ___\\ / __`\\/\\  __\\/\'__`\\     \\/\\ \\  /\',__\\\n    \\ \\ \\_\\ \\/\\ \\/\\ \\/\\ \\ \\ \\/\\  __/\\ \\ \\//\\__, `\\/\\ \\__//\\ \\ \\ \\ \\ \\//\\  __/  __  \\ \\ \\/\\__, `\\\n     \\ \\____/\\ \\_\\ \\_\\ \\___,_\\ \\____\\\\ \\_\\\\/\\____/\\ \\____\\ \\____/\\ \\_\\\\ \\____\\/\\_\\ _\\ \\ \\/\\____/\n      \\/___/  \\/_/\\/_/\\/__,_ /\\/____/ \\/_/ \\/___/  \\/____/\\/___/  \\/_/ \\/____/\\/_//\\ \\_\\ \\/___/\n                                                                                  \\ \\____/\n                                                                                   \\/___/\n\nUnderscore.js is a utility-belt library for JavaScript that provides\nsupport for the usual functional suspects (each, map, reduce, filter...)\nwithout extending any core JavaScript objects.\n\nFor Docs, License, Tests, and pre-packed downloads, see:\nhttp://underscorejs.org\n\nMany thanks to our contributors:\nhttps://github.com/documentcloud/underscore/contributors\n',
+521 silly resolved     readmeFilename: 'README.md',
+521 silly resolved     bugs: { url: 'https://github.com/documentcloud/underscore/issues' },
+521 silly resolved     _id: 'underscore@1.4.4',
+521 silly resolved     _from: 'underscore@~1.4.2' },
+521 silly resolved   { name: 'esprima',
+521 silly resolved     description: 'ECMAScript parsing infrastructure for multipurpose analysis',
+521 silly resolved     homepage: 'http://esprima.org',
+521 silly resolved     main: 'esprima.js',
+521 silly resolved     bin:
+521 silly resolved      { esparse: './bin/esparse.js',
+521 silly resolved        esvalidate: './bin/esvalidate.js' },
+521 silly resolved     files:
+521 silly resolved      [ 'bin',
+521 silly resolved        'test/run.js',
+521 silly resolved        'test/runner.js',
+521 silly resolved        'test/test.js',
+521 silly resolved        'test/compat.js',
+521 silly resolved        'test/reflect.js',
+521 silly resolved        'esprima.js' ],
+521 silly resolved     version: '1.0.4',
+521 silly resolved     engines: { node: '>=0.4.0' },
+521 silly resolved     maintainers: [ [Object] ],
+521 silly resolved     repository: { type: 'git', url: 'http://github.com/ariya/esprima.git' },
+521 silly resolved     licenses: [ [Object] ],
+521 silly resolved     keywords: [ 'ast', 'ecmascript', 'javascript', 'parser', 'syntax' ],
+521 silly resolved     scripts:
+521 silly resolved      { test: 'node test/run.js',
+521 silly resolved        benchmark: 'node test/benchmarks.js',
+521 silly resolved        'benchmark-quick': 'node test/benchmarks.js quick' },
+521 silly resolved     readme: '**Esprima** ([esprima.org](http://esprima.org)) is a high performance,\nstandard-compliant [ECMAScript](http://www.ecma-international.org/publications/standards/Ecma-262.htm)\nparser written in ECMAScript (also popularly known as\n[JavaScript](http://en.wikipedia.org/wiki/JavaScript>JavaScript)).\nEsprima is created and maintained by [Ariya Hidayat](http://twitter.com/ariyahidayat),\nwith the help of [many contributors](https://github.com/ariya/esprima/contributors).\n\nEsprima runs on web browsers (IE 6+, Firefox 1+, Safari 3+, Chrome 1+, Konqueror 4.6+, Opera 8+) as well as\n[Node.js](http://nodejs.org).\n\n### Features\n\n- Full support for [ECMAScript 5.1](http://www.ecma-international.org/publications/standards/Ecma-262.htm)(ECMA-262)\n- Sensible [syntax tree format](http://esprima.org/doc/index.html#ast) compatible with Mozilla\n[Parser AST](https://developer.mozilla.org/en/SpiderMonkey/Parser_API)\n- Heavily tested (> 550 [unit tests](http://esprima.org/test/) with solid 100% statement coverage)\n- Optional tracking of syntax node location (index-based and line-column)\n- Experimental support for ES6/Harmony (module, class, destructuring, ...)\n\nEsprima is blazing fast (see the [benchmark suite](http://esprima.org/test/benchmarks.html)).\nIt is up to 3x faster than UglifyJS v1 and it is still [competitive](http://esprima.org/test/compare.html)\nwith the new generation of fast parsers.\n\n### Applications\n\nEsprima serves as the basis for many popular JavaScript development tools:\n\n- Code coverage analysis: [node-cover](https://github.com/itay/node-cover), [Istanbul](https://github.com/yahoo/Istanbul)\n- Documentation tool: [JFDoc](https://github.com/thejohnfreeman/jfdoc), [JSDuck](https://github.com/senchalabs/jsduck)\n- Language extension: [LLJS](http://mbebenita.github.com/LLJS/) (low-level JS),\n[Sweet.js](http://sweetjs.org/) (macro)\n- ES6/Harmony transpiler: [Six](https://github.com/matthewrobb/six), [Harmonizr](https://github.com/jdiamond/harmonizr)\n- Eclipse Orion smart editing ([outline view](https://github.com/aclement/esprima-outline), [content assist](http://contraptionsforprogramming.blogspot.com/2012/02/better-javascript-content-assist-in.html))\n- Source code modification: [Esmorph](https://github.com/ariya/esmorph), [Code Painter](https://github.com/fawek/codepainter),\n- Source transformation: [node-falafel](https://github.com/substack/node-falafel), [Esmangle](https://github.com/Constellation/esmangle), [escodegen](https://github.com/Constellation/escodegen)\n\n### Questions?\n- [Documentation](http://esprima.org/doc)\n- [Issue tracker](http://issues.esprima.org): [known problems](http://code.google.com/p/esprima/issues/list?q=Defect)\nand [future plans](http://code.google.com/p/esprima/issues/list?q=Enhancement)\n- [Mailing list](http://groups.google.com/group/esprima)\n- [Contribution guide](http://esprima.org/doc/index.html#contribution)\n\nFollow [@Esprima](http://twitter.com/Esprima) on Twitter to get the\ndevelopment updates.\nFeedback and contribution are welcomed!\n\n### License\n\nCopyright (C) 2012, 2011 [Ariya Hidayat](http://ariya.ofilabs.com/about)\n and other contributors.\n\nRedistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n  * Redistributions of source code must retain the above copyright\n    notice, this list of conditions and the following disclaimer.\n\n  * Redistributions in binary form must reproduce the above copyright\n    notice, this list of conditions and the following disclaimer in the\n    documentation and/or other materials provided with the distribution.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\nARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> BE LIABLE FOR ANY\nDIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\nLOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND\nON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF\nTHIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\n',
+521 silly resolved     readmeFilename: 'README.md',
+521 silly resolved     bugs: { url: 'https://github.com/ariya/esprima/issues' },
+521 silly resolved     _id: 'esprima@1.0.4',
+521 silly resolved     _from: 'esprima@~1.0.4' },
+521 silly resolved   { name: 'taffydb',
+521 silly resolved     version: '2.6.2',
+521 silly resolved     description: 'An open-source library that brings database features into your JavaScript applications.',
+521 silly resolved     main: 'taffy.js',
+521 silly resolved     repository: { type: 'git', url: 'git://github.com/hegemonic/taffydb.git' },
+521 silly resolved     license: 'BSD',
+521 silly resolved     readme: 'See [http://taffydb.com](http://taffydb.com).',
+521 silly resolved     readmeFilename: 'README.md',
+521 silly resolved     bugs: { url: 'https://github.com/hegemonic/taffydb/issues' },
+521 silly resolved     homepage: 'https://github.com/hegemonic/taffydb',
+521 silly resolved     _id: 'taffydb@2.6.2',
+521 silly resolved     dist: { shasum: '832b5095df6cbaa7a3c37765fa640ee0a271d2f1' },
+521 silly resolved     _from: 'https://github.com/hegemonic/taffydb/tarball/master',
+521 silly resolved     _resolved: 'https://github.com/hegemonic/taffydb/tarball/master' },
+521 silly resolved   { name: 'wrench',
+521 silly resolved     description: 'Recursive filesystem (and other) operations that Node *should* have.',
+521 silly resolved     version: '1.3.9',
+521 silly resolved     author: { name: 'Ryan McGrath', email: 'ryan@venodesigns.net' },
+521 silly resolved     repository:
+521 silly resolved      { type: 'git',
+521 silly resolved        url: 'https://ryanmcgrath@github.com/ryanmcgrath/wrench-js.git' },
+521 silly resolved     bugs: { url: 'http://github.com/ryanmcgrath/wrench-js/issues' },
+521 silly resolved     directories: { lib: './lib/' },
+521 silly resolved     dependencies: {},
+521 silly resolved     devDependencies: { nodeunit: '>= 0.6.4' },
+521 silly resolved     main: './lib/wrench',
+521 silly resolved     engines: { node: '>=0.1.97' },
+521 silly resolved     scripts: { test: 'nodeunit tests/runner.js' },
+521 silly resolved     licenses: [ [Object] ],
+521 silly resolved     readme: 'wrench.js - Recursive file operations in Node.js\n----------------------------------------------------------------------------\nWhile I love Node.js, I\'ve found myself missing some functions. Things like\nrecursively deleting/chmodding a directory (or even deep copying a directory),\nor even a basic line reader, shouldn\'t need to be re-invented time and time again.\n\nThat said, here\'s my attempt at a re-usable solution, at least until something\nmore formalized gets integrated into Node.js (*hint hint*). wrench.js is fairly simple\nto use - check out the documentation/examples below:\n\nInstallation\n-----------------------------------------------------------------------------\n\n    npm install wrench\n\nUsage\n-----------------------------------------------------------------------------\n``` javascript\nvar wrench = require(\'wrench\'),\n\tutil = require(\'util\');\n```\n\n### Synchronous operations\n``` javascript\n// Recursively create directories, sub-trees and all.\nwrench.mkdirSyncRecursive(dir, 0777);\n\n// Recursively delete the entire sub-tree of a directory, then kill the directory\nwrench.rmdirSyncRecursive(\'my_directory_name\', failSilently);\n\n// Recursively read directories contents.\nwrench.readdirSyncRecursive(\'my_directory_name\');\n\n// Recursively chmod the entire sub-tree of a directory\nwrench.chmodSyncRecursive(\'my_directory_name\', 0755);\n\n// Recursively chown the entire sub-tree of a directory\nwrench.chownSyncRecursive("directory", uid, gid);\n\n// Deep-copy an existing directory\nwrench.copyDirSyncRecursive(\'directory_to_copy\', \'location_where_copy_should_end_up\');\n\n// Read lines in from a file until you hit the end\nvar f = new wrench.LineReader(\'x.txt\');\nwhile(f.hasNextLine()) {\n\tutil.puts(x.getNextLine());\n}\n```\n\n### Asynchronous operations\n``` javascript\n// Recursively read directories contents\nvar files = [];\nwrench.readdirRecursive(\'my_directory_name\', function(error, curFiles) {\n    // curFiles is what you want\n});\n\n```\n\nQuestions, comments? Hit me up. (ryan [at] venodesigns.net | http://twitter.com/ryanmcgrath)\n',
+521 silly resolved     readmeFilename: 'readme.md',
+521 silly resolved     homepage: 'https://github.com/ryanmcgrath/wrench-js',
+521 silly resolved     _id: 'wrench@1.3.9',
+521 silly resolved     _from: 'wrench@~1.3.9' } ]
+522 info install async@0.1.22 into N:\Shared\web\public\chess\node_modules\jsdoc
+523 info install js2xmlparser@0.1.3 into N:\Shared\web\public\chess\node_modules\jsdoc
+524 info install catharsis@0.7.1 into N:\Shared\web\public\chess\node_modules\jsdoc
+525 info install marked@0.3.2 into N:\Shared\web\public\chess\node_modules\jsdoc
+526 info install underscore@1.4.4 into N:\Shared\web\public\chess\node_modules\jsdoc
+527 info install esprima@1.0.4 into N:\Shared\web\public\chess\node_modules\jsdoc
+528 info install taffydb@2.6.2 into N:\Shared\web\public\chess\node_modules\jsdoc
+529 info install wrench@1.3.9 into N:\Shared\web\public\chess\node_modules\jsdoc
+530 info installOne async@0.1.22
+531 info installOne js2xmlparser@0.1.3
+532 info installOne catharsis@0.7.1
+533 info installOne marked@0.3.2
+534 info installOne underscore@1.4.4
+535 info installOne esprima@1.0.4
+536 info installOne taffydb@2.6.2
+537 info installOne wrench@1.3.9
+538 info N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\js2xmlparser unbuild
+539 info N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\underscore unbuild
+540 info N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\async unbuild
+541 info N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\marked unbuild
+542 info N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\catharsis unbuild
+543 info N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\wrench unbuild
+544 info N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\esprima unbuild
+545 info N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\taffydb unbuild
+546 verbose tar unpack C:\Users\Eric\AppData\Roaming\npm-cache\js2xmlparser\0.1.3\package.tgz
+547 silly lockFile 02b05f44--jsdoc-node-modules-js2xmlparser tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\js2xmlparser
+548 verbose lock tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\js2xmlparser C:\Users\Eric\AppData\Roaming\npm-cache\02b05f44--jsdoc-node-modules-js2xmlparser.lock
+549 silly lockFile f31f0cf3-e-js2xmlparser-0-1-3-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\js2xmlparser\0.1.3\package.tgz
+550 verbose lock tar://C:\Users\Eric\AppData\Roaming\npm-cache\js2xmlparser\0.1.3\package.tgz C:\Users\Eric\AppData\Roaming\npm-cache\f31f0cf3-e-js2xmlparser-0-1-3-package-tgz.lock
+551 verbose tar unpack C:\Users\Eric\AppData\Roaming\npm-cache\underscore\1.4.4\package.tgz
+552 silly lockFile 34a0d617-es-jsdoc-node-modules-underscore tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\underscore
+553 verbose lock tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\underscore C:\Users\Eric\AppData\Roaming\npm-cache\34a0d617-es-jsdoc-node-modules-underscore.lock
+554 silly lockFile 259345fa-che-underscore-1-4-4-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\underscore\1.4.4\package.tgz
+555 verbose lock tar://C:\Users\Eric\AppData\Roaming\npm-cache\underscore\1.4.4\package.tgz C:\Users\Eric\AppData\Roaming\npm-cache\259345fa-che-underscore-1-4-4-package-tgz.lock
+556 silly gunzTarPerm modes [ '755', '644' ]
+557 silly gunzTarPerm modes [ '755', '644' ]
+558 verbose tar unpack C:\Users\Eric\AppData\Roaming\npm-cache\async\0.1.22\package.tgz
+559 silly lockFile c4e03fa2-modules-jsdoc-node-modules-async tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\async
+560 verbose lock tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\async C:\Users\Eric\AppData\Roaming\npm-cache\c4e03fa2-modules-jsdoc-node-modules-async.lock
+561 silly lockFile a004b463-m-cache-async-0-1-22-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\async\0.1.22\package.tgz
+562 verbose lock tar://C:\Users\Eric\AppData\Roaming\npm-cache\async\0.1.22\package.tgz C:\Users\Eric\AppData\Roaming\npm-cache\a004b463-m-cache-async-0-1-22-package-tgz.lock
+563 verbose tar unpack C:\Users\Eric\AppData\Roaming\npm-cache\catharsis\0.7.1\package.tgz
+564 silly lockFile fe4c62c5-les-jsdoc-node-modules-catharsis tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\catharsis
+565 verbose lock tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\catharsis C:\Users\Eric\AppData\Roaming\npm-cache\fe4c62c5-les-jsdoc-node-modules-catharsis.lock
+566 silly lockFile 465172a4-ache-catharsis-0-7-1-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\catharsis\0.7.1\package.tgz
+567 verbose lock tar://C:\Users\Eric\AppData\Roaming\npm-cache\catharsis\0.7.1\package.tgz C:\Users\Eric\AppData\Roaming\npm-cache\465172a4-ache-catharsis-0-7-1-package-tgz.lock
+568 verbose tar unpack C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package.tgz
+569 silly lockFile 3be7b53f-dules-jsdoc-node-modules-taffydb tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\taffydb
+570 verbose lock tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\taffydb C:\Users\Eric\AppData\Roaming\npm-cache\3be7b53f-dules-jsdoc-node-modules-taffydb.lock
+571 silly lockFile 17f0f6e4--cache-taffydb-2-6-2-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package.tgz
+572 verbose lock tar://C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package.tgz C:\Users\Eric\AppData\Roaming\npm-cache\17f0f6e4--cache-taffydb-2-6-2-package-tgz.lock
+573 verbose tar unpack C:\Users\Eric\AppData\Roaming\npm-cache\marked\0.3.2\package.tgz
+574 silly lockFile edbab271-odules-jsdoc-node-modules-marked tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\marked
+575 verbose lock tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\marked C:\Users\Eric\AppData\Roaming\npm-cache\edbab271-odules-jsdoc-node-modules-marked.lock
+576 silly lockFile 6df4d19b-m-cache-marked-0-3-2-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\marked\0.3.2\package.tgz
+577 verbose lock tar://C:\Users\Eric\AppData\Roaming\npm-cache\marked\0.3.2\package.tgz C:\Users\Eric\AppData\Roaming\npm-cache\6df4d19b-m-cache-marked-0-3-2-package-tgz.lock
+578 verbose tar unpack C:\Users\Eric\AppData\Roaming\npm-cache\esprima\1.0.4\package.tgz
+579 silly lockFile 81b2c38c-dules-jsdoc-node-modules-esprima tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\esprima
+580 verbose lock tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\esprima C:\Users\Eric\AppData\Roaming\npm-cache\81b2c38c-dules-jsdoc-node-modules-esprima.lock
+581 silly lockFile 88177f4c--cache-esprima-1-0-4-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\esprima\1.0.4\package.tgz
+582 verbose lock tar://C:\Users\Eric\AppData\Roaming\npm-cache\esprima\1.0.4\package.tgz C:\Users\Eric\AppData\Roaming\npm-cache\88177f4c--cache-esprima-1-0-4-package-tgz.lock
+583 verbose tar unpack C:\Users\Eric\AppData\Roaming\npm-cache\wrench\1.3.9\package.tgz
+584 silly lockFile fc22851f-odules-jsdoc-node-modules-wrench tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\wrench
+585 verbose lock tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\wrench C:\Users\Eric\AppData\Roaming\npm-cache\fc22851f-odules-jsdoc-node-modules-wrench.lock
+586 silly lockFile 87f79fa6-m-cache-wrench-1-3-9-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\wrench\1.3.9\package.tgz
+587 verbose lock tar://C:\Users\Eric\AppData\Roaming\npm-cache\wrench\1.3.9\package.tgz C:\Users\Eric\AppData\Roaming\npm-cache\87f79fa6-m-cache-wrench-1-3-9-package-tgz.lock
+588 silly gunzTarPerm modes [ '755', '644' ]
+589 silly gunzTarPerm modes [ '755', '644' ]
+590 silly gunzTarPerm modes [ '755', '644' ]
+591 silly gunzTarPerm modes [ '755', '644' ]
+592 silly gunzTarPerm modes [ '755', '644' ]
+593 silly gunzTarPerm modes [ '755', '644' ]
+594 silly gunzTarPerm extractEntry package.json
+595 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+596 silly gunzTarPerm extractEntry .npmignore
+597 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+598 silly gunzTarPerm extractEntry README.md
+599 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+600 silly gunzTarPerm extractEntry package.json
+601 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+602 silly gunzTarPerm extractEntry package.json
+603 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+604 silly gunzTarPerm extractEntry package.json
+605 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+606 silly gunzTarPerm extractEntry package.json
+607 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+608 silly gunzTarPerm extractEntry package.json
+609 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+610 silly gunzTarPerm extractEntry .npmignore
+611 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+612 silly gunzTarPerm extractEntry README.md
+613 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+614 silly gunzTarPerm extractEntry package.json
+615 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+616 silly gunzTarPerm extractEntry README.md
+617 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+618 silly gunzTarPerm extractEntry LICENSE
+619 silly gunzTarPerm modified mode [ 'LICENSE', 438, 420 ]
+620 silly gunzTarPerm extractEntry package.json
+621 silly gunzTarPerm modified mode [ 'package.json', 438, 420 ]
+622 silly gunzTarPerm extractEntry .npmignore
+623 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+624 silly gunzTarPerm extractEntry README.md
+625 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+626 silly gunzTarPerm extractEntry .npmignore
+627 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+628 silly gunzTarPerm extractEntry LICENSE
+629 silly gunzTarPerm modified mode [ 'LICENSE', 438, 420 ]
+630 silly gunzTarPerm extractEntry README.md
+631 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+632 silly gunzTarPerm extractEntry taffy.js
+633 silly gunzTarPerm modified mode [ 'taffy.js', 438, 420 ]
+634 silly gunzTarPerm extractEntry README.md
+635 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+636 silly gunzTarPerm extractEntry esprima.js
+637 silly gunzTarPerm modified mode [ 'esprima.js', 438, 420 ]
+638 silly gunzTarPerm extractEntry .gitattributes
+639 silly gunzTarPerm modified mode [ '.gitattributes', 438, 420 ]
+640 silly gunzTarPerm extractEntry CHANGES.md
+641 silly gunzTarPerm modified mode [ 'CHANGES.md', 438, 420 ]
+642 silly gunzTarPerm extractEntry .npmignore
+643 silly gunzTarPerm modified mode [ '.npmignore', 438, 420 ]
+644 silly gunzTarPerm extractEntry README.md
+645 silly gunzTarPerm modified mode [ 'README.md', 438, 420 ]
+646 silly gunzTarPerm extractEntry LICENSE
+647 silly gunzTarPerm modified mode [ 'LICENSE', 438, 420 ]
+648 silly gunzTarPerm extractEntry catharsis.js
+649 silly gunzTarPerm modified mode [ 'catharsis.js', 438, 420 ]
+650 silly gunzTarPerm extractEntry LICENSE
+651 silly gunzTarPerm modified mode [ 'LICENSE', 438, 420 ]
+652 silly gunzTarPerm extractEntry index.js
+653 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+654 silly gunzTarPerm extractEntry lib/wrench.js
+655 silly gunzTarPerm modified mode [ 'lib/wrench.js', 438, 420 ]
+656 silly gunzTarPerm extractEntry lib/x.js
+657 silly gunzTarPerm modified mode [ 'lib/x.js', 438, 420 ]
+658 silly gunzTarPerm extractEntry readme.md
+659 silly gunzTarPerm modified mode [ 'readme.md', 438, 420 ]
+660 silly gunzTarPerm extractEntry tests/mkdir.js
+661 silly gunzTarPerm modified mode [ 'tests/mkdir.js', 438, 420 ]
+662 silly gunzTarPerm extractEntry tests/readdir.js
+663 silly gunzTarPerm modified mode [ 'tests/readdir.js', 438, 420 ]
+664 silly gunzTarPerm extractEntry tests/runner.js
+665 silly gunzTarPerm modified mode [ 'tests/runner.js', 438, 420 ]
+666 silly gunzTarPerm extractEntry tests/readdir/bar.txt
+667 silly gunzTarPerm modified mode [ 'tests/readdir/bar.txt', 438, 420 ]
+668 silly gunzTarPerm extractEntry tests/readdir/foo/bar/ipsum.js
+669 silly gunzTarPerm modified mode [ 'tests/readdir/foo/bar/ipsum.js', 438, 420 ]
+670 silly gunzTarPerm extractEntry tests/readdir/foo/dolor.md
+671 silly gunzTarPerm modified mode [ 'tests/readdir/foo/dolor.md', 438, 420 ]
+672 silly gunzTarPerm extractEntry tests/readdir/foo/lorem.txt
+673 silly gunzTarPerm modified mode [ 'tests/readdir/foo/lorem.txt', 438, 420 ]
+674 silly gunzTarPerm extractEntry taffy-test.html
+675 silly gunzTarPerm modified mode [ 'taffy-test.html', 438, 420 ]
+676 silly gunzTarPerm extractEntry LICENSE
+677 silly gunzTarPerm modified mode [ 'LICENSE', 438, 420 ]
+678 silly gunzTarPerm extractEntry underscore-min.js
+679 silly gunzTarPerm modified mode [ 'underscore-min.js', 438, 420 ]
+680 silly gunzTarPerm extractEntry bin/esparse.js
+681 silly gunzTarPerm modified mode [ 'bin/esparse.js', 438, 420 ]
+682 silly gunzTarPerm extractEntry index.js
+683 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+684 silly gunzTarPerm extractEntry .gitmodules
+685 silly gunzTarPerm modified mode [ '.gitmodules', 438, 420 ]
+686 silly gunzTarPerm extractEntry example/example.js
+687 silly gunzTarPerm modified mode [ 'example/example.js', 438, 420 ]
+688 silly gunzTarPerm extractEntry lib/js2xmlparser.js
+689 silly gunzTarPerm modified mode [ 'lib/js2xmlparser.js', 438, 420 ]
+690 silly gunzTarPerm extractEntry LICENSE.md
+691 silly gunzTarPerm modified mode [ 'LICENSE.md', 438, 420 ]
+692 silly gunzTarPerm extractEntry component.json
+693 silly gunzTarPerm modified mode [ 'component.json', 438, 420 ]
+694 silly gunzTarPerm extractEntry doc/broken.md
+695 silly gunzTarPerm modified mode [ 'doc/broken.md', 438, 420 ]
+696 silly gunzTarPerm extractEntry doc/todo.md
+697 silly gunzTarPerm modified mode [ 'doc/todo.md', 438, 420 ]
+698 silly gunzTarPerm extractEntry .travis.yml
+699 silly gunzTarPerm modified mode [ '.travis.yml', 438, 420 ]
+700 silly gunzTarPerm extractEntry Makefile
+701 silly gunzTarPerm modified mode [ 'Makefile', 438, 420 ]
+702 silly gunzTarPerm extractEntry man/marked.1
+703 silly gunzTarPerm modified mode [ 'man/marked.1', 438, 420 ]
+704 silly gunzTarPerm extractEntry bin/marked
+705 silly gunzTarPerm modified mode [ 'bin/marked', 438, 420 ]
+706 silly gunzTarPerm extractEntry lib/marked.js
+707 silly gunzTarPerm modified mode [ 'lib/marked.js', 438, 420 ]
+708 silly gunzTarPerm extractEntry underscore.js
+709 silly gunzTarPerm modified mode [ 'underscore.js', 438, 420 ]
+710 silly gunzTarPerm extractEntry bin/esvalidate.js
+711 silly gunzTarPerm modified mode [ 'bin/esvalidate.js', 438, 420 ]
+712 silly gunzTarPerm extractEntry test/compat.js
+713 silly gunzTarPerm modified mode [ 'test/compat.js', 438, 420 ]
+714 silly gunzTarPerm extractEntry index.js
+715 silly gunzTarPerm modified mode [ 'index.js', 438, 420 ]
+716 silly gunzTarPerm extractEntry .travis.yml
+717 silly gunzTarPerm modified mode [ '.travis.yml', 438, 420 ]
+718 silly gunzTarPerm extractEntry bin/parseType.js
+719 silly gunzTarPerm modified mode [ 'bin/parseType.js', 438, 420 ]
+720 silly gunzTarPerm extractEntry lib/parser.js
+721 silly gunzTarPerm modified mode [ 'lib/parser.js', 438, 420 ]
+722 silly gunzTarPerm extractEntry index.html
+723 silly gunzTarPerm modified mode [ 'index.html', 438, 420 ]
+724 silly gunzTarPerm extractEntry favicon.ico
+725 silly gunzTarPerm modified mode [ 'favicon.ico', 438, 420 ]
+726 silly gunzTarPerm extractEntry lib/stringify.js
+727 silly gunzTarPerm modified mode [ 'lib/stringify.js', 438, 420 ]
+728 silly gunzTarPerm extractEntry lib/types.js
+729 silly gunzTarPerm modified mode [ 'lib/types.js', 438, 420 ]
+730 silly gunzTarPerm extractEntry lib/async.js
+731 silly gunzTarPerm modified mode [ 'lib/async.js', 438, 420 ]
+732 silly gunzTarPerm extractEntry Makefile
+733 silly gunzTarPerm modified mode [ 'Makefile', 438, 420 ]
+734 silly gunzTarPerm extractEntry CONTRIBUTING.md
+735 silly gunzTarPerm modified mode [ 'CONTRIBUTING.md', 438, 420 ]
+736 silly gunzTarPerm extractEntry CNAME
+737 silly gunzTarPerm modified mode [ 'CNAME', 438, 420 ]
+738 silly lockFile 02b05f44--jsdoc-node-modules-js2xmlparser tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\js2xmlparser
+739 silly lockFile 02b05f44--jsdoc-node-modules-js2xmlparser tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\js2xmlparser
+740 silly lockFile f31f0cf3-e-js2xmlparser-0-1-3-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\js2xmlparser\0.1.3\package.tgz
+741 silly lockFile f31f0cf3-e-js2xmlparser-0-1-3-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\js2xmlparser\0.1.3\package.tgz
+742 info preinstall js2xmlparser@0.1.3
+743 verbose readDependencies using package.json deps
+744 verbose readDependencies using package.json deps
+745 silly resolved []
+746 verbose about to build N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\js2xmlparser
+747 info build N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\js2xmlparser
+748 verbose linkStuff [ false,
+748 verbose linkStuff   false,
+748 verbose linkStuff   false,
+748 verbose linkStuff   'N:\\Shared\\web\\public\\chess\\node_modules\\jsdoc\\node_modules' ]
+749 info linkStuff js2xmlparser@0.1.3
+750 verbose linkBins js2xmlparser@0.1.3
+751 verbose linkMans js2xmlparser@0.1.3
+752 verbose rebuildBundles js2xmlparser@0.1.3
+753 info install js2xmlparser@0.1.3
+754 info postinstall js2xmlparser@0.1.3
+755 silly lockFile 3be7b53f-dules-jsdoc-node-modules-taffydb tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\taffydb
+756 silly lockFile 3be7b53f-dules-jsdoc-node-modules-taffydb tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\taffydb
+757 silly lockFile 17f0f6e4--cache-taffydb-2-6-2-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package.tgz
+758 silly lockFile 17f0f6e4--cache-taffydb-2-6-2-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\taffydb\2.6.2\package.tgz
+759 info preinstall taffydb@2.6.2
+760 verbose readDependencies using package.json deps
+761 verbose readDependencies using package.json deps
+762 silly resolved []
+763 verbose about to build N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\taffydb
+764 info build N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\taffydb
+765 verbose linkStuff [ false,
+765 verbose linkStuff   false,
+765 verbose linkStuff   false,
+765 verbose linkStuff   'N:\\Shared\\web\\public\\chess\\node_modules\\jsdoc\\node_modules' ]
+766 info linkStuff taffydb@2.6.2
+767 verbose linkBins taffydb@2.6.2
+768 verbose linkMans taffydb@2.6.2
+769 verbose rebuildBundles taffydb@2.6.2
+770 info install taffydb@2.6.2
+771 info postinstall taffydb@2.6.2
+772 silly lockFile c4e03fa2-modules-jsdoc-node-modules-async tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\async
+773 silly lockFile c4e03fa2-modules-jsdoc-node-modules-async tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\async
+774 silly lockFile a004b463-m-cache-async-0-1-22-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\async\0.1.22\package.tgz
+775 silly lockFile a004b463-m-cache-async-0-1-22-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\async\0.1.22\package.tgz
+776 info preinstall async@0.1.22
+777 verbose readDependencies using package.json deps
+778 verbose readDependencies using package.json deps
+779 silly resolved []
+780 verbose about to build N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\async
+781 info build N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\async
+782 verbose linkStuff [ false,
+782 verbose linkStuff   false,
+782 verbose linkStuff   false,
+782 verbose linkStuff   'N:\\Shared\\web\\public\\chess\\node_modules\\jsdoc\\node_modules' ]
+783 info linkStuff async@0.1.22
+784 verbose linkBins async@0.1.22
+785 verbose linkMans async@0.1.22
+786 verbose rebuildBundles async@0.1.22
+787 info install async@0.1.22
+788 info postinstall async@0.1.22
+789 silly lockFile fc22851f-odules-jsdoc-node-modules-wrench tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\wrench
+790 silly lockFile fc22851f-odules-jsdoc-node-modules-wrench tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\wrench
+791 silly lockFile 87f79fa6-m-cache-wrench-1-3-9-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\wrench\1.3.9\package.tgz
+792 silly lockFile 87f79fa6-m-cache-wrench-1-3-9-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\wrench\1.3.9\package.tgz
+793 info preinstall wrench@1.3.9
+794 verbose readDependencies using package.json deps
+795 verbose readDependencies using package.json deps
+796 silly resolved []
+797 verbose about to build N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\wrench
+798 info build N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\wrench
+799 verbose linkStuff [ false,
+799 verbose linkStuff   false,
+799 verbose linkStuff   false,
+799 verbose linkStuff   'N:\\Shared\\web\\public\\chess\\node_modules\\jsdoc\\node_modules' ]
+800 info linkStuff wrench@1.3.9
+801 verbose linkBins wrench@1.3.9
+802 verbose linkMans wrench@1.3.9
+803 verbose rebuildBundles wrench@1.3.9
+804 info install wrench@1.3.9
+805 info postinstall wrench@1.3.9
+806 silly gunzTarPerm extractEntry test/reflect.js
+807 silly gunzTarPerm modified mode [ 'test/reflect.js', 438, 420 ]
+808 silly gunzTarPerm extractEntry test/run.js
+809 silly gunzTarPerm modified mode [ 'test/run.js', 438, 420 ]
+810 silly lockFile edbab271-odules-jsdoc-node-modules-marked tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\marked
+811 silly lockFile edbab271-odules-jsdoc-node-modules-marked tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\marked
+812 silly lockFile 6df4d19b-m-cache-marked-0-3-2-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\marked\0.3.2\package.tgz
+813 silly lockFile 6df4d19b-m-cache-marked-0-3-2-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\marked\0.3.2\package.tgz
+814 info preinstall marked@0.3.2
+815 verbose readDependencies using package.json deps
+816 verbose readDependencies using package.json deps
+817 silly resolved []
+818 verbose about to build N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\marked
+819 info build N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\marked
+820 verbose linkStuff [ false,
+820 verbose linkStuff   false,
+820 verbose linkStuff   false,
+820 verbose linkStuff   'N:\\Shared\\web\\public\\chess\\node_modules\\jsdoc\\node_modules' ]
+821 info linkStuff marked@0.3.2
+822 verbose linkBins marked@0.3.2
+823 verbose link bins [ { marked: './bin/marked' },
+823 verbose link bins   'N:\\Shared\\web\\public\\chess\\node_modules\\jsdoc\\node_modules\\.bin',
+823 verbose link bins   false ]
+824 verbose linkMans marked@0.3.2
+825 verbose rebuildBundles marked@0.3.2
+826 silly gunzTarPerm extractEntry test/runner.js
+827 silly gunzTarPerm modified mode [ 'test/runner.js', 438, 420 ]
+828 silly gunzTarPerm extractEntry test/test.js
+829 silly gunzTarPerm modified mode [ 'test/test.js', 438, 420 ]
+830 info install marked@0.3.2
+831 info postinstall marked@0.3.2
+832 silly lockFile 34a0d617-es-jsdoc-node-modules-underscore tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\underscore
+833 silly lockFile 34a0d617-es-jsdoc-node-modules-underscore tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\underscore
+834 silly lockFile 259345fa-che-underscore-1-4-4-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\underscore\1.4.4\package.tgz
+835 silly lockFile 259345fa-che-underscore-1-4-4-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\underscore\1.4.4\package.tgz
+836 info preinstall underscore@1.4.4
+837 verbose readDependencies using package.json deps
+838 verbose readDependencies using package.json deps
+839 silly resolved []
+840 verbose about to build N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\underscore
+841 info build N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\underscore
+842 verbose linkStuff [ false,
+842 verbose linkStuff   false,
+842 verbose linkStuff   false,
+842 verbose linkStuff   'N:\\Shared\\web\\public\\chess\\node_modules\\jsdoc\\node_modules' ]
+843 info linkStuff underscore@1.4.4
+844 verbose linkBins underscore@1.4.4
+845 verbose linkMans underscore@1.4.4
+846 verbose rebuildBundles underscore@1.4.4
+847 info install underscore@1.4.4
+848 info postinstall underscore@1.4.4
+849 silly lockFile fe4c62c5-les-jsdoc-node-modules-catharsis tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\catharsis
+850 silly lockFile fe4c62c5-les-jsdoc-node-modules-catharsis tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\catharsis
+851 silly lockFile 465172a4-ache-catharsis-0-7-1-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\catharsis\0.7.1\package.tgz
+852 silly lockFile 465172a4-ache-catharsis-0-7-1-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\catharsis\0.7.1\package.tgz
+853 info preinstall catharsis@0.7.1
+854 verbose readDependencies using package.json deps
+855 verbose readDependencies using package.json deps
+856 silly resolved []
+857 verbose about to build N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\catharsis
+858 info build N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\catharsis
+859 verbose linkStuff [ false,
+859 verbose linkStuff   false,
+859 verbose linkStuff   false,
+859 verbose linkStuff   'N:\\Shared\\web\\public\\chess\\node_modules\\jsdoc\\node_modules' ]
+860 info linkStuff catharsis@0.7.1
+861 verbose linkBins catharsis@0.7.1
+862 verbose linkMans catharsis@0.7.1
+863 verbose rebuildBundles catharsis@0.7.1
+864 info install catharsis@0.7.1
+865 info postinstall catharsis@0.7.1
+866 silly lockFile 81b2c38c-dules-jsdoc-node-modules-esprima tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\esprima
+867 silly lockFile 81b2c38c-dules-jsdoc-node-modules-esprima tar://N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\esprima
+868 silly lockFile 88177f4c--cache-esprima-1-0-4-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\esprima\1.0.4\package.tgz
+869 silly lockFile 88177f4c--cache-esprima-1-0-4-package-tgz tar://C:\Users\Eric\AppData\Roaming\npm-cache\esprima\1.0.4\package.tgz
+870 info preinstall esprima@1.0.4
+871 verbose readDependencies using package.json deps
+872 verbose readDependencies using package.json deps
+873 silly resolved []
+874 verbose about to build N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\esprima
+875 info build N:\Shared\web\public\chess\node_modules\jsdoc\node_modules\esprima
+876 verbose linkStuff [ false,
+876 verbose linkStuff   false,
+876 verbose linkStuff   false,
+876 verbose linkStuff   'N:\\Shared\\web\\public\\chess\\node_modules\\jsdoc\\node_modules' ]
+877 info linkStuff esprima@1.0.4
+878 verbose linkBins esprima@1.0.4
+879 verbose link bins [ { esparse: './bin/esparse.js',
+879 verbose link bins     esvalidate: './bin/esvalidate.js' },
+879 verbose link bins   'N:\\Shared\\web\\public\\chess\\node_modules\\jsdoc\\node_modules\\.bin',
+879 verbose link bins   false ]
+880 verbose linkMans esprima@1.0.4
+881 verbose rebuildBundles esprima@1.0.4
+882 info install esprima@1.0.4
+883 info postinstall esprima@1.0.4
+884 verbose about to build N:\Shared\web\public\chess\node_modules\jsdoc
+885 info build N:\Shared\web\public\chess\node_modules\jsdoc
+886 verbose linkStuff [ false,
+886 verbose linkStuff   false,
+886 verbose linkStuff   false,
+886 verbose linkStuff   'N:\\Shared\\web\\public\\chess\\node_modules' ]
+887 info linkStuff jsdoc@3.3.0-alpha5
+888 verbose linkBins jsdoc@3.3.0-alpha5
+889 verbose link bins [ { jsdoc: './jsdoc.js' },
+889 verbose link bins   'N:\\Shared\\web\\public\\chess\\node_modules\\.bin',
+889 verbose link bins   false ]
+890 verbose linkMans jsdoc@3.3.0-alpha5
+891 verbose rebuildBundles jsdoc@3.3.0-alpha5
+892 verbose rebuildBundles [ '.bin',
+892 verbose rebuildBundles   'async',
+892 verbose rebuildBundles   'catharsis',
+892 verbose rebuildBundles   'esprima',
+892 verbose rebuildBundles   'js2xmlparser',
+892 verbose rebuildBundles   'marked',
+892 verbose rebuildBundles   'taffydb',
+892 verbose rebuildBundles   'underscore',
+892 verbose rebuildBundles   'wrench' ]
+893 info install jsdoc@3.3.0-alpha5
+894 info postinstall jsdoc@3.3.0-alpha5
+895 verbose unsafe-perm in lifecycle true
+896 info jsdoc@3.3.0-alpha5 Failed to exec postinstall script
+897 info N:\Shared\web\public\chess\node_modules\jsdoc unbuild
+898 info preuninstall jsdoc@3.3.0-alpha5
+899 info uninstall jsdoc@3.3.0-alpha5
+900 verbose true,N:\Shared\web\public\chess\node_modules,N:\Shared\web\public\chess\node_modules unbuild jsdoc@3.3.0-alpha5
+901 verbose N:\Shared\web\public\chess\node_modules\.bin,[object Object] binRoot
+902 info postuninstall jsdoc@3.3.0-alpha5
+903 error jsdoc@3.3.0-alpha5 postinstall: `node ./node/postinstall.js`
+903 error Exit status 1
+904 error Failed at the jsdoc@3.3.0-alpha5 postinstall script.
+904 error This is most likely a problem with the jsdoc package,
+904 error not with npm itself.
+904 error Tell the author that this fails on your system:
+904 error     node ./node/postinstall.js
+904 error You can get their info via:
+904 error     npm owner ls jsdoc
+904 error There is likely additional logging output above.
+905 error System Windows_NT 6.1.7601
+906 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "--save" "jsdoc"
+907 error cwd N:\Shared\web\public\chess
+908 error node -v v0.10.25
+909 error npm -v 1.3.24
+910 error code ELIFECYCLE
+911 verbose exit [ 1, true ]
