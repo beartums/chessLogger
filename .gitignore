@@ -10,6 +10,10 @@ tmp/
 local.properties
 .settings/
 .loadpath
+.project
+
+# logs
+*.log
 
 # External tool builders
 .externalToolBuilders/
