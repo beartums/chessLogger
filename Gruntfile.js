@@ -20,11 +20,22 @@ module.exports = function(grunt) {
 	    	},
             all: ['js/*.js']
 	    	
+	    },
+	    jsdoc: {
+	    	dist: {
+	    		src: ['js/*.js'],
+	    		options: {
+	    			destination: 'docs',
+	    			configure: './jsdoc.json'
+	    		}
+
+	    	}
 	    }
 	});
 	
 	grunt.loadNpmTasks('grunt-docular');
 	grunt.loadNpmTasks('grunt-ngdocs');
+	grunt.loadNpmTasks('grunt-jsdoc');
 	
-	grunt.registerTask('default',['ngdocs','docular']);
+	grunt.registerTask('default',['jsdoc']);
 }

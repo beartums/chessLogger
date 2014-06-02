@@ -19,19 +19,31 @@ angular.module('ChessLoggerApp', ['ui.bootstrap','mongoRestApp']);
 */
 /**
  * @ngdoc object
- * @module ChessLoggerCtrl
+ * @class
  * @name ChessLoggerCtrl
- * @memberOf ChessLoggerApp
- * @description ChessLoggerApp controller
+ * @description {@link ChessLoggerApp} controller
  * @requires $modal
  * @requires $log
+ * @requires $timeout
  * @requires module:mongoRestFactory
  * 
  */
 angular.module('ChessLoggerApp').
 	controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeout, mongoRestFactory) {
 	
-
+		/**
+		 * @ngdoc object
+		 * @name defaultSettings
+		 * @memberof ChessLoggerCtrl
+		 * @description Object Holding default settings for the user interface: Persistence, options, etc
+		 * @typedef {object} defaultSettings
+		 * @property {boolean} allowMultipleLines If the interface will allow multiple lines of play for analysis
+		 * @property {boolean} enableLocalStorage Can games be persisted to local storage?
+		 * @property {object} db MongoDb definition
+		 * @property {string} db.url Url to the MongoDb instance
+		 * @property {string} db.name Name of the MongoDb Database to use
+		 * @property {string} db.collection Name of the MongoDb Collection to use
+		 */
 		$scope.defaultSettings = {
 			allowMultipleLines: true,
 			enableLocalStorage: true,
@@ -42,20 +54,53 @@ angular.module('ChessLoggerApp').
 				collection: 'games'
 			}
 		};
-		$scope.message={};
+		/**
+		 * @ngdoc object
+		 * @description UI Informational message object watched by {@link $watch} and removed from UI after timeout
+		 * @typedef {object}
+		 * @name ChessLoggerCtrl#message
+		 * @property {string} text Message to display
+		 * @property {boolean} isSuccess Indicate whether this is a success or failure message
+		 * @property {number} timeout Specify how long (in seconds) before this message will timeout and disappear from the UI
+		 */
+		$scope.message={
+			text: '',
+			isSuccess: true,
+			timeout: 5
+		};
 		
+		/**
+		 * @name $watch#message.text
+		 * @description register an observer on {@link ChessLoggerCtrl#message|message} object. 
+		 *  Delete the message.text after timeout has expired
+		 * so that it is not disctracting to the user
+		 */
 		$scope.$watch('message.text', function() {
 			$timeout(function() {
 				if ($scope.message.text) $scope.message={};
-			},$scope.message.timeout*1000);
+			},1000 * ($scope.message.timeout || 5));
 			
 		});
+		
+		/**
+		 * @ngdoc function
+		 * @name ChessLoggerCtrl#flashMessage
+		 * @description Send a message to the user interface which will be displayed for a specified amount of time
+		 * @param {text} message The message to display
+		 * @param {boolean} isSuccess Whether this should be displayed as a success/informational message or a failure
+		 * @param {number} [timeout=5] Seconds to display message before it disappears
+		 */
+		$scope.flashMessage = function(message, isSuccess, timeout) {
+			$scope.message.text = message;
+			$scope.message.isSuccess = isSuccess;
+			$scope.message.timeout = timeout || 5;
+		}
 
 	/**
 	 * @ngdoc function
-	 * @methodOf ChessLoggerCtrl 
-	 * @name clickCog
-	 * @description Handles a click on the settings button
+	 * @name ChessLoggerCtrl#clickCog
+	 * @description Handles a click on the settings button.  Calls the {@link ChessLoggerCtrl#updateSettings|updateSettings} function 
+	 * to display the modal and return a promise, which this function then stores in localStorage
 	 */
 		$scope.clickCog = function() {
 			var promise = $scope.updateSettings();
@@ -66,9 +111,10 @@ angular.module('ChessLoggerApp').
 		}
 	
 	/**
-	 * Calls dialog to update settings
-	 * @method
-	 * @return (promise) Function returning the settings object after changes have been made
+	 * @ngdoc function
+	 * @name ChessLoggerCtrl#updateSettings
+	 * @description Calls dialog to update settings
+	 * @returns {promise} promise object that resolve to the updated settings object or 'cancel' if canceled
 	 */
 		$scope.updateSettings = function() {
 			var settingsModalInstance = $modal.open({
@@ -85,12 +131,13 @@ angular.module('ChessLoggerApp').
 		}
 		
 	/**
-	 * Controller for the Settings Modal Dialog
-	 *
-	 * @param (obj) Scope local to this dialog
-	 * @param (obj) Instance of the dialog (created in updateSettings)
-	 * @param (obj) Settings object, from the resolve object in the dialog instance
-	 * @returns (obj/string) Settings object if success else 'cancel'
+	 * @ngdoc function
+	 * @description Controller for the Settings Modal Dialog
+	 * @name ChessLoggerCtrl#settingModalCtrl
+	 * @param {object} Scope local to this dialog
+	 * @param {object} Instance of the dialog (created in updateSettings)
+	 * @param {object} Settings object, from the resolve object in the dialog instance
+	 * @returns {void} void
 	 */
 		$scope.settingsModalCtrl = function($scope, $modalInstance, settings) {
 			$scope.settings = settings;
@@ -102,6 +149,17 @@ angular.module('ChessLoggerApp').
 			}
 		}
 	
+		/**
+		 * @ngdoc function
+		 * @name ChessLoggerCtrl#showDialog
+		 * @description Calls a generic modal dialog based on the configuration object
+		 * @param {object} config Modal DIalog configuration object
+		 * @param {string} config.title Dialog Box Title
+		 * @param {string} config.message Dialog Box filler text
+		 * @param {button[]} config.buttons Array of buttons to be shown as options. 
+		 * @param {string} config.button.name Name to show as button label and to return when button is clicked
+		 * @returns {promise} Promise object that resolves to the name of the button clicked
+		 */
 		$scope.showDialog = function(config) {
 			var dialogInstance = $modal.open({
 				templateUrl: 'templates/dialogModal.html',
@@ -116,6 +174,16 @@ angular.module('ChessLoggerApp').
 			return dialogInstance.result;
 		}
 		
+		/**
+		 * @ngdoc function
+		 * @name ChessLoggerCtrl#dialogCtrl
+		 * @description Controller for the generic Modal Dialog {@link ChessLoggerCtrl#showDialog|showDialog}
+		 *
+		 * @param {object} Scope local to this dialog
+		 * @param {object} Instance of the dialog (created in {@link ChessLoggerCtrl#showDialog|showDialog})
+		 * @param {object} Config object for the modal, from the resolve object in {@link ChessLoggerCtrl#showDialog|showDialog}
+		 * @returns {void} void
+		 */
 		$scope.dialogCtrl = function($scope, $modalInstance, config) {
 			$scope.config = config;
 			$scope.buttonClicked = function(name) {
@@ -123,6 +191,12 @@ angular.module('ChessLoggerApp').
 			}
 		}
 					
+		/**
+		 * @ngdoc function
+		 * @name ChessLoggerCtrl#showGameInfoModal
+		 * @description Shows a modal dialog for updating general info for this game.  Usually prior to saving
+		 * @returns {promise} Promise object that resolves to a {@link GameInfo} object
+		 */
 		$scope.showGameInfoModal = function() {
 			var gameInfoModalInstance = $modal.open({
 				templateUrl: 'templates/gameInfoModal.html',
@@ -138,6 +212,16 @@ angular.module('ChessLoggerApp').
 			return gameInfoModalInstance.result;
 		}
 		
+		/**
+		 * @ngdoc function
+		 * @name ChessLoggerCtrl#gameInfoModalCtrl
+		 * @description Controller for the generic Modal Dialog {@link ChessLoggerCtrl#showGameInfoModal|showGameInfoModal}
+		 *
+		 * @param {object} Scope local to this dialog
+		 * @param {object} Instance of the dialog (created in {@link ChessLoggerCtrl#showGameInfoModal|showGameInfoModal})
+		 * @param {object} {@link GameInfo} object for the modal to update, from the resolve object in {@link ChessLoggerCtrl#showGameInfoModal|showGameInfoModal}
+		 * @returns {void} void
+		 */
 		$scope.gameInfoModalCtrl = function($scope, $modalInstance, gameInfo) {
 		
 			$scope.gameInfo = gameInfo;
@@ -150,12 +234,27 @@ angular.module('ChessLoggerApp').
 			}
 		}
 		
+		/**
+		 * @ngdoc function
+		 * @name ChessLoggerCtrl#promoModalCtrl
+		 * @description Controller for the piece Promotion Dialog {@link ChessLoggerCtrl#showPromoModal|showPromoModal}
+		 *
+		 * @param {object} Scope local to this dialog
+		 * @param {object} Instance of the dialog (created in {@link ChessLoggerCtrl#showPromoModal|showPromoModal})
+		 * @returns {void} void
+		 */
 		$scope.promoModalCtrl = function($scope, $modalInstance) {
 			$scope.choose = function (selectedPiece) {
 				$modalInstance.close(selectedPiece);
 			};
 		}
 		
+		/**
+		 * @ngdoc function
+		 * @name ChessLoggerCtrl#showPromoModal
+		 * @description Shows a modal dialog for selecting a piece to promote to when pawn gets to last rank
+		 * @returns {promise} Promise object that resolves to a string with the piece abbreviation
+		 */
 		$scope.showPromoModal = function() {
 			var promoModalInstance = $modal.open({
 				templateUrl: 'templates/promoModal.html',
@@ -172,9 +271,8 @@ angular.module('ChessLoggerApp').
 		}
 
 		/**
-		 * Initialize the board
-		 * @method ChessLoggerCtrl.init
-		 * @memberof! ChessLoggerCtrl
+		 * @description Initialize the board
+		 * @name ChessLoggerCtrl.init
 		 */
 		$scope.init = function() {
 			$scope.game = new ChessWrapper(this.boardCfg);
@@ -184,6 +282,11 @@ angular.module('ChessLoggerApp').
 			$scope.flashMessage('Initialised',true);
 		}
 		
+		/**
+		 * @description Delete the current game
+		 * @name ChessLoggerCtrl#deleteGame
+		 * @param {string} gameId MongoDb _id for the game to be deleted
+		 */
 		$scope.deleteGame = function(gameId) {
 			var promise = mongoRestFactory.deleteItem({id:gameId});
 			promise.then(function(retData) {
@@ -193,6 +296,11 @@ angular.module('ChessLoggerApp').
 			});
 			
 		}
+		/**
+		 * @description Save the current game.  First allow user to update the game info, 
+		 * then handle the promise that is returned
+		 * @name ChessLoggerCtrl#saveGame
+		 */
 		
 		$scope.saveGame = function() {
 			var promise = $scope.showGameInfoModal();
@@ -215,22 +323,31 @@ angular.module('ChessLoggerApp').
 					$scope.flashMessage('Successfully saved game ' + ret.data._id, true);
 				},
 				function(ret) {
-					$scope.flashMessage('Keep trying.  Something at the other end isn\'t doing its job',false)
+					$scope.flashMessage('Keep trying.  Something at the other end isn\'t doing its job',false);
 				});
 			},
 			// if cancelled
 			function(cancelReason) {
+				$scope.flashMessage('Looks like this was cancelled by the user.  Only you know why you did that.',false)
 				return;
 			});
 		}
 		
+		/**
+		 * @description get the list of saved games from the mongoDb
+		 * @name ChessLoggerCtrl#getGames
+		 */
 		$scope.getGames = function() {
 			var promise = mongoRestFactory.getList();
 			promise.then(function (ret) {
 				$scope.savedGames = ret.data;
 			});
 		}
-		
+		/**
+		 * @description Click the trash icon to start a new game because is also clears the current game and
+		 * discards any unsaved moves.  First prompt for approval with {@link ChessLoggerCtrl#showDialog|showDialog}
+		 * @name ChessLoggerCtrl#trashClick
+		 */
 		$scope.trashClick = function() {
 			var dlgConfig = {
 				title: "New Game",
@@ -251,21 +368,32 @@ angular.module('ChessLoggerApp').
 				}
 			});
 		}
-		
-		$scope.flashMessage = function(message, isSuccess, timeout) {
-			$scope.message.text = message;
-			$scope.message.success = isSuccess;
-			$scope.message.timeout = timeout || 5;
-		}
-		
+
+		/**
+		 * @description Load the saved game from MongoDb onto the current board (rehydrate through {@link ChessWrapper})
+		 * @name ChessLoggerCtrl#loadGame
+		 * @param {object} savedGame Game object from MongoDb Get
+		 */
 		$scope.loadGame = function(savedGame) {
 			$scope.game = new ChessWrapper($scope.boardCfg,savedGame);
 		}
 		
+		/**
+		 * @description Set board position and move list prior to the first move
+		 * @name ChessLoggerCtrl#goToStart
+		 */
 		$scope.goToStart = function() {$scope.game.goToStart();}
 		
+		/**
+		 * @description Set board position and move list to the last move
+		 * @name ChessLoggerCtrl#goToEnd
+		 */
 		$scope.goToEnd = function() {$scope.game.goToEnd();}
 		
+		/**
+		 * @description Go to next move in this line
+		 * @name ChessLoggerCtrl#goForwardOne
+		 */
 		$scope.goForwardOne = function() {$scope.game.goForwardOne();}
 		
 		$scope.goBackOne = function() {	$scope.game.goBackOne();}

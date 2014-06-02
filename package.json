@@ -1,8 +1,9 @@
 {
   "name": "chesslogger",
   "dependencies": {
-      "grunt": "latest",
-      "grunt-docular": "latest",
-      "grunt-ngdocs": "latest"
+    "grunt": "latest",
+    "grunt-docular": "latest",
+    "grunt-ngdocs": "latest",
+    "grunt-jsdoc": "~0.5.4"
   }
 }

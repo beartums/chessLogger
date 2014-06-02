@@ -56,5 +56,28 @@ function GameInfo() {
 	this.white = "";
 	this.black = "";
 	this.result = "*";
-	
+}
+/**
+ * Configuration obect used by ChessWrapper to integrate Chessboard.js and Chess.js with angular and ChessLoggerCtrl
+ * @class
+ * @property {string} [pieceTheme='assets/pieces/{piece\}.png'] Location of the piece images.
+ * @property {string} [position='start'] Starting position of the game
+ * @property {string} [boardDiv='board1'] Name of the HTML index that will host the board
+ * @property {boolean} [draggable=true] Whether the pieces will be draggable
+ * @property {string} [dropOffBoard='snapback'] Strategy for handling pieces that are dropped off the board
+ * @property {boolean} [allowMultipleLines=true] Allow user to start a branching line from a previously-made move
+ * @property {function} onDrop Function called after chessboardjs and chessjs handle a dropped piece.  Needed to allow angular to $digest the changes
+ * @property {function} digest Angular $digest function injected into chesswrapper.  Have not been able to make this work (multiple updates) so instead use the passed onDrop function and $digest it in {@link ChessLoggerCtrl#onDrop|ChessLoggerCtrl.onDrop}
+ * @property {function) promotionsSelector Function which displays the interface to select a promotions piece.  Returns a piece initial (qrbn)
+ */
+function BoardCfg() {
+	this.pieceTheme= 'assets/pieces/{piece}.png';
+	this.position= 'start';
+	this.boardDiv= 'board1';
+	this.draggable= true;
+	this.dropOffBoard= 'snapback';
+	this.allowMultipleLines= true;
+	this.onDrop= function() {};
+	this.digest= function() {};
+	this.promotionSelector= function(){};
 }
