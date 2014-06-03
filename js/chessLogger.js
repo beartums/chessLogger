@@ -358,6 +358,9 @@ angular.module('ChessLoggerApp').
 			var promise = mongoRestFactory.getList();
 			promise.then(function (ret) {
 				$scope.savedGames = ret.data;
+			},function(ret) {
+				$scope.flashMessage('Could not reach the database.  Call someone who might know how to do something about this '  +
+						'and tell him or her that your helpful status code is: ' + ret.status,false,9999)
 			});
 		}
 		/**
