@@ -35,3 +35,19 @@ li {
 	background-color: white;
 	font-weight: normal;
 }
+
+.cssFade {
+  -webkit-transition:all linear .5s;
+  transition:all linear .5s;
+  opacity: 1;
+}
+
+.cssFade.ng-hide {
+  opacity: 0;
+}
+
+.cssFade.ng-hide-remove,
+.cssFade.ng-hide-add {
+  display:block!important;
+}
+

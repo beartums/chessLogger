@@ -7,9 +7,10 @@
  * @version 0.0.1
  * @requires ui.bootstrap
  * @requires mongoRestApp
+ * @requires ngAnimate
  */
 
-angular.module('ChessLoggerApp', ['ui.bootstrap','mongoRestApp']);
+angular.module('ChessLoggerApp', ['ui.bootstrap','ngAnimate','mongoRestApp']);
 
 /*angular.module('ChessLoggerApp')
 	// Initialize the mongo api for the chesslogger app
