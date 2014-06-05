@@ -1,8 +1,7 @@
 @CHARSET "ISO-8859-1";
 @font-face {
 	font-family: "Chess";
-	src: url('assets/CASEFONT.WOFF') format("woff"),
-			url('assets/CASEFONT.TTF'') format("truetype");
+	src: url('./assets/CASEFONT.TTF'') format("truetype");
 }
 .chess-font {
 	font-family: "Chess";

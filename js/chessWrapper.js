@@ -111,30 +111,43 @@
 		if (!this.isValidMove(source,target,game)) return "snapback";
 		
 		// must do this pass before setting a new line so that we can get the SAN
+		//console.log(this.game.fen(),game.fen());
 		if (this.isPromotion(target,piece)) { // if promoting a pawn, select the piece
-			//var thisObj = this;
-			this.promotionSelector().then(function(selectedPiece) {
+			//
+			this.promotionSelector().then(bind(this,function(selectedPiece) {
 				moveObj.promotion = selectedPiece;
-				var move = game.move(moveObj);
-			});
+				this.processDrop(game, moveObj);
+			}));
 		} else {
-			var move = game.move(moveObj);	
+			this.processDrop(game, moveObj);
 		}
+	}
 		
+	/**
+	 * In order to do the same things after a promotion modal (returning a promise) and after an 
+	 * ordinary move, we have to break the post-modal processing into a separate routine that can be
+	 * bound to this instance of ChessWrapper
+	 * @param {object} game The game in which the move is made
+	 * @param {object} moveObj The move information to be used to make the move
+	 */
 		
+	ChessWrapper.prototype.processDrop = function(game, moveObj) {
 		// don't start a new line if the move has already been made
+		//var x = this.game.fen()
 		if (!this.atEndOfMoveList()) { 					
 			var tempos = []
 			// collect the already-made next-moves
 			if (this.line.tempos.length>this.line.tempos.indexOf(this.selectedTempo)+1) {
 				tempos.push(this.line.tempos[this.line.tempos.indexOf(this.selectedTempo)+1]);
 			}
-			if (this.selectedTempo.lines.length>0) {	// already other lines?
+			if (this.selectedTempo.lines && this.seltectedTempo.lines.length>0) {	// already other lines?
 				for (var i = 0; i < this.selectedTempo.lines.length; i++) {
 					tempos.push(this.selectedTempo.lines[i].tempos[0]);
 				}
 			}
 			// test all the next-moves to see if they are the same.  if so set the position and exit
+			var g = new Chess(game.fen());
+			var move = g.move(moveObj);
 			for (var i = 0; i < tempos.length; i++) {
 				if (tempos[i].san==move.san) {
 					this.setPosition(tempos[i]);
@@ -145,7 +158,10 @@
 			this.setNewLine();
 		}
 		// now make the actual move
-		move = this.game.move(moveObj);
+		//var x = this.game.fen()
+		move = game.move(moveObj);
+		if (!move) return 'snapback';
+		this.game=game;
 		this.addMove(move);
 
 	}

@@ -74,6 +74,7 @@
 			<div class="alert alert-dismissable cssFade" 
 				ng-class="{'alert-success':message.isSuccess,'alert-danger':!message.isSuccess}"
 				ng-hide="!message.text">
+			 	<button type="button" class="close cssFade" data-dismiss="alert" aria-hidden="true">&times;</button>
   				{{message.text}}
 			</div>
 			<div class="text-right"><small><em>check out the developer documentation <a href="./docs">here</a>.</em></small></div>
