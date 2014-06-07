@@ -115,12 +115,18 @@
 		if (this.isPromotion(target,piece)) { // if promoting a pawn, select the piece
 			//
 			this.promotionSelector().then(bind(this,function(selectedPiece) {
-				moveObj.promotion = selectedPiece;
-				this.processDrop(game, moveObj);
+				// When a piece is selected
+				moveObj.promotion = selectedPiece; 
+				return 	this.processDrop(game, moveObj);
+			}), bind(this,function() {
+				//When user presses 'esc' to cancel the promotion
+				this.setPosition(this.selectedTempo)
+				return;
 			}));
 		} else {
-			this.processDrop(game, moveObj);
+			return this.processDrop(game, moveObj);
 		}
+		
 	}
 		
 	/**
@@ -134,6 +140,7 @@
 	ChessWrapper.prototype.processDrop = function(game, moveObj) {
 		// don't start a new line if the move has already been made
 		//var x = this.game.fen()
+		
 		if (!this.atEndOfMoveList()) { 					
 			var tempos = []
 			// collect the already-made next-moves
