@@ -147,7 +147,7 @@
 			if (this.line.tempos.length>this.line.tempos.indexOf(this.selectedTempo)+1) {
 				tempos.push(this.line.tempos[this.line.tempos.indexOf(this.selectedTempo)+1]);
 			}
-			if (this.selectedTempo.lines && this.seltectedTempo.lines.length>0) {	// already other lines?
+			if (this.selectedTempo.lines && this.selectedTempo.lines.length>0) {	// already other lines?
 				for (var i = 0; i < this.selectedTempo.lines.length; i++) {
 					tempos.push(this.selectedTempo.lines[i].tempos[0]);
 				}
