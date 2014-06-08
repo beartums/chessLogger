@@ -6,6 +6,7 @@
     	<link rel="stylesheet" href="bower_components/bootstrap-css/css/bootstrap.css">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/chesslogger.css">
+		<link rel="stylesheet" href="assets/annotations/styles.css">
 	</head>
 	<body ng-app="ChessLoggerApp"  ng-controller="ChessLoggerCtrl">
 		<script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -27,41 +28,64 @@
 		<div class="container">
 			<div class="row">
 				<div id="board1" class="col-md-5"></div>
-				<div class="col-md-1"></div>
-				<div class="col-md-6">
+				<div class="col-md-7">
 					<div class="row">
-						<div id="controls" class="col-md-12 btn-toolbar">
-							<div class="btn-group btn-group-lg">
-								<span type="button" class="btn btn-default fa fa-refresh" ng-click="flipBoard()" title="Flip Board"></span>
-								<span type="button" class="btn btn-default fa fa-fast-backward" ng-click="goToStart()" title="Back to Start"></span>
-								<span type="button" class="btn btn-default fa fa-step-backward" ng-click="goBackOne()" title="Back up one move"></span>
-								<span type="button" class="btn btn-default fa fa-undo" ng-click="undo()" title="Undo the last move in the list"></span>
-								<span type="button" class="btn btn-default fa fa-step-forward" ng-click="goForwardOne()" title="Advance one move"></span>
-								<span type="button" class="btn btn-default fa fa-fast-forward" ng-click="goToEnd()" title="Go To End Position"></span>
-								<span type="button" class="btn btn-default fa fa-trash-o" ng-click="trashClick()" title="New Game"></span>
-							</div>
-							<div class="btn-group btn-group-lg">
-								<span type="button" class="btn btn-default fa fa-save" ng-click="saveGame()" title="Save the game"></span>
-								<a class="btn btn-default fa fa-folder-open-o dropdown-toggle" ng-click="getGames()" title="Load a game"></a>
-								<div class="dropdown-menu">
-									<table class="table table-hover" ng-hide="!savedGames.length" style="width: 300px">
-										<tr ng-repeat="game in savedGames" ng-click="loadGame(game)">
-											<td>{{game.gameInfo.white}} vs. {{game.gameInfo.black}}</td>
-											<td>{{game.gameInfo.date}}</td>
-											<!--td>
-												<span type="button" class="btn btn-default btn-sm fa fa-delete" ng-click="deleteGame(game)" title="Delete this game from the database"></span>
-											</td-->
-										</tr>
-									</table>
+						<div id="controls" class="col-md-12">
+							<div class="row btn-toolbar">
+								<div class="col-md-12 col-lg-7 center-block">
+									<div class="btn-group btn-group-lg center-block">
+										<span type="button" class="btn btn-default fa chess-fa-refresh" ng-click="flipBoard()" title="Flip Board"></span>
+										<span type="button" class="btn btn-default fa chess-fa-fast-backward" ng-click="goToStart()" title="Back to Start"></span>
+										<span type="button" class="btn btn-default fa chess-fa-step-backward" ng-click="goBackOne()" title="Back up one move"></span>
+										<span type="button" class="btn btn-default fa chess-fa-step-undo" ng-click="undo()" title="Undo the last move in the list"></span>
+										<span type="button" class="btn btn-default fa chess-fa-step-forward" ng-click="goForwardOne()" title="Advance one move"></span>
+										<span type="button" class="btn btn-default fa chess-fa-fast-forward" ng-click="goToEnd()" title="Go To End Position"></span>
+									</div>
 								</div>
-							</div>
-							<div class="btn-group btn-group-lg">
-								<span type="button" class="btn btn-default fa fa-cog" ng-click="clickCog()" title="Show Modal"></span>
+								<div class="col-md-12 col-lg-5 center-block">
+									<div class="btn-group btn-group-lg center-block">
+										<span type="button" class="btn btn-default fa chess-newGame" ng-click="trashClick()" title="New Game"></span>
+										<span type="button" class="btn btn-default fa chess-fa-save" ng-click="saveGame()" title="Save the game"></span>
+										<span type="button" class="btn btn-default fa chess-fa-trash-o" ng-click="trashClick()" title="Delete"></span>
+										<span type="button" class="btn btn-default fa chess-fa-cog" ng-click="clickCog()" title="Options"></span>
+										<span type="button" class="btn btn-default fa chess-fa-folder-open-o dropdown-toggle" ng-click="getGames()" title="Load a game"></span>
+										<div class="dropdown-menu">
+											<table class="table table-hover" ng-hide="!savedGames.length" style="width: 300px">
+												<tr ng-repeat="game in savedGames" ng-click="loadGame(game)">
+													<td>{{game.gameInfo.white}} vs. {{game.gameInfo.black}}</td>
+													<td>{{game.gameInfo.date}}</td>
+													<!--td>
+														<span type="button" class="btn btn-default btn-sm fa fa-delete" ng-click="deleteGame(game)" title="Delete this game from the database"></span>
+													</td-->
+												</tr>
+											</table>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 					<div class="row">
-						<ul id="moves" class="col-md-12">
+						<div class="col-md-1 center-block  btn-toolbar">
+							<div class=" btn-group btn-group-vertical">
+								<span type="button" class="btn btn-default fa chess-good" ng-click="comment('!')" title="Good Move!"></span>
+								<span type="button" class="btn btn-default fa chess-brilliant" ng-click="comment('!!')" title="Brilliant Move!"></span>
+								<span type="button" class="btn btn-default fa chess-bad" ng-click="comment('?')" title="Bad move"></span>
+								<span type="button" class="btn btn-default fa chess-blunder" ng-click="comment('??')" title="Blunder!"></span>
+								<span type="button" class="btn btn-default fa chess-interesting" ng-click="comment('!?')" title="Deserves more analysis"></span>
+								<span type="button" class="btn btn-default fa chess-dubious" ng-click="comment('?!')" title="Complicating, but probably bad."></span>
+							</div>
+							<div class=" btn-group btn-group-vertical">
+								<span type="button" class="btn btn-default fa chess-advantageblack" ng-click="comment('-+')" title="Advantage black"></span>
+								<span type="button" class="btn btn-default fa chess-advantagewhite" ng-click="comment('+-')" title="Advantage white"></span>
+								<span type="button" class="btn btn-default fa chess-slightadvantageblack" ng-click="comment('-=')" title="Slight Advantage black"></span>
+								<span type="button" class="btn btn-default fa chess-slightadvantagewhite" ng-click="comment('+=')" title="Slight Advantage white"></span>
+								<span type="button" class="btn btn-default fa chess-withcompensation" ng-click="comment('=8')" title="Compensation for weaknesses, appears equal"></span>
+								<span type="button" class="btn btn-default fa chess-uncertain" ng-click="comment('8')" title="uncertain"></span>
+				
+							</div>				
+						</div>
+						<ul id="moves" class="col-md-11">
 							<li ng-repeat="tempo in game.rootLine.tempos" 
 								class="move" 
 								ng-class="{activeLine:game.isActive(tempo),inactiveLine:!game.isActive(tempo)}" 

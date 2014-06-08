@@ -1,0 +1,109 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "chess-annotations";
+  src:url("chess-annotations.eot");
+  src:url("chess-annotations.eot?#iefix") format("embedded-opentype"),
+    url("chess-annotations.woff") format("woff"),
+    url("chess-annotations.ttf") format("truetype"),
+    url("chess-annotations.svg#chess-annotations") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "chess-annotations" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="chess-"]:before,
+[class*=" chess-"]:before {
+  font-family: "chess-annotations" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.chess-advantageblack:before {
+  content: "a";
+}
+.chess-advantagewhite:before {
+  content: "b";
+}
+.chess-bad:before {
+  content: "c";
+}
+.chess-blunder:before {
+  content: "d";
+}
+.chess-brilliant:before {
+  content: "e";
+}
+.chess-dubious:before {
+  content: "f";
+}
+.chess-good:before {
+  content: "g";
+}
+.chess-interesting:before {
+  content: "h";
+}
+.chess-slightadvantageblack:before {
+  content: "i";
+}
+.chess-slightadvantagewhite:before {
+  content: "j";
+}
+.chess-uncertain:before {
+  content: "k";
+}
+.chess-withcompensation:before {
+  content: "l";
+}
+.chess-newgame:before {
+  content: "m";
+}
+.chess-fa-refresh:before {
+  content: "n";
+}
+.chess-fa-fast-backward:before {
+  content: "o";
+}
+.chess-fa-fast-forward:before {
+  content: "p";
+}
+.chess-fa-step-backward:before {
+  content: "s";
+}
+.chess-fa-step-undo:before {
+  content: "q";
+}
+.chess-fa-save:before {
+  content: "t";
+}
+.chess-fa-cog:before {
+  content: "u";
+}
+.chess-fa-trash-o:before {
+  content: "v";
+}
+.chess-fa-folder-open-o:before {
+  content: "w";
+}
+.chess-fa-step-forward:before {
+  content: "r";
+}
