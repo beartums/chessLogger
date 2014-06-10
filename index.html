@@ -32,7 +32,7 @@
 					<div class="row">
 						<div id="controls" class="col-md-12">
 							<div class="row btn-toolbar">
-								<div class="col-md-12 col-lg-7 center-block">
+								<div class="col-md-12 col-lg-12 center-block">
 									<div class="btn-group btn-group-lg center-block">
 										<span type="button" class="btn btn-default fa chess-fa-refresh" ng-click="flipBoard()" title="Flip Board"></span>
 										<span type="button" class="btn btn-default fa chess-fa-fast-backward" ng-click="goToStart()" title="Back to Start"></span>
@@ -41,26 +41,26 @@
 										<span type="button" class="btn btn-default fa chess-fa-step-forward" ng-click="goForwardOne()" title="Advance one move"></span>
 										<span type="button" class="btn btn-default fa chess-fa-fast-forward" ng-click="goToEnd()" title="Go To End Position"></span>
 									</div>
-								</div>
-								<div class="col-md-12 col-lg-5 center-block">
 									<div class="btn-group btn-group-lg center-block">
-										<span type="button" class="btn btn-default fa chess-newGame" ng-click="trashClick()" title="New Game"></span>
 										<span type="button" class="btn btn-default fa chess-fa-save" ng-click="saveGame()" title="Save the game"></span>
+										<div class="btn-group btn-group-lg">
+											<span type="button" class="btn btn-default fa chess-fa-folder-open-o dropdown-toggle" ng-click="getGames()" title="Load a game"></span>
+											<div class="dropdown-menu">
+												<table class="table table-hover" ng-hide="!savedGames.length" style="width: 300px">
+													<tr ng-repeat="game in savedGames" ng-click="loadGame(game)">
+														<td>{{game.gameInfo.white}} vs. {{game.gameInfo.black}}</td>
+														<td>{{game.gameInfo.date}}</td>
+														<!--td>
+															<span type="button" class="btn btn-default btn-sm fa fa-delete" ng-click="deleteGame(game)" title="Delete this game from the database"></span>
+														</td-->
+													</tr>
+												</table>
+											</div>
+										</div>
+										<span type="button" class="btn btn-default fa chess-newGame" ng-click="newClick()" title="New Game"></span>
 										<span type="button" class="btn btn-default fa chess-fa-trash-o" ng-click="trashClick()" title="Delete"></span>
 										<span type="button" class="btn btn-default fa chess-fa-cog" ng-click="clickCog()" title="Options"></span>
-										<span type="button" class="btn btn-default fa chess-fa-folder-open-o dropdown-toggle" ng-click="getGames()" title="Load a game"></span>
-										<div class="dropdown-menu">
-											<table class="table table-hover" ng-hide="!savedGames.length" style="width: 300px">
-												<tr ng-repeat="game in savedGames" ng-click="loadGame(game)">
-													<td>{{game.gameInfo.white}} vs. {{game.gameInfo.black}}</td>
-													<td>{{game.gameInfo.date}}</td>
-													<!--td>
-														<span type="button" class="btn btn-default btn-sm fa fa-delete" ng-click="deleteGame(game)" title="Delete this game from the database"></span>
-													</td-->
-												</tr>
-											</table>
 										</div>
-									</div>
 								</div>
 							</div>
 						</div>

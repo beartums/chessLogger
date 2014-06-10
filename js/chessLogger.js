@@ -30,7 +30,7 @@ angular.module('ChessLoggerApp', ['ui.bootstrap','ngAnimate','mongoRestApp']);
  * 
  */
 angular.module('ChessLoggerApp').
-	controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeout, mongoRestFactory) {
+	controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeout, $filter, mongoRestFactory) {
 	
 		/**
 		 * @ngdoc object
@@ -215,7 +215,9 @@ angular.module('ChessLoggerApp').
 				windowClass: 'game-info-modal',
 				resolve: {
 					gameInfo: function() {
-						return $scope.game.gameInfo || new GameInfo();
+						$scope.gameInfo = $scope.gameInfo || new GameInfo();
+						$scope.gameInfo.date = $filter("date")($scope.gameInfo.date,'yyyy-MM-dd');
+						return $scope.gameInfo;
 					}
 				}
 			});
