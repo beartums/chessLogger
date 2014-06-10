@@ -216,7 +216,10 @@ angular.module('ChessLoggerApp').
 				resolve: {
 					gameInfo: function() {
 						$scope.gameInfo = $scope.gameInfo || new GameInfo();
+						// Must be in this format or chrome will not see it, apparently
 						$scope.gameInfo.date = $filter("date")($scope.gameInfo.date,'yyyy-MM-dd');
+						$scope.gameInfo.storage = $scope.gameInfo.storage || {location: 'local',
+																				db: $scope.defaultSettings.db}
 						return $scope.gameInfo;
 					}
 				}
@@ -239,6 +242,7 @@ angular.module('ChessLoggerApp').
 		$scope.gameInfoModalCtrl = function($scope, $modalInstance, gameInfo) {
 		
 			$scope.gameInfo = gameInfo;
+			
 			
 			$scope.cancel = function() {
 				$modalInstance.dismiss('cancel');
