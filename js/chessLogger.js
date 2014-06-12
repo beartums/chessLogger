@@ -248,7 +248,7 @@ angular.module('ChessLoggerApp').
 				$modalInstance.dismiss('cancel');
 			}
 			$scope.ok = function() {
-				$modalInstance.close($scope.gameInfo);
+				$modalInstance.close($scope.gameInfo); // Deleting loaded game, true indicates it should also be cleared from cache
 			}
 		}
 		
@@ -296,7 +296,10 @@ angular.module('ChessLoggerApp').
 		 * @name ChessLoggerCtrl.init
 		 */
 		$scope.init = function() {
-			$scope.game = new ChessWrapper(this.boardCfg);
+			$scope.game = new ChessWrapper(this.boardCfg); // new game
+			var interruptedGame = angular.fromJson(localStorage.getItem('currentGame'));
+			if (interruptedGame) $scope.loadGame(interruptedGame);
+			
 			$scope.settings = angular.fromJson(localStorage.getItem('settings')) || $scope.defaultSettings;
 			var db = $scope.defaultSettings.db;
 			mongoRestFactory.init(db.url, db.name, db.collection);
@@ -308,15 +311,18 @@ angular.module('ChessLoggerApp').
 		 * @function
 		 * @name ChessLoggerCtrl#deleteGame
 		 * @param {string} gameId MongoDb _id for the game to be deleted
+		 * @param {boolean} clearCache True if you want to delete the game from the automatic interruptedGame cache
 		 */
 		$scope.deleteGame = function(gameId) {
-			var promise = mongoRestFactory.deleteItem({id:gameId});
-			promise.then(function(retData) {
-				$scope.flashMessage('Deletion Successful.  That game won\'t embarrass you any more.',true);
-			}, function(retData) {
-				$scope.flashMessage('That didn\'t go so well. I don\'t think you\'ve purged that puppy.' , false)
-			});
-			
+			if (gameId) {
+				var promise = mongoRestFactory.deleteItem({id:gameId});
+				
+				promise.then(function(retData) {
+					$scope.flashMessage('Deletion Successful.  That game won\'t embarrass you any more.',true);
+				}, function(retData) {
+					$scope.flashMessage('That didn\'t go so well. I don\'t think you\'ve purged that puppy.' , false)
+				});
+			}
 		}
 		/**
 		 * @description Save the current game.  First allow user to update the game info, 
@@ -330,7 +336,7 @@ angular.module('ChessLoggerApp').
 			promise.then(function(gameInfo) {
 				$scope.game.gameInfo = gameInfo;
 				var data = $scope.game.getSaveableGame();
-					
+				
 				if ($scope.game.gameId && $scope.game.gameId!="") {
 					promise = mongoRestFactory.updateItem({
 						id:$scope.game.gameId,
@@ -391,7 +397,8 @@ angular.module('ChessLoggerApp').
 					$scope.deleteGame($scope.game.gameId);
 				} 
 				
-				if (ret!='Cancel') {
+				if (ret=='Delete' || ret=='Discard') {
+					localStorage.removeItem('currentGame')
 					$scope.newGame();
 				}
 			});
@@ -490,9 +497,23 @@ angular.module('ChessLoggerApp').
 		$scope.onDrop = function(source, target, piece, newPos, oldPos, orientation) {
 			var ret = $scope.game.onDrop(source, target, piece, newPos, oldPos, orientation);
 			$scope.$digest();
+			$scope.saveLocal($scope.game); // save current progress
 			return ret;
 		}
 		
+		/**
+		 * @description Keep track of a game locally incase of interruption
+		 * @name ChessLoggerCtrl#saveLocal
+		 * @function
+		 * @param {object} [game=$scope.game] The game to save locally
+		 * @returns void
+		 */
+		$scope.saveLocal = function(game) {
+			game = game || $scope.game;
+			gameObj = game.getSaveableGame();
+			gameStr = angular.toJson(gameObj);
+			localStorage.setItem("currentGame", gameStr);
+		}
 		/**
 		 * @description Determine whether this move requires a 'white move' placeholder ('...').  This will happen
 		 * when a black move doesn't have a previous white move in the same line
