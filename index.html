@@ -46,10 +46,24 @@
 										<div class="btn-group btn-group-lg">
 											<span type="button" class="btn btn-default fa chess-fa-folder-open-o dropdown-toggle" ng-click="getGames()" title="Load a game"></span>
 											<div class="dropdown-menu">
-												<table class="table table-hover" ng-hide="!savedGames.length" style="width: 300px">
+												<table class="table table-hover table-condensed" ng-hide="!savedGames.length" style="width: 300px">
+													<th class="form-group class="col-md-8"">
+														<span class='input-group input-group-sm'>
+															<input type='text' class='form-control input-sm' placeholder='filter' ng-model='gameFilter.filterString'>
+															<span class='input-group-addon glyphicon small glyphicon-search small'></span>
+														</span>
+													</th>
+													<th class="col-md-4 form-group">
+														<span class="btn-group btn-group-xs">
+															<label class="btn btn-default" title="Show Remote Games" btn-radio="'rmt'"
+																				btn-checkbox ng-model="gameFilter.showRemoteGames">Rmt</label>
+															<label class="btn btn-default" title="Show Local Games" btn-radio="'lcl'"
+																				btn-checkbox ng-model="gameFilter.showLocalGames">Lcl</label>
+														</span>
+													</th>
 													<tr ng-repeat="game in savedGames" ng-click="loadGame(game)">
-														<td>{{game.gameInfo.white}} vs. {{game.gameInfo.black}}</td>
-														<td>{{game.gameInfo.date}}</td>
+														<td><small>{{game.gameInfo.white}} vs. {{game.gameInfo.black}}</small></td>
+														<td><small>{{game.gameInfo.date}}</small></td>
 														<!--td>
 															<span type="button" class="btn btn-default btn-sm fa fa-delete" ng-click="deleteGame(game)" title="Delete this game from the database"></span>
 														</td-->
