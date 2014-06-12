@@ -412,6 +412,8 @@ angular.module('ChessLoggerApp').
 		 */
 		$scope.loadGame = function(savedGame) {
 			$scope.game = new ChessWrapper($scope.boardCfg,savedGame);
+			// set up the local storage
+			localStorage.setItem('currentGame',angular.Json(savedGame.getSaveableGame()));
 		}
 		
 		/**
