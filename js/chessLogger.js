@@ -10,7 +10,75 @@
  * @requires ngAnimate
  */
 
-angular.module('ChessLoggerApp', ['ui.bootstrap','ngAnimate','mongoRestApp']);
+var chessLogger = angular.module('ChessLoggerApp', ['ui.bootstrap','ngAnimate','mongoRestApp']);
+
+chessLogger.constant('strings',{
+		'SETTINGS': 'settings',
+		'LOCAL_GAME': 'currentGame',
+		'LOCAL_GAMES': 'storedGames',
+		'DB_URL': 'home.griffithnet.com:3000',
+		'DB_NAME': 'chessLogger',
+		'DB_COLLECTION': 'games'
+	});
+	
+chessLogger.service('localGamesService', function(strings,$rootScope) {
+	
+	this.clearGame = function() {
+		localStorage.removeItem(strings.LOCAL_GAME);
+	}
+	
+	this.loadGame = function(index) {
+		index = index || -1
+		if (index>-1) { // get game from games array and remove it
+			var games = this.getGameList();
+			var game = games.slice(index,index)[0];
+			this.saveGameList(games);
+			this.saveGame(game);
+			return game;
+		} else {		
+			var game = angular.fromJson(localStorage.getItem(strings.LOCAL_GAME));
+			if (game) {
+				return game
+			} else {
+				return false;
+			}
+		}
+	};
+	
+	this.saveGame = function(saveableGame) {
+		saveableGame = saveableGame || $rootScope.game.getSaveableGame();
+		localStorage.setItem(strings.LOCAL_GAME,angular.toJson(saveableGame));
+	};
+	
+	this.getGameList = function() {
+		var list = localStorage.getItem(strings.LOCAL_GAMES)
+		var games = [];
+		for (var i=0; i>list.length-1;i++) {
+			var game = list[i];
+			game.index = i
+			games.push(game);
+		}
+		return games;
+	};
+	
+	this.saveGameList = function(games) {
+		var games = angular.fromJson(localStorage.getItem(strings.LOCAL_GAMES));
+		if (!games) var games = [];
+		return games;
+	}
+	
+	this.setLocalGame = function(saveableGame,isSaveRequested) {
+		// Save the current game to the list of local games
+		if ((isSaveRequested) && $rootScope.game.rootLine.tempos.length>0)  {
+			var games = this.getGameList()
+			games.push(saveableGame)
+			localStorage.setItem(strings.LOCAL_GAMES,angular.toJson(games));
+		}
+		this.saveGame(saveableGame);
+		
+	}
+		
+});
 
 /*angular.module('ChessLoggerApp')
 	// Initialize the mongo api for the chesslogger app
@@ -29,8 +97,8 @@ angular.module('ChessLoggerApp', ['ui.bootstrap','ngAnimate','mongoRestApp']);
  * @requires module:mongoRestFactory
  * 
  */
-angular.module('ChessLoggerApp').
-	controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeout, $filter, mongoRestFactory) {
+chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeout, $filter, mongoRestFactory, 
+		strings, localGamesService) {
 	
 		/**
 		 * @ngdoc object
@@ -49,9 +117,9 @@ angular.module('ChessLoggerApp').
 			enableLocalStorage: true,
 			emailAddress: '',
 			db : {
-				url: "http://home.griffithnet.com:3000",
-				name: 'chessLogger',
-				collection: 'games'
+				url: strings.DB_URL,
+				name: strings.DB_NAME,
+				collection: strings.DB_COLLECTION
 			}
 		};
 		$scope.lines = []; // for recursive alternate lines, use this with a single line object as base
@@ -85,6 +153,17 @@ angular.module('ChessLoggerApp').
 			},1000 * ($scope.message.timeout || 5));
 			
 		});
+
+		/**
+		 * @name $watch#game
+		 * @function
+		 * @description register an observer on {@link ChessLoggerCtrl#message|message} object. 
+		 *  Delete the message.text after timeout has expired
+		 * so that it is not disctracting to the user
+		 */
+		$scope.$watchCollection('game', function() {
+			localGamesService.saveGame($scope.game.getSaveableGame());
+		});
 		
 		/**
 		 * @ngdoc function
@@ -112,7 +191,7 @@ angular.module('ChessLoggerApp').
 			var promise = $scope.updateSettings();
 			promise.then(function(settings) {
 				$scope.settings = settings;
-				localStorage.setItem('settings',angular.toJson($scope.settings));
+				localStorage.setItem(strings.SETTINGS,angular.toJson($scope.settings));
 			});
 		}
 	
@@ -296,11 +375,16 @@ angular.module('ChessLoggerApp').
 		 * @name ChessLoggerCtrl.init
 		 */
 		$scope.init = function() {
-			$scope.game = new ChessWrapper(this.boardCfg); // new game
-			var interruptedGame = angular.fromJson(localStorage.getItem('currentGame'));
-			if (interruptedGame) $scope.loadGame(interruptedGame);
+			var game = localGamesService.loadGame();
+			if (game) {
+				this.game
+				$scope.game = new ChessWrapper($scope.boardCfg,game);
+			} else {
+				$scope.game = new ChessWrapper(this.boardCfg); // new game
+
+			}
 			
-			$scope.settings = angular.fromJson(localStorage.getItem('settings')) || $scope.defaultSettings;
+			$scope.settings = angular.fromJson(localStorage.getItem(strings.SETTINGS)) || $scope.defaultSettings;
 			var db = $scope.defaultSettings.db;
 			mongoRestFactory.init(db.url, db.name, db.collection);
 			$scope.flashMessage('Initialised',true);
@@ -384,8 +468,8 @@ angular.module('ChessLoggerApp').
 		 */
 		$scope.trashClick = function() {
 			var dlgConfig = {
-				title: "New Game",
-				message: "You have requested a new game.  Do you wish to delete the current game from the database or just discard any changes since the last save?",
+				title: "Clear Game Game",
+				message: "Do you wish to delete the current game from the database or just discard any changes since the last save?",
 				buttons: [{name:'Delete',title:'Get rid of this crap'},
 									{name:'Discard',title:'Save whats in the database, but ignore the crap since then'},
 									{name:'Cancel',title:"Whoopsie!  I didn't mean to hit that button"}
@@ -398,7 +482,7 @@ angular.module('ChessLoggerApp').
 				} 
 				
 				if (ret=='Delete' || ret=='Discard') {
-					localStorage.removeItem('currentGame')
+					localGamesService.clearGame();
 					$scope.newGame();
 				}
 			});
@@ -412,8 +496,7 @@ angular.module('ChessLoggerApp').
 		 */
 		$scope.loadGame = function(savedGame) {
 			$scope.game = new ChessWrapper($scope.boardCfg,savedGame);
-			// set up the local storage
-			localStorage.setItem('currentGame',angular.Json(savedGame.getSaveableGame()));
+			
 		}
 		
 		/**
@@ -449,7 +532,9 @@ angular.module('ChessLoggerApp').
 		 * @name ChessLoggerCtrl#newGame
 		 * @function
 		 */
-		$scope.newGame = function() {	$scope.game.initGame();}
+		$scope.newGame = function() {	
+			$scope.game.initGame();
+		}
 		
 		/**
 		 * @description Undo and erase last move
@@ -499,7 +584,7 @@ angular.module('ChessLoggerApp').
 		$scope.onDrop = function(source, target, piece, newPos, oldPos, orientation) {
 			var ret = $scope.game.onDrop(source, target, piece, newPos, oldPos, orientation);
 			$scope.$digest();
-			$scope.saveLocal($scope.game); // save current progress
+			//$scope.saveLocal($scope.game); // save current progress
 			return ret;
 		}
 		
@@ -510,12 +595,13 @@ angular.module('ChessLoggerApp').
 		 * @param {object} [game=$scope.game] The game to save locally
 		 * @returns void
 		 */
-		$scope.saveLocal = function(game) {
+		/*$scope.saveLocal = function(game) {
 			game = game || $scope.game;
 			gameObj = game.getSaveableGame();
 			gameStr = angular.toJson(gameObj);
-			localStorage.setItem("currentGame", gameStr);
+			localStorage.setItem(strings.LOCAL_GAME, gameStr);
 		}
+		*/
 		/**
 		 * @description Determine whether this move requires a 'white move' placeholder ('...').  This will happen
 		 * when a black move doesn't have a previous white move in the same line
