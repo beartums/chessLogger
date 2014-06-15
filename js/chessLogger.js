@@ -16,7 +16,7 @@ chessLogger.constant('strings',{
 		'SETTINGS': 'settings',
 		'LOCAL_GAME': 'currentGame',
 		'LOCAL_GAMES': 'storedGames',
-		'DB_URL': 'home.griffithnet.com:3000',
+		'DB_URL': 'http://home.griffithnet.com:3000',
 		'DB_NAME': 'chessLogger',
 		'DB_COLLECTION': 'games'
 	});
@@ -122,6 +122,7 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 				collection: strings.DB_COLLECTION
 			}
 		};
+		
 		$scope.lines = []; // for recursive alternate lines, use this with a single line object as base
 
 		
@@ -384,6 +385,8 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 
 			}
 			
+			$scope.loadedGame = angular.copy($scope.game.getSaveableGame());
+			
 			$scope.settings = angular.fromJson(localStorage.getItem(strings.SETTINGS)) || $scope.defaultSettings;
 			var db = $scope.defaultSettings.db;
 			mongoRestFactory.init(db.url, db.name, db.collection);
@@ -467,23 +470,31 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 		 * @name ChessLoggerCtrl#trashClick
 		 */
 		$scope.trashClick = function() {
+			var btnDel = {name:'Delete',title:'Get rid of this crap'};
+			var btnDis = {name:'Discard',title:'Save whats in the database, but ignore the crap since then'};
+			var btnCan = {name:'Cancel',title:"Whoopsie!  I didn't mean to hit that button"};
+			
+			if ($scope.isGameDirty()) {
+				var msg = "Do you wish to delete the current game from the database or just discard any changes since the last save?";
+				var btns = [btnDel, btnDis, btnCan];
+			} else {
+				var msg = "No changes have been made to this game.  Would you like to delete it fromt he database?";
+				var btns = [btnDel,btnCan];
+			}
 			var dlgConfig = {
-				title: "Clear Game Game",
-				message: "Do you wish to delete the current game from the database or just discard any changes since the last save?",
-				buttons: [{name:'Delete',title:'Get rid of this crap'},
-									{name:'Discard',title:'Save whats in the database, but ignore the crap since then'},
-									{name:'Cancel',title:"Whoopsie!  I didn't mean to hit that button"}
-									]
+				title: "Clear Game",
+				message: msg,
+				buttons: btns
 			}
 			var promise = $scope.showDialog(dlgConfig);
 			promise.then(function(ret) {
 				if (ret=="Delete") {
 					$scope.deleteGame($scope.game.gameId);
-				} 
-				
-				if (ret=='Delete' || ret=='Discard') {
 					localGamesService.clearGame();
 					$scope.newGame();
+				} else if (ret=='Discard') {
+					localGamesService.loadGame($scope.loadedGame)
+					$scope.loadGame($scope.loadedGame);
 				}
 			});
 		}
@@ -496,6 +507,7 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 		 */
 		$scope.loadGame = function(savedGame) {
 			$scope.game = new ChessWrapper($scope.boardCfg,savedGame);
+			$scope.loadedGame = angular.copy($scope.game.getSaveableGame());
 			
 		}
 		
@@ -534,6 +546,7 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 		 */
 		$scope.newGame = function() {	
 			$scope.game.initGame();
+			$scope.loadedGame = angular.copy($scope.game.getSaveableGame());
 		}
 		
 		/**
@@ -586,6 +599,15 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 			$scope.$digest();
 			//$scope.saveLocal($scope.game); // save current progress
 			return ret;
+		}
+		
+		$scope.isGameDirty = function(game) {
+			game = game || $scope.game;
+			if (angular.equals($scope.loadedGame,angular.copy(game.getSaveableGame()))) {
+				return false
+			} else {
+				return true;
+			}
 		}
 		
 		/**
