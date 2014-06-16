@@ -34,7 +34,7 @@
 		this.promotionSelector = boardCfg.promotionSelector; // calling proc returns a promise which waits for the selected piece
 		
 		this.board = new ChessBoard(boardCfg.boardDiv,boardCfg);
-		this.game = this.initGame(gameObj)
+		this.game = this.initGame(gameObj);
 		this.board.position(this.game.fen());
 		
 	}
@@ -55,7 +55,7 @@
 		
 		return game;
 		
-	}	
+	}	;
 	/**
 	 * Is this tempo in the active line?
 	 * A tempo is in the active line if it is in the current line or before the branch in a previous line
@@ -66,7 +66,7 @@
 		var l = this.line;
 		var branchIndex = 9999;
 		while (l) {
-			var tIndex = l.tempos.indexOf(tempo)
+			var tIndex = l.tempos.indexOf(tempo);
 			if (tIndex>-1 && tIndex<=branchIndex) {
 				return true;
 			} else if (tIndex>branchIndex) {
@@ -80,7 +80,7 @@
 			}
 		}
 		return false;
-	}
+	};
 
 	/**
 	 * @constant
@@ -105,8 +105,8 @@
 	 */
 	ChessWrapper.prototype.onDrop = function(source, target, piece, newPos, oldPos, orientation) {
 
-		var moveObj = {from:source, to:target}
-		var game = new Chess(this.selectedTempo.fen)
+		var moveObj = {from:source, to:target};
+		var game = new Chess(this.selectedTempo.fen);
 		
 		if (!this.isValidMove(source,target,game)) return "snapback";
 		
@@ -120,14 +120,14 @@
 				return 	this.processDrop(game, moveObj);
 			}), bind(this,function() {
 				//When user presses 'esc' to cancel the promotion
-				this.setPosition(this.selectedTempo)
+				this.setPosition(this.selectedTempo);
 				return;
 			}));
 		} else {
 			return this.processDrop(game, moveObj);
 		}
 		
-	}
+	};
 		
 	/**
 	 * In order to do the same things after a promotion modal (returning a promise) and after an 
@@ -142,7 +142,7 @@
 		//var x = this.game.fen()
 		
 		if (!this.atEndOfMoveList()) { 					
-			var tempos = []
+			var tempos = [];
 			// collect the already-made next-moves
 			if (this.line.tempos.length>this.line.tempos.indexOf(this.selectedTempo)+1) {
 				tempos.push(this.line.tempos[this.line.tempos.indexOf(this.selectedTempo)+1]);
@@ -171,7 +171,7 @@
 		this.game=game;
 		this.addMove(move);
 
-	}
+	};
 
 	/**
 	 * Convert this object into a JSON format that the backend can save
@@ -186,14 +186,14 @@
 				};
 			
 			line.tempos = this.temposToJSON(this.rootLine.tempos);
-			var game = this.gameFromLine(this.rootLine)
+			var game = this.gameFromLine(this.rootLine);
 			
 			var gameObj = {gameInfo: this.gameInfo,
 							pgn: game.pgn(),
 							line: line
 							};	
 		return gameObj;					
-	}
+	};
 	
 	/**
 	 * Convert a Line object to a chess.js-readable game
@@ -207,7 +207,7 @@
 			game.move(line.tempos[i].san);
 		}
 		return game;
-	}
+	};
 		
 	/**
 	 * Identify if this is a move requiring player to select a piece to promote to
@@ -218,8 +218,8 @@
 	 */
 	ChessWrapper.prototype.isPromotion = function(targetSquare, piece) {
 		return (piece=='bP' && targetSquare.indexOf('1')>-1) ||
-				(piece=='wP' && targetSquare.indexOf('8')>-1) 
-	}
+				(piece=='wP' && targetSquare.indexOf('8')>-1) ;
+	};
 
 	/**
 	 * Function to monitor the beginning of a move and not allow it if it is not valid
@@ -247,6 +247,8 @@
 			
 			// Otherwise, if the last move is currently selected, just check to see if the move is valid
 			var side = game.turn();
+			//console.log(game.fen());
+			//console.log(this.selectedTempo.fen);
 			
 			if (game.game_over() === true || 
 					(game.turn() === 'w' && piece.search(/^b/) !== -1) ||
@@ -256,7 +258,7 @@
 				return false;
 			}
 		//})();
-	}
+	};
 	
 	/**
 	 * Create a new Line object, starting from the current selected position, and change the active line to the new line
@@ -275,7 +277,7 @@
 		
 		if (!this.line.parentTempo.lines) this.line.parentTempo.lines=[];
 		this.line.parentTempo.lines.push(line);
-	}
+	};
 	
 	/**
 	 * Tempo number is based on current line.  This method gets the tempo count in the game if there are previous lines
@@ -288,7 +290,7 @@
 		if (num < 1) return this.TEMPO0;
 		if (num > this.game.history().length) return this.selectedTempo;
 		return this.line.tempos[num-1];
-	}
+	};
 
 	/**
 	 * Is the selected move at the end of the move list, or are there more moves
@@ -299,7 +301,7 @@
 		
 		if (this.line.tempos[this.line.tempos.length-1]==this.selectedTempo) return true;
 		return false;
-	}
+	};
 			
 	/**
 	 * Testing for a valid move after drop
@@ -314,7 +316,7 @@
 		for (var i = 0; i < vMoves.length; i++) if (source==vMoves[i].from && target==vMoves[i].to) return true;
 		
 		return false;
-	}
+	};
 
 	/**
 	 * Add a Tempo to the current Line
@@ -331,7 +333,7 @@
 		this.selectedTempo = tempo;
 		this.line.tempos.push(tempo);
 		if (move.flags.search(/[epkq]/i) > -1)	this.board.position(tempo.fen, false); // update for weird moves
-	}
+	};
 
 	/**
 	 * JSONify the current game (obsolete)
@@ -369,7 +371,7 @@
 			tmps.push(tmp);
 		}
 		return tmps;
-	}
+	};
 	
 	/**
 	 * Rehydrate a Line object from  array of tempos (with recursion)
@@ -407,7 +409,7 @@
 
 		}
 		return line;
-	}
+	};
 	
 	/**
 	 * Set the board position for the selected tempo
@@ -420,12 +422,12 @@
 		} else {
 			this.board.position(tempo.fen);
 			this.selectedTempo = tempo;
+			this.game = new Chess(this.selectedTempo.fen);
 			if (this.line.tempos.indexOf(this.selectedTempo)<0) {
-				this.line = tempo.parentLine;
-				this.game = new Chess(this.selectedTempo.fen);
+				this.line = selectedTempo.parentLine;
 			}
 		}
-	}
+	};
 
 	/**
 	 * Set the board at the start position
@@ -433,7 +435,7 @@
 	ChessWrapper.prototype.goToStart = function() {
 		this.board.start();
 		this.selectedTempo = this.TEMPO0;
-	}
+	};
 
 	/**
 	 * Set the board position and selected tempo to the last tempo in the active line

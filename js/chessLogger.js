@@ -495,7 +495,7 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 				title: "Clear Game",
 				message: msg,
 				buttons: btns
-			}
+			};
 			var promise = $scope.showDialog(dlgConfig);
 			promise.then(function(ret) {
 				if (ret=="Delete") {
@@ -546,37 +546,39 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 		 */
 		$scope.loadGame = function(savedGame) {
 			$scope.game = new ChessWrapper($scope.boardCfg,savedGame);
+			$scope.gameInfo = savedGame.gameInfo;
+			$scope.gameId = savedGame.id;
 			$scope.loadedGame = angular.copy($scope.game.getSaveableGame());
 			
-		}
+		};
 		
 		/**
 		 * @description Set board position and move list prior to the first move
 		 * @name ChessLoggerCtrl#goToStart
 		 * @function
 		 */
-		$scope.goToStart = function() {$scope.game.goToStart();}
+		$scope.goToStart = function() {$scope.game.goToStart();};
 		
 		/**
 		 * @description Set board position and move list to the last move
 		 * @name ChessLoggerCtrl#goToEnd
 		 * @function
 		 */
-		$scope.goToEnd = function() {$scope.game.goToEnd();}
+		$scope.goToEnd = function() {$scope.game.goToEnd();};
 		
 		/**
 		 * @description Go to next move in this line
 		 * @name ChessLoggerCtrl#goForwardOne
 		 * @function
 		 */
-		$scope.goForwardOne = function() {$scope.game.goForwardOne();}
+		$scope.goForwardOne = function() {$scope.game.goForwardOne();};
 		
 		/**
 		 * @description Go to previous move in this line
 		 * @name ChessLoggerCtrl#goBackOne
 		 * @function
 		 */
-		$scope.goBackOne = function() {	$scope.game.goBackOne();}
+		$scope.goBackOne = function() {	$scope.game.goBackOne();};
 		
 		/**
 		 * @description Setup a new game
@@ -586,21 +588,21 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 		$scope.newGame = function() {	
 			$scope.game.initGame();
 			$scope.loadedGame = angular.copy($scope.game.getSaveableGame());
-		}
+		};
 		
 		/**
 		 * @description Undo and erase last move
 		 * @name ChessLoggerCtrl#undo
 		 * @function
 		 */
-		$scope.undo = function() {$scope.game.undo();}
+		$scope.undo = function() {$scope.game.undo();};
 		
 		/**
 		 * @description Flip the board top for bottom
 		 * @name ChessLoggerCtrl#flipBoard
 		 * @function
 		 */
-		$scope.flipBoard = function() {$scope.game.board.flip();}
+		$scope.flipBoard = function() {$scope.game.board.flip();};
 		
 		/**
 		 * @description Reset the board position to the selected tempo
@@ -608,7 +610,7 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 		 * @function
 		 * @param {object} tempo The {@link Tempo} object at which position you want the board to be set
 		 */
-		$scope.setPosition = function(tempo) {$scope.game.setPosition(tempo);}
+		$scope.setPosition = function(tempo) {$scope.game.setPosition(tempo);};
 		
 		/**
 		 * @description (unimplemented in {@link ChessWrapper}) Peek at the position when mousing over a move
@@ -616,7 +618,7 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 		 * @function
 		 * @param {object} tempo The {@link Tempo} object at which position you want to show the board
 		 */
-		$scope.peekPosition = function(tempo) {$scope.game.peekPosition(tempo);}
+		$scope.peekPosition = function(tempo) {$scope.game.peekPosition(tempo);};
 		
 		/**
 		 * @description Function to be executed by {@link ChessWrapper} after a piece is dropped on the board.
@@ -638,7 +640,7 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 			$scope.$digest();
 			//$scope.saveLocal($scope.game); // save current progress
 			return ret;
-		}
+		};
 		
 		/**
 		 * @description Determine whether user has made any changes to this game
@@ -650,11 +652,11 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 		$scope.isGameDirty = function(game) {
 			game = game || $scope.game;
 			if (angular.equals($scope.loadedGame,angular.copy(game.getSaveableGame()))) {
-				return false
+				return false;
 			} else {
 				return true;
 			}
-		}
+		};
 		
 		/**
 		 * @description Keep track of a game locally incase of interruption
@@ -686,7 +688,7 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 				if (tempo.parentLine.tempos[index-1].lines && tempo.parentLine.tempos[index-1].lines.length>0) return true;
 				return false;
 			}
-		}
+		};
 
 		$scope.boardCfg = {
 				pieceTheme: 'assets/pieces/{piece}.png',
