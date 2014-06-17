@@ -241,11 +241,11 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 			$scope.settings = settings;
 			$scope.ok = function() {
 				$modalInstance.close($scope.settings);
-			}
+			};
 			$scope.cancel = function() {
 				$modalInstance.dismiss('cancel');
-			}
-		}
+			};
+		};
 	
 		/**
 		 * @ngdoc function
@@ -271,7 +271,7 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 				}
 			});
 			return dialogInstance.result;
-		}
+		};
 		
 		/**
 		 * @ngdoc function
@@ -305,12 +305,12 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 				windowClass: 'game-info-modal',
 				resolve: {
 					gameInfo: function() {
-						$scope.gameInfo = $scope.gameInfo || new GameInfo();
+						$scope.game.gameInfo = $scope.game.gameInfo || new GameInfo();
 						// Must be in this format or chrome will not see it, apparently
-						$scope.gameInfo.date = $filter("date")($scope.gameInfo.date,'yyyy-MM-dd');
-						$scope.gameInfo.storage = $scope.gameInfo.storage || {location: 'local',
-																				db: $scope.defaultSettings.db}
-						return $scope.gameInfo;
+						$scope.game.gameInfo.date = $filter("date")($scope.game.gameInfo.date,'yyyy-MM-dd');
+						//$scope.game.gameInfo.storage = $scope.game.gameInfo.storage || {location: 'local',
+						//														db: $scope.defaultSettings.db};
+						return $scope.game.gameInfo;
 					}
 				}
 			});
@@ -392,13 +392,14 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 				$scope.game = new ChessWrapper($scope.boardCfg,game);
 			} else {
 				$scope.game = new ChessWrapper($scope.boardCfg); // new game
+				$scope.clickNew();
 
 			}
 			
 			$scope.loadedGame = angular.copy($scope.game.getSaveableGame());
 			
 			$scope.settings = angular.fromJson(localStorage.getItem(strings.SETTINGS)) || $scope.defaultSettings;
-			var db = $scope.defaultSettings.db;
+			var db = $scope.defaultSettings.db ;
 			mongoRestFactory.init(db.url, db.name, db.collection);
 			$scope.flashMessage('Initialised',true);
 		};
@@ -429,34 +430,35 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 		 */
 		
 		$scope.saveGame = function() {
-			var promise = $scope.showGameInfoModal();
-			promise.then(function(gameInfo) {
-				$scope.game.gameInfo = gameInfo;
-				var data = $scope.game.getSaveableGame();
-				
-				if ($scope.game.gameId && $scope.game.gameId!="") {
-					promise = mongoRestFactory.updateItem({
-						id:$scope.game.gameId,
-						data: data
-					});
-				} else {
-					promise = mongoRestFactory.saveItem({
-						data: data
-					});
-				}
-				promise.then(function(ret) {
-					$scope.gameId = ret.data._id;
-					$scope.flashMessage('Successfully saved game ' + ret.data._id, true);
-				},
-				function(ret) {
-					$scope.flashMessage('Keep trying.  Something at the other end isn\'t doing its job',false);
+			//var promise = $scope.showGameInfoModal();
+			//promise.then(function(gameInfo) {
+				//$scope.game.gameInfo = gameInfo;
+			var data = $scope.game.getSaveableGame();
+			
+			if ($scope.game.gameId && $scope.game.gameId!="") {
+				promise = mongoRestFactory.updateItem({
+					id:$scope.game.gameId,
+					data: data
 				});
+			} else {
+				promise = mongoRestFactory.saveItem({
+					data: data
+				});
+			}
+			promise.then(function(ret) {
+				$scope.game.gameId = ret.data._id;
+				$scope.flashMessage('Successfully saved game ' + ret.data._id, true);
 			},
-			// if cancelled
-			function(cancelReason) {
-				$scope.flashMessage('Looks like this was cancelled by the user.  Only you know why you did that.',false);
-				return;
+			function(ret) {
+				$scope.flashMessage('I can\'t seem to reach the database, but the game is saved locally',false);
 			});
+			$scope.loadedGame = data;
+			//},
+			// if cancelled
+			//function(cancelReason) {
+			//	$scope.flashMessage('Looks like this was cancelled by the user.  Only you know why you did that.',false);
+			//	return;
+			//});
 		};
 		
 		/**
@@ -513,7 +515,7 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 		 * @function
 		 * @name ChessLoggerCtrl#newGame
 		 */
-		$scope.newGame = function() {
+		$scope.newClick = function() {
 			var btnSave = {name:'Save',title:'Save the changes to the default location for this game before starting a new one'};
 			var btnDis = {name:'Discard',title:'Forget all the changes and start a new game'};
 			var btnCan = {name:'Cancel',title:"Whoopsie!  I didn't mean to hit that button"};
@@ -546,8 +548,8 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 		 */
 		$scope.loadGame = function(savedGame) {
 			$scope.game = new ChessWrapper($scope.boardCfg,savedGame);
-			$scope.gameInfo = savedGame.gameInfo;
-			$scope.gameId = savedGame.id;
+			//$scope.gameInfo = savedGame.gameInfo;
+			//$scope.gameId = savedGame.id;
 			$scope.loadedGame = angular.copy($scope.game.getSaveableGame());
 			
 		};
