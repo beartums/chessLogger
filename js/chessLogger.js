@@ -25,13 +25,14 @@ chessLogger.service('localGamesService', function(strings,$rootScope) {
 	
 	this.clearGame = function() {
 		localStorage.removeItem(strings.LOCAL_GAME);
-	}
-	;
+	};
+	
 	this.loadGame = function(index) {
 		index = index || -1;
 		if (index>-1) { // get game from games array and remove it
 			var games = this.getGameList();
 			var game = games.slice(index,index)[0];
+			delete game.index; // get rid of the index property; it is only used by this service
 			this.saveGameList(games);
 			this.saveGame(game);
 			return game;
@@ -68,9 +69,12 @@ chessLogger.service('localGamesService', function(strings,$rootScope) {
 		return games;
 	};
 	
-	this.saveGameToGameList = function(saveableGame) {
+	this.saveGameToGameList = function(saveableGame,addIndexProp) {
+		saveableGame = !saveableGame ? this.loadGame() : saveableGame;
+		if (!saveableGame) return false;
 		var games = this.getGameList();
-		games.push(saveableGame);
+		if (addIndexProp!==false) saveableGame.index = games.length;
+		games[games.length]=saveableGame;
 		this.saveGameList(games);
 		return games;
 	};
@@ -387,21 +391,19 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 		 */
 		$scope.init = function() {
 			var game = localGamesService.loadGame();
-			if (game) {
-				//this.game;
-				$scope.game = new ChessWrapper($scope.boardCfg,game);
-			} else {
-				$scope.game = new ChessWrapper($scope.boardCfg); // new game
-				$scope.clickNew();
-
-			}
 			
-			$scope.loadedGame = angular.copy($scope.game.getSaveableGame());
+			$scope.gameInit(game);
 			
 			$scope.settings = angular.fromJson(localStorage.getItem(strings.SETTINGS)) || $scope.defaultSettings;
 			var db = $scope.defaultSettings.db ;
 			mongoRestFactory.init(db.url, db.name, db.collection);
 			$scope.flashMessage('Initialised',true);
+		};
+		
+		$scope.gameInit = function(game) {
+			$scope.game = new ChessWrapper($scope.boardCfg,game);
+			$scope.loadedGame = angular.copy($scope.game.getSaveableGame());
+			localGamesService.saveGame($scope.loadedGame);
 		};
 		
 		/**
@@ -427,12 +429,11 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 		 * then handle the promise that is returned
 		 * @function
 		 * @name ChessLoggerCtrl#saveGame
+		 * @param {boolean} [andClear=false] True if you are saving before clearing out and starting a new game
 		 */
 		
-		$scope.saveGame = function() {
-			//var promise = $scope.showGameInfoModal();
-			//promise.then(function(gameInfo) {
-				//$scope.game.gameInfo = gameInfo;
+		$scope.saveGame = function(andClear) {
+
 			var data = $scope.game.getSaveableGame();
 			
 			if ($scope.game.gameId && $scope.game.gameId!="") {
@@ -450,15 +451,13 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 				$scope.flashMessage('Successfully saved game ' + ret.data._id, true);
 			},
 			function(ret) {
+				if (andClear) {
+					localGamesService.saveGameToGameList();
+				}
 				$scope.flashMessage('I can\'t seem to reach the database, but the game is saved locally',false);
 			});
 			$scope.loadedGame = data;
-			//},
-			// if cancelled
-			//function(cancelReason) {
-			//	$scope.flashMessage('Looks like this was cancelled by the user.  Only you know why you did that.',false);
-			//	return;
-			//});
+
 		};
 		
 		/**
@@ -490,8 +489,8 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 				var msg = "Do you wish to delete the current game from the database or just discard any changes since the last save?";
 				var btns = [btnDel, btnDis, btnCan];
 			} else {
-				var msg = "No changes have been made to this game.  Would you like to delete it fromt he database?";
-				var btns = [btnDel,btnCan];
+				var msg = "No changes have been made to this game.  Would you like to delete it from the database or just discard it?";
+				var btns = [btnDel,btnDis,btnCan];
 			}
 			var dlgConfig = {
 				title: "Clear Game",
@@ -502,8 +501,7 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 			promise.then(function(ret) {
 				if (ret=="Delete") {
 					$scope.deleteGame($scope.game.gameId);
-					localGamesService.clearGame();
-					$scope.newGame();
+					$scope.gameInit();
 				} else if (ret=='Discard') {
 					localGamesService.loadGame($scope.loadedGame);
 					$scope.loadGame($scope.loadedGame);
@@ -516,13 +514,15 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 		 * @name ChessLoggerCtrl#newGame
 		 */
 		$scope.newClick = function() {
-			var btnSave = {name:'Save',title:'Save the changes to the default location for this game before starting a new one'};
-			var btnDis = {name:'Discard',title:'Forget all the changes and start a new game'};
-			var btnCan = {name:'Cancel',title:"Whoopsie!  I didn't mean to hit that button"};
 			
+			// Ask player for guidance if there are unsaved changes
 			if ($scope.isGameDirty()) {
+				var btnSave = {name:'Save',title:'Save the changes to the default location for this game before starting a new one'};
+				var btnDis = {name:'Discard',title:'Forget all the changes and start a new game'};
+				var btnCan = {name:'Cancel',title:"Whoopsie!  I didn't mean to hit that button"};
+				
 				var msg = "What do you want to do about the changes that have been made to this game?";
-				var btns = [dtnSave,btnDis,btnCan];
+				var btns = [btnSave,btnDis,btnCan];
 				var dlgConfig = {
 					title: "New Game",
 					message: msg,
@@ -530,16 +530,33 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 				};
 				var promise = $scope.showDialog(dlgConfig);
 				promise.then(function(ret) {
-					if (ret=="Discard") {
-						localGamesService.clearGame();
-					} else if (ret=='Save') {
-						$scope.saveGame();
-						localGamesService.clearGame();
+					if (ret=='Cancel') {
+						$scope.flashMessage('New Game Creation Cancelled by user', false);
+						return;
 					}
+					
+					if  (ret=='Save') {
+						$scope.saveGame(true);
+					}
+					$scope.gameInit();
+					
+					// now get the gameinfo for the new game
+					var promise = $scope.showGameInfoModal();
+					promise.then(function(gameInfo) {
+						$scope.game.gameInfo = gameInfo;
+						$scope.flashMessage('New game created', true);
+					},
+					// if cancelled
+					function(cancelReason) {
+						$scope.flashMessage('New Game created with default gameinfo', true);
+					});
 				});
+			} else {
+				$scope.gameInit();
 			}
 		};
 
+		
 		/**
 		 * @description Load the saved game from MongoDb onto the current board (rehydrate through {@link ChessWrapper})
 		 * @name ChessLoggerCtrl#loadGame
@@ -547,11 +564,7 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 		 * @param {object} savedGame Game object from MongoDb Get
 		 */
 		$scope.loadGame = function(savedGame) {
-			$scope.game = new ChessWrapper($scope.boardCfg,savedGame);
-			//$scope.gameInfo = savedGame.gameInfo;
-			//$scope.gameId = savedGame.id;
-			$scope.loadedGame = angular.copy($scope.game.getSaveableGame());
-			
+			$scope.gameInit(savedGame);			
 		};
 		
 		/**
