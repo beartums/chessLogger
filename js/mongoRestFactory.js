@@ -118,9 +118,10 @@ angular.module('mongoRestApp',[])
 		 * @returns {promise}
 		 */
 			updateItem: function (reqObj) {
+				var uri = getUri(reqObj)
 				var promise = $http({method: 'PUT',
-										url: getUri(reqObj),
-										data: reqObj.data,
+										url: uri,
+										data: reqObj.data
 									});
 				return promise;
 			},

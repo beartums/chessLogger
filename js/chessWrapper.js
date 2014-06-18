@@ -189,6 +189,7 @@
 			var game = this.gameFromLine(this.rootLine);
 			
 			var gameObj = {gameInfo: this.gameInfo,
+							id: this.gameId,
 							pgn: game.pgn(),
 							line: line
 							};	
@@ -424,7 +425,7 @@
 			this.selectedTempo = tempo;
 			this.game = new Chess(this.selectedTempo.fen);
 			if (this.line.tempos.indexOf(this.selectedTempo)<0) {
-				this.line = selectedTempo.parentLine;
+				this.line = this.selectedTempo.parentLine;
 			}
 		}
 	};
@@ -444,7 +445,7 @@
 	
 		if (this.line.tempos.length==0) return
 		this.setPosition(this.line.tempos[this.line.tempos.length-1]);
-	}
+	};
 
 	/**
 	 * Move to the next tempo in this line (if any)
@@ -459,7 +460,7 @@
 		this.selectedTempo = this.line.tempos[idx+1];
 		
 		this.setPosition(this.selectedTempo);
-	}
+	};
 
 	/** 
 	 * Move to previous tempo in this line or (if none) to this line's parent tempo (if any)
@@ -473,23 +474,23 @@
 			if (this.line.priorTempos==0) {
 				this.selectedTempo = this.TEMPO0;
 			} else {
-				this.selectedTempo = this.selectedTempo.parentLine.parentTempo
+				this.selectedTempo = this.selectedTempo.parentLine.parentTempo;
 			}
 		} else {
 			this.selectedTempo = this.line.tempos[idx-1];
 		}
 		
 		this.setPosition(this.selectedTempo);
-	}
+	};
 
 	/** 
 	 * Take back the last move
 	 */
 	ChessWrapper.prototype.undo = function() {
-		if (this.game.undo()) { // if undo succeeded
-			this.removeLastTempo()
+		if (this.atEndOfMoveList()) { // only allow undo if you are at the end of a line
+			this.removeLastTempo();
 		}
-	}
+	};
 
 	/**
 	 * Erase the last tempo in this line
@@ -513,10 +514,10 @@
 		if (newSelectedTempo) {
 			this.setPosition(newSelectedTempo);
 		}
-	}
+	};
 		// TODO: show board in popup when mousing over a position.
 	ChessWrapper.prototype.peekPosition = function(tempo) {
-	}
+	};
 
 	/**
 	 * Get the full game PGN object 
@@ -524,7 +525,7 @@
 	 */
 	ChessWrapper.prototype.pgn = function() {
 		return this.game.pgn();
-	} 
+	} ;
 
 	/**
 	 * Set the game up based on a fen string
@@ -532,14 +533,14 @@
 	 */
 	ChessWrapper.prototype.load_pgn = function(fen) {
 		this.game.load_pgn(fen);
-	}
+	};
 
 	/** 
 	 * Function to physically flip the board
 	 */
 	ChessWrapper.prototype.flipBoard = function() {
 		this.board.flip();
-	}
+	};
 	
 //	return ChessWrapper;
 //});

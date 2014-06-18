@@ -37,7 +37,7 @@
 										<span type="button" class="btn btn-default fa chess-fa-refresh" ng-click="flipBoard()" title="Flip Board"></span>
 										<span type="button" class="btn btn-default fa chess-fa-fast-backward" ng-click="goToStart()" title="Back to Start"></span>
 										<span type="button" class="btn btn-default fa chess-fa-step-backward" ng-click="goBackOne()" title="Back up one move"></span>
-										<span type="button" class="btn btn-default fa chess-fa-step-undo" ng-click="undo()" title="Undo the last move in the list"></span>
+										<span type="button" class="btn btn-default fa chess-fa-step-undo" ng-click="undo()" title="Delete the current move" ng-disabled="game.atEndOfMoveList()==false"></span>
 										<span type="button" class="btn btn-default fa chess-fa-step-forward" ng-click="goForwardOne()" title="Advance one move"></span>
 										<span type="button" class="btn btn-default fa chess-fa-fast-forward" ng-click="goToEnd()" title="Go To End Position"></span>
 									</div>
