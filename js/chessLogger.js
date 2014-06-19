@@ -10,7 +10,7 @@
  * @requires ngAnimate
  */
 
-var chessLogger = angular.module('ChessLoggerApp', ['ui.bootstrap','ngAnimate','mongoRestApp']);
+var chessLogger = angular.module('ChessLoggerApp', ['ui.bootstrap','ngAnimate','mongoRestApp', 'multiAlertApp']);
 
 chessLogger.constant('strings',{
 		'SETTINGS': 'settings',
@@ -112,8 +112,9 @@ chessLogger.service('localGamesService', function(strings,$rootScope) {
  * 
  */
 chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeout, $filter, mongoRestFactory, 
-		strings, localGamesService) {
+		strings, localGamesService, multiAlertService) {
 	
+		multiAlertService.addAlert('TITLE','this is the text',3,'info');
 		/**
 		 * @ngdoc object
 		 * @description Object Holding default settings for the user interface: Persistence, options, etc
@@ -190,9 +191,10 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 		 * @param {number} [timeout=5] Seconds to display message before it disappears
 		 */
 		$scope.flashMessage = function(message, isSuccess, timeout) {
-			$scope.message.text = message;
-			$scope.message.isSuccess = isSuccess;
-			$scope.message.timeout = timeout || 5;
+			//$scope.message.text = message;
+			//$scope.message.isSuccess = isSuccess;
+			//$scope.message.timeout = timeout || 5;
+			multiAlertService.addAlert('',message,timeout||5,isSuccess?'success':'danger');
 		};
 
 	/**

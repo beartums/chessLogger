@@ -35,6 +35,23 @@ li {
 	background-color: white;
 	font-weight: normal;
 }
+.gameInfo {
+	background-color: darkGrey;
+	color: white;
+}
+.eg-alerts {
+	position:fixed;
+	right: 0;
+	width: 300;
+	top: 0;
+	height: 0;
+	z-index:10;
+}
+.eg-alert {
+	z-index:10;
+	position: relative;
+	margin-top: 20;
+}
 
 .cssFade {
   -webkit-transition:all linear .5s;
