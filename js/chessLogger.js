@@ -114,7 +114,7 @@ chessLogger.service('localGamesService', function(strings,$rootScope) {
 chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeout, $filter, mongoRestFactory, 
 		strings, localGamesService, multiAlertService) {
 	
-		multiAlertService.addAlert('TITLE','this is the text',3,'info');
+		multiAlertService.addAlert('TITLE','this is the text',5,'info');
 		/**
 		 * @ngdoc object
 		 * @description Object Holding default settings for the user interface: Persistence, options, etc

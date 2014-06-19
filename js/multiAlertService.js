@@ -21,7 +21,7 @@ multiAlertApp.service('multiAlertService',function($timeout, $rootScope) {
   multiAlert.removeAlert = function(alert) {
 	  var i = _alerts.indexOf(alert);
 	  _alerts.splice(i,1);
-	  $rootScope.alerts = _alerts;
+	  $rootScope.masAlerts = _alerts;
 	  $rootScope.$digest();
   };
   
@@ -34,7 +34,7 @@ multiAlertApp.service('multiAlertService',function($timeout, $rootScope) {
 			  multiAlert.removeAlert(alert);
 		  }, alert.timeout * 1000);
 	  }
-	  $rootScope.alerts=_alerts;
+	  $rootScope.masAlerts=_alerts;
 	  //$rootScope.$digest();
   };
   
@@ -46,6 +46,10 @@ multiAlertApp.service('multiAlertService',function($timeout, $rootScope) {
   return multiAlert;
 });
 
-multiAlertApp.directive('multiAlertDirective', function() {
-  
+multiAlertApp.directive('multiAlert', function() {
+	return {
+		restrict: 'EA',
+		templateUrl: 'templates/multiAlertService.tpl.html'
+	};
 });
+	

@@ -39,7 +39,7 @@ li {
 	background-color: darkGrey;
 	color: white;
 }
-.eg-alerts {
+.mas-alerts {
 	position:fixed;
 	right: 0;
 	width: 300;
@@ -47,7 +47,7 @@ li {
 	height: 0;
 	z-index:10;
 }
-.eg-alert {
+.mas-alert {
 	z-index:10;
 	position: relative;
 	margin-top: 20;
