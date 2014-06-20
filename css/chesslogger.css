@@ -39,19 +39,6 @@ li {
 	background-color: darkGrey;
 	color: white;
 }
-.mas-alerts {
-	position:fixed;
-	right: 0;
-	width: 300;
-	top: 0;
-	height: 0;
-	z-index:10;
-}
-.mas-alert {
-	z-index:10;
-	position: relative;
-	margin-top: 20;
-}
 
 .cssFade {
   -webkit-transition:all linear .5s;

@@ -10,7 +10,7 @@
  * @requires ngAnimate
  */
 
-var chessLogger = angular.module('ChessLoggerApp', ['ui.bootstrap','ngAnimate','mongoRestApp', 'multiAlertApp']);
+var chessLogger = angular.module('ChessLoggerApp', ['ui.bootstrap','ngAnimate','mongoRestApp', 'yaaas']);
 
 chessLogger.constant('strings',{
 		'SETTINGS': 'settings',
@@ -112,9 +112,9 @@ chessLogger.service('localGamesService', function(strings,$rootScope) {
  * 
  */
 chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeout, $filter, mongoRestFactory, 
-		strings, localGamesService, multiAlertService) {
+		strings, localGamesService, yaaaService) {
 	
-		multiAlertService.addAlert('TITLE','this is the text',5,'info');
+		//yaaaService.addAlert('TITLE','this is the text',5,'info');
 		/**
 		 * @ngdoc object
 		 * @description Object Holding default settings for the user interface: Persistence, options, etc
@@ -194,7 +194,7 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 			//$scope.message.text = message;
 			//$scope.message.isSuccess = isSuccess;
 			//$scope.message.timeout = timeout || 5;
-			multiAlertService.addAlert('',message,timeout||5,isSuccess?'success':'danger');
+			yaaaService.addAlert('',message,timeout||5,isSuccess?'success':'danger');
 		};
 
 	/**
