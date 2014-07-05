@@ -169,6 +169,7 @@
 		move = game.move(moveObj);
 		if (!move) return 'snapback';
 		this.game=game;
+		var fen = game.fen();
 		this.addMove(move);
 
 	};
@@ -333,7 +334,9 @@
 		
 		this.selectedTempo = tempo;
 		this.line.tempos.push(tempo);
-		if (move.flags.search(/[epkq]/i) > -1)	this.board.position(tempo.fen, false); // update for weird moves
+		if (move.flags.search(/[epkq]/i) > -1)	{
+			this.board.position(tempo.fen, false); // update for weird moves
+		}
 	};
 
 	/**
@@ -501,14 +504,21 @@
 		var newSelectedTempo = this.TEMPO0;
 		
 		if (this.line.tempos.length==0) {
-			line = this.lineStack.pop();
+			var parentTempo = this.line.parentTempo;
+			if (!parentTempo) return;
+			parentTempo.lines=[];
+			line = parentTempo.parentLine;
 			if (!line) return;
 		}
 		
 		this.line = line;
 		// if the currently selected tempo is being undone
 		if (lastTempo==this.selectedTempo) {
-			newSelectedTempo = line.tempos.length ? line.tempos[line.tempos.length-1] : this.TEMPO0;
+			if (parentTempo) {
+				newSelectedTempo = parentTempo;
+			} else {
+				newSelectedTempo = line.tempos.length ? line.tempos[line.tempos.length-1] : this.TEMPO0;
+			}
 		}
 		
 		if (newSelectedTempo) {

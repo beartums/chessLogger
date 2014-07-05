@@ -156,31 +156,7 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 			timeout: 5
 		};
 		
-		/**
-		 * @name $watch#message.text
-		 * @function
-		 * @description register an observer on {@link ChessLoggerCtrl#message|message} object. 
-		 *  Delete the message.text after timeout has expired
-		 * so that it is not disctracting to the user
-		 */
-		$scope.$watch('message.text', function() {
-			$timeout(function() {
-				if ($scope.message.text) $scope.message={};
-			},1000 * ($scope.message.timeout || 5));
-			
-		});
 
-		/**
-		 * @name $watch#game
-		 * @function
-		 * @description register an observer on {@link ChessLoggerCtrl#message|message} object. 
-		 *  Delete the message.text after timeout has expired
-		 * so that it is not disctracting to the user
-		 */
-		$scope.$watchCollection('game', function() {
-			localGamesService.saveGame($scope.game.getSaveableGame());
-		});
-		
 		/**
 		 * @ngdoc function
 		 * @function
@@ -400,6 +376,30 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 			var db = $scope.defaultSettings.db ;
 			mongoRestFactory.init(db.url, db.name, db.collection);
 			$scope.flashMessage('Initialised',true);
+			/**
+			 * @name $watch#message.text
+			 * @function
+			 * @description register an observer on {@link ChessLoggerCtrl#message|message} object. 
+			 *  Delete the message.text after timeout has expired
+			 * so that it is not disctracting to the user
+			 */
+			$scope.$watch('message.text', function() {
+				$timeout(function() {
+					if ($scope.message.text) $scope.message={};
+				},1000 * ($scope.message.timeout || 5));
+				
+			});
+
+			/**
+			 * @name $watch#game
+			 * @function
+			 * @description register an observer on {@link ChessLoggerCtrl#message|message} object. 
+			 *  Delete the message.text after timeout has expired
+			 * so that it is not disctracting to the user
+			 */
+			$scope.$watchCollection('game', function() {
+				localGamesService.saveGame($scope.game.getSaveableGame());
+			});
 		};
 		
 		$scope.gameInit = function(game) {
@@ -720,6 +720,8 @@ chessLogger.controller('ChessLoggerCtrl', function($scope, $modal, $log, $timeou
 				allowMultipleLines: true
 			};
 
-		$scope.init();
+		$(document).ready($scope.init);
+
+		//$scope.init();
 
 });		

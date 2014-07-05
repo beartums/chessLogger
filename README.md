@@ -5,7 +5,7 @@ Alpha Chess Analysis using Chess.js and ChessBoard.js
 
 # Background
 
-Back in 2006, I had a TREO.  The phone was cool at the time, but it had a chess program that was great.  The engine 
+Back in 2006, I had a TREO.  The phone was cool at the time.  It had a chess program that was great.  The engine 
 was okay, but it really shone when used to record a game between 2 people.  When I upgraded to 
 a legitimate smart phone, I couldn't find anything as useful even though I've now downloaded 
 about 30 apps in search of this holy grail.
